@@ -2,7 +2,7 @@ import { Layer, Popper, FlyoutMenu, MenuItem, IconChevronDown16 } from '@dhis2/u
 import { useRef, useState } from 'react'
 
 
-function SelectDropdown(args: any) {
+function Dropdown(args: any) {
 
     const ref = useRef<HTMLButtonElement | any>()
     const [open, setOpen] = useState(false)
@@ -27,4 +27,4 @@ function SelectDropdown(args: any) {
     )
 }
 
-export default SelectDropdown;
+export default Dropdown;
