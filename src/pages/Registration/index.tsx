@@ -11,7 +11,7 @@ function Registration() {
                     <Button icon={<IconArrowLeft24 />} name="Primary button" value="default">Back</Button>
                 </Link>
             </div>
-            <div style={{ padding: "0 20%" }}>
+            <div style={{ padding: "0 15%" }}>
                 <h2>Registration</h2>
                 <Card style={{ padding: "10px" }}>
                     <Form />

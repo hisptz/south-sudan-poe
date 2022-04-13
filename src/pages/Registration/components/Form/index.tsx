@@ -1,4 +1,4 @@
-import { Input, FieldGroup, Checkbox, TextArea } from '@dhis2/ui'
+import { Input, FieldGroup, Checkbox, TextArea, Button } from '@dhis2/ui'
 import styles from './Form.module.css';
 
 function Form() {
@@ -137,7 +137,10 @@ function Form() {
                     </div>
                 </div>
             </div>
-            <button>Cancel</button><button>Save</button>
+            <div className={styles["form-group"]}>
+                <Button name="Primary button" value="default">Cancel</Button>
+                <Button name="Primary button" value="default">Save</Button>
+            </div>
         </div>
     );
 }
