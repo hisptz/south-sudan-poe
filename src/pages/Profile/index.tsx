@@ -7,7 +7,7 @@ function Profile() {
     return (
         <div className={styles.container}>
              <Navigate path='/' label='Back' />
-            <div style={{ padding: "0 15%" }}>
+            <div className='content-body'>
                 <h2>Traveller profile</h2>
                 <Card style={{ padding: "10px" }}>
 

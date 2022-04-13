@@ -8,7 +8,7 @@ function Registration() {
     return (
         <div className={styles.container}>
             <Navigate path='/' label='Back' />
-            <div style={{ padding: "0 15%" }}>
+            <div className='content-body'>
                 <h2>Registration</h2>
                 <Card style={{ padding: "10px" }}>
                     <Form />
