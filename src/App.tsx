@@ -1,17 +1,17 @@
-import { useConfig } from '@dhis2/app-runtime';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import MainOutlet from './App-routing';
 import "./App.css"
+import BookingService from './core/services/BookingService';
 import Toolbar from './shared/components/Layout/components/Toolbar';
 
 function App() {
-  const {baseUrl} = useConfig()
-  console.log({baseUrl})
+  useEffect(() => {
+    new BookingService().getBookings();
+  },[])
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
       <MainOutlet />
-
     </React.Suspense>
   );
 }

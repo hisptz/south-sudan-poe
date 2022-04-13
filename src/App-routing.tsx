@@ -1,4 +1,7 @@
+import { useDataEngine } from "@dhis2/app-runtime";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { engineState } from "./core/hooks/engine";
 import Home from "./pages/Home";
 import MyApplication from "./pages/MyApplication";
 import NotFound from "./pages/NotFound";
@@ -7,7 +10,10 @@ import Registration from "./pages/Registration";
 import Layout from "./shared/components/Layout";
 
 export default function MainOutlet() {
-
+    const setEngineState = useSetRecoilState(engineState);
+    const engine = useDataEngine();
+    
+setEngineState(engine);
     return (
         <Router>
             <Routes>

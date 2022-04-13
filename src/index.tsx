@@ -3,18 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from '@dhis2/app-runtime';
+import { RecoilRoot } from 'recoil';
 
-const appConfig:any = {
-  baseUrl: process.env.REACT_APP_BASEURL,
-  apiVersion: process.env.REACT_APP_APIVERSION ,
-}
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider config={appConfig}>
-    <App />
-    </Provider>
+      <RecoilRoot>
+      <App />
+      </RecoilRoot>
   
   </React.StrictMode>,
   document.getElementById('root')
