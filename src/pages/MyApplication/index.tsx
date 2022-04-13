@@ -18,8 +18,16 @@ function MyApplication() {
             <div style={{ padding: "0 15%" }}>
                 <h2>My Applications</h2>
                 <Card style={{ padding: "10px" }}>
-                    <Search />
-                    <Table />
+                    <div className={styles["inner-container"]}>
+                        <div className={styles.search}>
+                            <Search />
+                        </div>
+                    </div>
+                    <div className={styles["inner-container"]}>
+                        <div className={styles.table}>
+                            <Table />
+                        </div>
+                    </div>
                 </Card>
             </div>
         </div>);

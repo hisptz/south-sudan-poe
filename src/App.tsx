@@ -1,8 +1,6 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import MainOutlet from './App-routing';
 import "./App.css"
-import Toolbar from './shared/components/Layout/components/Toolbar';
 
 function App() {
   return (
