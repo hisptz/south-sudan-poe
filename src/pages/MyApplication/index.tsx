@@ -1,8 +1,12 @@
-import styles from './Registration.module.css'
+
+import Search from './components/Search';
+import Table from './components/Table';
 import { Card, Button, IconArrowLeft24 } from '@dhis2/ui'
-import Form from './components/Form';
+import styles from './MyApplication.module.css';
 import { Link } from 'react-router-dom';
-function Registration() {
+
+
+function MyApplication() {
 
     return (
         <div className={styles.container}>
@@ -12,12 +16,13 @@ function Registration() {
                 </Link>
             </div>
             <div style={{ padding: "0 15%" }}>
-                <h2>Registration</h2>
+                <h2>My Applications</h2>
                 <Card style={{ padding: "10px" }}>
-                    <Form />
+                    <Search />
+                    <Table />
                 </Card>
             </div>
         </div>);
 }
 
-export default Registration;
+export default MyApplication;

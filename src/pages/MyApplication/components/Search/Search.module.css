@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    box-sizing: content-box;
+    gap: 16px;
+    padding: 10px;
+}
+
+.container input{
+    flex-grow: 1;
+}
+
+.container button{
+    flex-basis: 100px;
+}

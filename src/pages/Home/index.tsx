@@ -4,7 +4,7 @@ import registerLogo from '../../assets/register.png'
 import myApplicationLogo from '../../assets/myapplication.png'
 import { Card } from '@dhis2/ui'
 
-export default function Home() {
+ function Home() {
     return (
         <div className={styles.container} >
             <h1 >WELCOME TO SOUTH SUDAN</h1>
@@ -34,3 +34,5 @@ export default function Home() {
             </div>
         </div>);
 }
+
+export default Home;

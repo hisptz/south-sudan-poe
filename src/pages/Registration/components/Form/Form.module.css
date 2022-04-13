@@ -1,6 +1,11 @@
+.container {
+    padding: 16px;
+}
+
 .form-group {
     display: flex;
     flex-direction: row;
+    gap: 16px;
 }
 
 .form-group input {
