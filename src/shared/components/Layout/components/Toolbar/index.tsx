@@ -1,6 +1,6 @@
 import styles from './Toolbar.module.css'
 import flag from '../../../../../assets/south-sudan-flag.png'
-import SelectDropdown from '../../../SelectDropdown';
+import Dropdown from '../../../Dropdown';
 
 function Toolbar(args: any) {
 
@@ -12,7 +12,7 @@ function Toolbar(args: any) {
                 <h3>Ministry of Health</h3>
             </div>
             <div className={styles.dropdown}>
-                <SelectDropdown />
+                <Dropdown />
             </div>
         </div>
     )
