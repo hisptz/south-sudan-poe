@@ -4,7 +4,8 @@ import registerLogo from '../../assets/register.png'
 import myApplicationLogo from '../../assets/myapplication.png'
 import { Card } from '@dhis2/ui'
 
- function Home() {
+ const Home=()=> {
+     
     return (
         <div className={styles.container} >
             <h1 >WELCOME TO SOUTH SUDAN</h1>
