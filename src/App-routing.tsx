@@ -6,7 +6,7 @@ import Profile from "./pages/Profile";
 import Registration from "./pages/Registration";
 import Layout from "./shared/components/Layout";
 
-export default function MainRouter() {
+export default function MainOutlet() {
 
     return (
         <Router>
