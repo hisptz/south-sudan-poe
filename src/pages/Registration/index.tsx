@@ -1,21 +1,12 @@
 import styles from "./Registration.module.css";
-import { Card, Button, IconArrowLeft24 } from "@dhis2/ui";
+import { Card} from "@dhis2/ui";
 import Form from "./components/Form";
-import { Link, useNavigate } from "react-router-dom";
+import Back from "../../shared/components/Back";
 
-function Registration() {
-  const navigate = useNavigate();
-
+const Registration = () => {
   return (
     <div className={styles.container}>
-      <Button
-        icon={<IconArrowLeft24 />}
-        name="Primary button"
-        value="default"
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </Button>
+      <Back />
       <div className="content-body">
         <h2>Registration</h2>
         <Card style={{ padding: "10px" }}>
@@ -24,6 +15,6 @@ function Registration() {
       </div>
     </div>
   );
-}
+};
 
 export default Registration;

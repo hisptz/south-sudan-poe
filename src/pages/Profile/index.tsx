@@ -1,21 +1,11 @@
-import { Card, Button, IconArrowLeft24 } from "@dhis2/ui";
+import { Card } from "@dhis2/ui";
 import styles from "./Profile.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import Back from "../../shared/components/Back";
 
-function Profile() {
-
-  const navigate = useNavigate();
-
+const  Profile=()=> {
   return (
     <div className={styles.container}>
-      <Button
-        icon={<IconArrowLeft24 />}
-        name="Primary button"
-        value="default"
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </Button>
+      <Back />
       <div className="content-body">
         <h2>Traveller profile</h2>
         <Card>
