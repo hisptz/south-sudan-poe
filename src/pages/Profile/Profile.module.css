@@ -1,0 +1,22 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-column .flex-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.label-title {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 4px;
+}

@@ -1,7 +1,8 @@
-import { Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton } from '@dhis2/ui'
+import { Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button } from '@dhis2/ui'
+import { Link } from 'react-router-dom';
+import styles from './Table.module.css'
 
-
-function Table() {
+const Table = () => {
 
 
     return (<div>
@@ -22,90 +23,14 @@ function Table() {
             <TableBody>
                 <TableRow>
                     <TableCell>
-                        Onyekachukwu
-                    </TableCell>
-                    <TableCell>
-                        Kariuki
-                    </TableCell>
-                    <TableCell>
-                        Incomplete
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
-                        Kwasi
-                    </TableCell>
-                    <TableCell>
-                        Okafor
-                    </TableCell>
-                    <TableCell>
-                        Complete
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
-                        Siyabonga
-                    </TableCell>
-                    <TableCell>
-                        Abiodun
-                    </TableCell>
-                    <TableCell>
-                        Incomplete
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
-                        Chiyembekezo
-                    </TableCell>
-                    <TableCell>
-                        Okeke
-                    </TableCell>
-                    <TableCell>
-                        Incomplete
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
-                        Mtendere
-                    </TableCell>
-                    <TableCell>
-                        Afolayan
-                    </TableCell>
-                    <TableCell>
-                        Complete
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
-                        Inyene
-                    </TableCell>
-                    <TableCell>
-                        Okonkwo
-                    </TableCell>
-                    <TableCell>
-                        Complete
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
-                        Amaka
-                    </TableCell>
-                    <TableCell>
-                        Pretorius
-                    </TableCell>
-                    <TableCell>
-                        Incomplete
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
                         Meti
                     </TableCell>
                     <TableCell>
                         Abiodun
                     </TableCell>
-                    <TableCell>
-                        Incomplete
+                    <TableCell dense>
+                        <Link className={styles["Table-Link"]} to="/profile/123">View</Link>
+                        <Link className={styles["Table-Link"]} to="/registration/123">Edit</Link>
                     </TableCell>
                 </TableRow>
             </TableBody>

@@ -1,16 +1,18 @@
 
 import Search from './components/Search';
 import Table from './components/Table';
-import { Card } from '@dhis2/ui'
+import { Card, Button, IconArrowLeft24 } from '@dhis2/ui'
 import styles from './MyApplication.module.css';
-import Navigate from '../../shared/components/Navigate';
+import { useNavigate } from 'react-router-dom';
 
 
 function MyApplication() {
 
+    const navigate = useNavigate();
+
     return (
         <div className={styles.container}>
-            <Navigate path='/' label='Back' />
+            <Button icon={<IconArrowLeft24 />} name="Primary button" value="default" onClick={() => navigate(-1)} >Back</Button>
             <div className='content-body'>
                 <h2>My Applications</h2>
                 <Card style={{ padding: "10px" }}>
