@@ -1,15 +1,25 @@
-import { Card } from "@dhis2/ui";
+import { Card, Button, IconEdit24 } from "@dhis2/ui";
 import styles from "./Profile.module.css";
 import Back from "../../shared/components/Back";
+import { Link } from "react-router-dom";
+import QRCODE from "../../assets/QR-Code.png";
 
-const  Profile=()=> {
+const Profile = () => {
   return (
     <div className={styles.container}>
       <Back />
       <div className="content-body">
-        <h2>Traveller profile</h2>
+        <h2>
+          Traveller profile{" "}
+          <Link to="/registration/123">
+            <IconEdit24 />
+          </Link>{" "}
+        </h2>
         <Card>
-          <div className={styles["flex-row"]} style={{ padding: "16px" }}>
+          <div
+            className={styles["flex-row"]}
+            style={{ padding: "20px", minHeight: 400 }}
+          >
             <div className={styles["flex-item"]}>
               <div className={styles["flex-column"]}>
                 <div className={styles["flex-item"]}>
@@ -22,26 +32,34 @@ const  Profile=()=> {
                 </div>
                 <div className={styles["flex-item"]}>
                   <label className={styles["label-title"]} htmlFor="name">
-                    Name:
+                    Passport:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    XSRGFSFUISJ
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
                   <label className={styles["label-title"]} htmlFor="name">
-                    Name:
+                    Phone number:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    +25578368389
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
                   <label className={styles["label-title"]} htmlFor="name">
-                    Name:
+                    Email:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    user@gmail.com
+                  </label>
+                </div>
+                <div className={styles["flex-item"]}>
+                  <label className={styles["label-title"]} htmlFor="name">
+                    Gender:
+                  </label>
+                  <label className="label-subtitle" htmlFor="value">
+                    Male
                   </label>
                 </div>
               </div>
@@ -50,44 +68,49 @@ const  Profile=()=> {
               <div className={styles["flex-column"]}>
                 <div className={styles["flex-item"]}>
                   <label className={styles["label-title"]} htmlFor="name">
-                    Name:
+                    Point of Entry:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    Juma inernational airport
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
                   <label className={styles["label-title"]} htmlFor="name">
-                    Name:
+                    Arrival date:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    28/03/2022
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
                   <label className={styles["label-title"]} htmlFor="name">
-                    Name:
+                    Flight number:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    T831237
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
                   <label className={styles["label-title"]} htmlFor="name">
-                    Name:
+                    Nationality:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    Tanzania
                   </label>
                 </div>
               </div>
             </div>
-            <div className="flex-item"></div>
+            <div className={styles["QR-code-container"]}>
+              <div className={styles["QR-code"]}>
+                <img src={QRCODE} alt="" />
+              </div>
+              <Button>Print</Button>
+            </div>
           </div>
         </Card>
       </div>
     </div>
   );
-}
+};
 
 export default Profile;
