@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
+import { Provider  } from '@dhis2/app-runtime';
 
 
 ReactDOM.render(
   <React.StrictMode>
       <RecoilRoot>
+      <Provider config={{ baseUrl: "", apiVersion: 37}}>
       <App />
+      </Provider>
       </RecoilRoot>
   
   </React.StrictMode>,

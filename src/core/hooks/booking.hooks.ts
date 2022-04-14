@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSetRecoilState, useRecoilState } from "recoil";
+import { BookingEvent } from "../interface/events";
 import BookingService from "../services/BookingService";
 import { BookingConfigurationState } from "../states/Booking_Configuration_state/booking_configuration";
 import { bookingPaginationState, Pagination } from "../states/Booking_state";

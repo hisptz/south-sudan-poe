@@ -146,17 +146,17 @@ class BookingService {
       });
   }
 
-  async getBookingByPassport(passportId: String) {
+  async getBookingByEvent(eventId: String) {
     return await this.httpService
       .getHttpService(
-        `/events/${passportId}?page=1&pageSize=15&program=ArXGGyMgxL4&orgUnit=ychsfCBrH6U&order=eventDate%3Adesc&totalPages=true`
+        `/events/${eventId}?page=1&pageSize=15&program=ArXGGyMgxL4&orgUnit=ychsfCBrH6U&order=eventDate%3Adesc&totalPages=true`
       )
       .then((response: any) => {
         return response.data;
       });
   }
 
-  async updateBookings(bookingObject: any, eventId: String) {
+  async updateBooking(bookingObject: any, eventId: String) {
     return await this.httpService
       .putHttpService(`/events/${eventId}`, bookingObject)
       .then((response: any) => {
