@@ -1,27 +1,25 @@
-import styles from "./Registration.module.css";
-import {Card} from "@dhis2/ui";
-import Form from "./components/Form";
-import Back from "../../shared/components/Back";
 import React from "react";
-import {ErrorBoundary} from "react-error-boundary";
-import Error from "../Error";
+import styles from "./Registration.module.css"
+import Back from "../../shared/components/Back";
+import Form from "./components/Form";
+import {Card} from '@dhis2/ui'
 
 const Registration = () => {
 
     return (
-        <ErrorBoundary fallback={<Error/>}>
-            <div className={styles.container}>
+        <div className={styles.container}>
+            <div style={{paddingTop: 16, paddingLeft: 16}}>
                 <Back/>
-                <React.Suspense fallback={<div>Loading</div>}>
-                    <div className="content-body">
-                        <h2>Registration</h2>
-                        <Card style={{padding: "10px"}}>
-                            <Form/>
-                        </Card>
-                    </div>
-                </React.Suspense>
             </div>
-        </ErrorBoundary>
+            <React.Suspense fallback={<div>Loading</div>}>
+                <div className="content-body">
+                    <h2>Registration</h2>
+                    <Card style={{padding: "10px"}}>
+                        <Form/>
+                    </Card>
+                </div>
+            </React.Suspense>
+        </div>
     );
 };
 
