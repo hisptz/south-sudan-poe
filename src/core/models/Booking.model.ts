@@ -113,30 +113,5 @@ export class Booking {
     return age;
   }
 
-/**
- *  this.eventPayLoad = {
-        trackedEntityInstance: trackedEntityInstanceId,
-        trackedEntityType: CONSTANT.SHARED_TRACKED_ENTITY_TYPE.person,
-        orgUnit: this.selectedOu,
-        attributes: _.map(Object.keys(this.attributesData), (att) => {
-          return {
-            attribute: att,
-            value: this.attributesData[att],
-          };
-        }),
-        enrollments: [
-          {
-            enrollment: enrollmentId,
-            trackedEntityInstance: trackedEntityInstanceId,
-            trackedEntityType: CONSTANT.SHARED_TRACKED_ENTITY_TYPE.person,
-            program: CONSTANT.SHARED_PROGRAM.arrival_traveller_screening,
-            orgUnit: this.selectedOu,
-            enrollmentDate: enrollmentDate,
-            incidentDate: new Date(),
-            events: this.getEventsData(),
-          },
-        ],
-      };
- */
 
 }
