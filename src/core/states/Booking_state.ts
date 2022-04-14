@@ -12,4 +12,19 @@ const bookingPaginationState = atom<Pagination[]>({
 })
 
 
-export {bookingPaginationState}
+const currentSearchedPassportNumberState = atom<string>({
+    key:"currentSearchedPassportNumberState",
+    default:""
+})
+
+
+const bookingTableList = atom<Booking[]>({
+    key:"bookingTableList",
+    default:[]
+})
+
+const currentBookingProfile = atom<Booking>({
+    key:"currentBookingProfile",
+})
+
+export {bookingPaginationState,currentSearchedPassportNumberState,bookingTableList,currentBookingProfile}
