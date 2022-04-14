@@ -75,7 +75,8 @@ export class Booking {
   }
 
   get dateEnroll():string{
-      return this.event.eventDate;
+    let newDateEnroll = this.event.eventDate
+      return newDateEnroll.split("T")[0];
   }
 
 
