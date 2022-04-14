@@ -2,17 +2,11 @@ import styles from "./Registration.module.css";
 import {Card} from "@dhis2/ui";
 import Form from "./components/Form";
 import Back from "../../shared/components/Back";
-import React, {useEffect} from "react";
-import BookService from "../../core/services/BookingService";
+import React from "react";
 import {ErrorBoundary} from "react-error-boundary";
 import Error from "../Error";
 
 const Registration = () => {
-    useEffect(() => {
-        new BookService().getMetadatas().then((data) => {
-            console.log(data);
-        });
-    });
 
     return (
         <ErrorBoundary fallback={<Error/>}>

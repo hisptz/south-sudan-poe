@@ -48,7 +48,7 @@ export function usePullBookingMetadata() {
   useEffect(() => {
      setLoading(true)
     new BookingService()
-      .getMetadatas()
+      .getMetadata()
       .then((bookingMetadataResponse) => {
         if (bookingMetadataResponse) {
           setBookingConfigurationState(bookingMetadataResponse);

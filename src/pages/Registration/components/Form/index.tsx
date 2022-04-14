@@ -1,28 +1,32 @@
 import {Button, CircularLoader} from "@dhis2/ui";
 import styles from "./Form.module.css";
 import FormBuilder from "../FormBuilder";
-import {FormProvider, useForm} from "react-hook-form";
-import React, {useCallback, useEffect} from "react";
+import {FormProvider, set, useForm} from "react-hook-form";
+import React, {useCallback, useEffect, useMemo} from "react";
 import {usePullBookingMetadata} from "../../../../core/hooks/booking.hooks";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import BookingService from "../../../../core/services/BookingService";
 import {useAlert} from "@dhis2/app-runtime";
 import {createBooking, updateBooking} from "./services";
-
+import {useOrgUnitField} from "./hooks/orgUnit";
+import {METADATA} from "../../../../core/constants";
+import {cloneDeep, findIndex, get, isEmpty} from "lodash";
 
 const Form = () => {
     const {error, loading, data: formMetaData} = usePullBookingMetadata();
+    const {loading: orgUnitsLoading, orgUnitField} = useOrgUnitField();
     const {show, hide} = useAlert(
         ({message}) => message,
         ({type}) => ({...type, duration: 3000})
     );
     const navigate = useNavigate()
 
-    const form = useForm();
+    const form = useForm({
+        shouldFocusError: true
+    });
     const param = useParams();
 
     useEffect(() => {
-
         new BookingService().getBookingByEvent(param.id as string).then((data) => {
             let obj = {};
             data.dataValues.forEach((x: any) => {
@@ -39,7 +43,25 @@ const Form = () => {
             : createBooking(data, {show, hide});
     }, []);
 
-    if (loading)
+    const sections = useMemo(() => {
+        if (formMetaData && !orgUnitsLoading) {
+            const metadataSections: any = cloneDeep(formMetaData?.programStages?.[0]?.programStageSections);
+            if (metadataSections && !isEmpty(metadataSections)) {
+                const tripSectionIndex = findIndex(metadataSections, (x: { id: METADATA; }) => x.id === METADATA.TRIP_INFO_SECTION_ID);
+                if (tripSectionIndex > -1) {
+                    const dataElements = get(metadataSections, `${tripSectionIndex}.dataElements`);
+                    set(metadataSections, `${tripSectionIndex}.dataElements`, [orgUnitField, ...dataElements]);
+                }
+            }
+
+            return metadataSections;
+        }
+
+        return [];
+    }, [formMetaData, orgUnitsLoading]);
+
+
+    if (loading || orgUnitsLoading) {
         return (
             <div
                 style={{
@@ -55,17 +77,20 @@ const Form = () => {
                 </div>
             </div>
         );
+    }
 
     if (error) return <div>Error: {error.message}</div>;
+
+    if (!sections) return <div>No form metadata</div>;
 
     return (
         <FormProvider {...form}>
             <div className={styles.container}>
-                {formMetaData.programStages &&
-                    formMetaData.programStages[0].programStageSections?.map(
+                {sections &&
+                    sections?.map(
                         (x: any, key: any) => (
                             <FormBuilder
-                                key={"form-bulder" + key}
+                                key={"form-builder" + key}
                                 title={x.displayFormName}
                                 controls={x.dataElements}
                                 stageDataElements={
@@ -92,6 +117,7 @@ const Form = () => {
             </div>
         </FormProvider>
     );
+
 };
 
 export default Form;
