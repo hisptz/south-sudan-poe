@@ -1,10 +1,24 @@
-import { Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button } from '@dhis2/ui'
+import { Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button ,Pagination} from '@dhis2/ui'
+import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { Booking, BookingTableData } from '../../../../core/models/Booking.model';
+import { bookingTableList } from '../../../../core/states/Booking_state';
 import styles from './Table.module.css'
 
 const Table = () => {
 
+  const [page, setPage] = useState(0);
+    const onPageChange = (newPage:any) => {
+    setPage(newPage - 1);
+  };
 
+
+    
+        let setBookingTableList = useRecoilValue<Booking[]>(bookingTableList);
+
+  let bookingTableData:BookingTableData[] =   Booking.getTableData(setBookingTableList)
+   
     return (<div>
         <DTable suppressZebraStriping>
             <TableHead>
@@ -21,23 +35,39 @@ const Table = () => {
                 </TableRowHead>
             </TableHead>
             <TableBody>
-                <TableRow>
-                    <TableCell>
-                        Meti
+             {bookingTableData?.map((booking:BookingTableData, index:number) => {
+                 let profileLink: string  = /profile/ + booking.id;
+                 let RegistrationLink: string  = /registration/ + booking.id;
+                    return   <TableRow key={index}>
+                        <TableCell>
+                            {booking.date}
+                            </TableCell>
+                            <TableCell>
+                            {booking.poe}
+                            </TableCell>
+                            <TableCell dense>
+                        <Link className={styles["Table-Link"]} to={profileLink}>View</Link>
+                        <Link hidden={index !== 0 ?true :false}
+                        className={styles["Table-Link"]} to={RegistrationLink}>Edit</Link>
                     </TableCell>
-                    <TableCell>
-                        Abiodun
-                    </TableCell>
-                    <TableCell dense>
-                        <Link className={styles["Table-Link"]} to="/profile/123">View</Link>
-                        <Link className={styles["Table-Link"]} to="/registration/123">Edit</Link>
-                    </TableCell>
-                </TableRow>
+                            </TableRow>
+                    
+             }) }
+
             </TableBody>
-            <TableFoot>
+            <TableFoot >
                 <TableRow>
-                    <TableCell colSpan="8">
-                        {/* <TableFooterButton /> */}
+                    <TableCell colSpan="12"           
+>
+          <Pagination
+            hidePageSizeSelect
+            total={bookingTableData.length}
+            pageCount={10}
+            pageSize={10}
+            page={page + 1}
+            onPageChange={onPageChange}
+            onPageSizeChange={() => {}}
+          />
                     </TableCell>
                 </TableRow>
             </TableFoot>
