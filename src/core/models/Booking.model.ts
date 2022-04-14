@@ -62,6 +62,10 @@ export class Booking {
   return []
   }
 
+  get fullName():string{
+      return this.firstName + " " + this.lastName;
+  }
+
   get age():string{
       return this.calculateAge(
         new Date(
