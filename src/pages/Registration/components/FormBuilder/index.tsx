@@ -5,6 +5,7 @@ import { Controller } from "react-hook-form";
 const FormBuilder = ({
   title,
   controls,
+  stageDataElements,
 }: {
   title: string;
   controls:
@@ -14,9 +15,13 @@ const FormBuilder = ({
         valueType: string;
         value: any;
         optionSet?: Array<any>;
-        mandatory?: boolean
       }[]
     | any[];
+  stageDataElements: {
+    id: string;
+    compulsory: boolean;
+    dataElement: { id: string };
+  }[];
 }) => {
   return (
     <>
@@ -25,34 +30,49 @@ const FormBuilder = ({
           <label>{title}</label>
         </div>
         <div className={styles["content-container"]}>
-          {controls.map((control, key) => (
-            <Controller
-            key={`${control.id}-form-input`}
-            rules={{
-              required: control.mandatory ? `${control.displayFormName} is required` : false
-            }}
-              name={control.id}
-              render={({ field, fieldState }) => (
-                <div key={key} style={{ width: "100%" }}>
-                  <CustomInput        
-                    optionSet={control.optionSet}
-                    input={{
-                      value: field.value,
-                      onChange: field.onChange,
-                    }}
-                    validations={{
-                      required: control.mandatory ? `${control.displayFormName} is required` : false
-                    }}
-                    error={Boolean(fieldState.error)}
-                    validationText={fieldState.error?.message}
-                    required={control.mandatory}
-                    valueType={control.valueType}
-                    label={control.displayFormName}
-                  />
-                </div>
-              )}
-            />
-          ))}
+          {controls.map((control, key) => {
+            const mandatory = stageDataElements.filter(
+              (x) => x.dataElement.id === control.id
+            )[0]?.compulsory;
+            return (
+              <Controller
+                key={`${control.id}-form-input`}
+                rules={{
+                  required: mandatory
+                    ? `${control.displayFormName} is required`
+                    : false,
+                }}
+                name={control.id}
+                render={({ field, fieldState }) => (
+                  <div key={key} style={{ width: "100%" }}>
+                    <CustomInput
+                      optionSet={control.optionSet}
+                      input={{
+                        value: field.value,
+                        onChange: field.onChange,
+                      }}
+                      validations={{
+                        required: mandatory
+                          ? `${control.displayFormName} is required`
+                          : false,
+                      }}
+                      error={Boolean(fieldState.error)}
+                      validationText={fieldState.error?.message}
+                      required={mandatory}
+                      valueType={
+                        control.valueType === "AGE"
+                          ? "NUMBER"
+                          : control.valueType == "EMAIL"
+                          ? "TEXT"
+                          : control.valueType
+                      }
+                      label={control.displayFormName}
+                    />
+                  </div>
+                )}
+              />
+            );
+          })}
         </div>
       </div>
     </>
