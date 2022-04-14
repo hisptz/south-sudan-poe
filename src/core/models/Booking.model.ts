@@ -50,6 +50,10 @@ export class Booking {
     return "";
   }
 
+
+  get phoneNumner():string{
+    return EventDataValueUtil.getDataElementValue("Cs1wQfbUHSV",this.event.dataValues);
+  }
   get lastName(): string {
     return EventDataValueUtil.getDataElementValue("gms6oEPUk7D",this.event.dataValues);
   }
