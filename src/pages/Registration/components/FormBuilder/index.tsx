@@ -48,6 +48,7 @@ const FormBuilder = ({
                                         <CustomInput
                                             optionSet={control.optionSet}
                                             input={{
+                                                name: "",
                                                 value: field.value,
                                                 onChange: field.onChange,
                                             }}
@@ -56,6 +57,7 @@ const FormBuilder = ({
                                                     ? `${control.displayFormName} is required`
                                                     : false,
                                             }}
+                                            { /*@ts-ignore */ ...""}
                                             error={Boolean(fieldState.error)}
                                             validationText={fieldState.error?.message}
                                             required={mandatory}
