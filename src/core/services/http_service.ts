@@ -7,7 +7,7 @@ class HttpService {
     return await axios
       .get(this.baseURL + url)
       .then((response) => {
-        console.log({ response })
+        return response
       })
       .catch((error) => {
         console.log({ error })
@@ -16,17 +16,12 @@ class HttpService {
 
   async postHttpService(url: string, body: any) {
     return await axios
-      .post(this.baseURL + url, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
+      .post(this.baseURL + url, body as JSON)
       .then((response) => {
-        console.log({ response })
+        return response
       })
       .catch((error) => {
-        console.log({ error })
+        console.log("error is ",{ error })
       })
   }
 
@@ -34,7 +29,7 @@ class HttpService {
     return await axios
       .put(this.baseURL + url, body)
       .then((response) => {
-        console.log({ response })
+        return response
       })
       .catch((error) => {
         console.log({ error })
