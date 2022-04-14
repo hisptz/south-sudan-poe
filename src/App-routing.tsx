@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useBookingPagination, usePullBookingMetadata } from "./core/hooks/booking.hooks"
 import Home from "./pages/Home";
 import MyApplication from "./pages/MyApplication";
 import NotFound from "./pages/NotFound";
@@ -9,7 +8,6 @@ import Registration from "./pages/Registration";
 import Layout from "./shared/components/Layout";
 
 export default function MainOutlet() {
-    usePullBookingMetadata();
     
     return (
         <Router>
