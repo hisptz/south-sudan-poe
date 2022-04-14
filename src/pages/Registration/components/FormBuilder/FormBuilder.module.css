@@ -1,0 +1,27 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.flex-row input {
+    margin-top: 4px !important;
+}
+
+.label-container {
+    flex-basis: 330px;
+    padding: 16px;
+}
+
+.content-container {
+    padding: 32px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 12px;
+}
+
+.label-container>label {
+    font-weight: 500;
+    font-size: 22px;
+}

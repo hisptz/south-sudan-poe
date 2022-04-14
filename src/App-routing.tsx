@@ -18,6 +18,7 @@ export default function MainOutlet() {
                     <Route index element={<Home />} />
                     <Route element={<Home />} path="/home" />
                     <Route element={<Registration />} path="/registration" />
+                    <Route element={<Registration />} path="/registration/:id" />
                     <Route element={<Profile />} path="/profile/:id" />
                     <Route element={<MyApplication />} path="/my-application" />
                 </Route>
