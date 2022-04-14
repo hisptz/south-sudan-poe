@@ -3,7 +3,7 @@ import {useOrgUnitField} from "./orgUnit";
 import {useAlert} from "@dhis2/app-runtime";
 import {useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {useCallback, useEffect, useMemo} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import BookingService from "../../../../../core/services/BookingService";
 import {createBooking, updateBooking} from "../services";
 import {cloneDeep, findIndex, get, isEmpty, set} from "lodash";
@@ -12,6 +12,7 @@ import {sanitizeFields} from "../utils";
 
 
 export default function useFormControl() {
+    const [saving, setSaving] = useState(false);
     const {error, loading, data: formMetaData} = usePullBookingMetadata();
     const {loading: orgUnitsLoading, orgUnitField} = useOrgUnitField();
 
@@ -27,23 +28,26 @@ export default function useFormControl() {
     const param = useParams();
 
     useEffect(() => {
-        new BookingService().getBookingByEvent(param.id as string).then((data) => {
-            let obj = {};
-            data.dataValues.forEach((x: any) => {
-                const key = x.dataElement;
-                Object.assign(obj, {[key]: x.value});
+
+        if (param.id) {
+            new BookingService().getBookingByEvent(param.id as string).then((data) => {
+                let obj = {};
+                data.dataValues.forEach((x: any) => {
+                    const key = x.dataElement;
+                    Object.assign(obj, {[key]: x.value});
+                });
+                set(obj, 'orgUnit', data.orgUnit);
+                form.reset(obj);
             });
-            set(obj, 'orgUnit', data.orgUnit);
-            form.reset(obj);
-        });
+        }
     }, [param.id]);
+
     const onSubmit = useCallback((data) => {
-
+        setSaving(true);
         const sanitizedData = sanitizeFields(data);
-
         param.id != null
-            ? updateBooking(sanitizedData, param.id as string, {show, hide, navigate})
-            : createBooking(sanitizedData, {show, hide});
+            ? updateBooking(sanitizedData, param.id as string, {show, hide, navigate, setSaving})
+            : createBooking(sanitizedData, {show, hide, setSaving});
     }, []);
 
     const sections = useMemo(() => {
@@ -62,7 +66,7 @@ export default function useFormControl() {
 
         return [];
     }, [formMetaData, orgUnitsLoading]);
-    const dataElements = get(formMetaData, `programStages.0.programStageDataElements`)
+    const dataElements = get(formMetaData, `programStages.0.programStageDataElements`) ?? []
 
 
     return {
@@ -71,6 +75,7 @@ export default function useFormControl() {
         error,
         sections,
         dataElements,
-        onSubmit
+        onSubmit,
+        saving
     }
 }

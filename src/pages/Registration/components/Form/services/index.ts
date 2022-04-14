@@ -18,7 +18,7 @@ function generatePayload(dataValues: DataValue[], orgUnit: string, event?: strin
 
 function showMessage(message: string, type: string, {show, hide}: any) {
     show({
-        message: "",
+        message,
         type: type === "critical" ? {critical: true} : {success: true},
     });
     if (type === "critical") setTimeout(() => hide(), 5000);
@@ -26,26 +26,45 @@ function showMessage(message: string, type: string, {show, hide}: any) {
 
 }
 
-export function createBooking({orgUnit, dataValues}: any, {show, hide, navigate}: any): void {
+export function createBooking({orgUnit, dataValues}: any, {show, hide, navigate, setSaving}: any): void {
 
     const body = generatePayload(dataValues, orgUnit);
 
     new BookingService()
         .createBooking(body)
         .then((res) => {
+            showMessage("Booking successfully saved", "success", {show, hide});
             navigate(`/profile/${res}`);
         })
         .catch((error) => {
-            showMessage("error", "critical", {show, hide});
-        });
+            console.error(error);
+            showMessage(`Error saving booking: ${error?.message ?? "An unknown error occurred"}`, "critical", {
+                show,
+                hide
+            });
+        }).finally(() => setSaving(false));
 }
 
-export function updateBooking({orgUnit, dataValues}: any, eventId: string, {show, hide, navigate}: any): void {
+export function updateBooking({orgUnit, dataValues}: any, eventId: string, {
+    show,
+    hide,
+    navigate,
+    setSaving
+}: any): void {
 
     const body = generatePayload(dataValues, orgUnit, eventId);
 
     new BookingService()
         .updateBooking(body, eventId)
-        .then((res) => navigate(`/profile/${eventId}`))
-        .catch((error) => showMessage("error", "critical", {show, hide}));
+        .then((res) => {
+            showMessage("Booking successfully updated", "success", {show, hide});
+            navigate(`/profile/${eventId}`);
+        })
+        .catch((error) => {
+            console.error(error);
+            showMessage(`Error updating booking: ${error?.message ?? "An unknown error occurred"}`, "critical", {
+                show,
+                hide
+            });
+        }).finally(() => setSaving(false));
 }

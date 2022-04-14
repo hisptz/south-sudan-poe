@@ -31,7 +31,7 @@ const FormBuilder = ({
                 </div>
                 <div className={styles["content-container"]}>
                     {controls.map((control, key) => {
-                        const mandatory = stageDataElements.filter(
+                        const mandatory = control.compulsory ?? stageDataElements.filter(
                             (x) => x.dataElement.id === control.id
                         )[0]?.compulsory;
                         return (

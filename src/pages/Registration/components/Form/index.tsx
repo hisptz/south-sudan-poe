@@ -7,7 +7,8 @@ import {Link} from "react-router-dom";
 import useFormControl from "./hooks/form";
 
 const Form = () => {
-    const {loading, error, sections, dataElements, onSubmit, form} = useFormControl();
+    const {loading, error, sections, dataElements, onSubmit, form, saving} = useFormControl();
+
 
     if (loading) {
         return (
@@ -55,11 +56,13 @@ const Form = () => {
                         </Button>
                     </Link>
                     <Button
+                        primary
+                        loading={saving}
                         onClick={form.handleSubmit(onSubmit)}
                         name="Primary button"
                         value="default"
                     >
-                        Save
+                        {saving ? "Saving..." : "Save"}
                     </Button>
                 </div>
             </div>
