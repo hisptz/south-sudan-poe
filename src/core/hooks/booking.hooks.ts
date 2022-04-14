@@ -38,10 +38,33 @@ export function useBookingPagination() {
                }
 
             }
+          return  _bookingEventPaginationFilters?.map((pager:Pagination)=>{
+                new BookingService().getBooking(pager,currentSearchedPassportNumber).then((bookingResponse)=>{
+                   if(bookingResponse){
+                      console.log(bookingResponse)
+                      bookingResponse.events?.map((event:any)=>{
+                        _bookingTableList.push(new Booking(event))
+                      })
+                      return  setBookingTableList(_bookingTableList)
+
+                   }
+                }).catch((error)=>{
+                   console.log(error)
+                })
+             })
+
+            
          }
 
      )
-    }, []);
+     return () => {
+      // This line only evaluates to true after the componentWillUnmount happens 
+      if (componentWillUnmount.current) {
+         return ;
+      }
+  }
+    }
+    , [setCurrentSearchedPassportNumberState]);
 }
   
 
@@ -60,8 +83,16 @@ useEffect(()=>{
   }
 
 
-  
 
 
 
-  
+
+  export function useCurrentBookingProfile(event:string){
+      let setCurrentBookingProfile = useSetRecoilState<Booking>(currentBookingProfile);
+new BookingService().getBookingByEVentId(event).then((bookingProfileResponse)=>{
+   if(bookingProfileResponse){
+       setCurrentBookingProfile(new Booking(bookingProfileResponse))
+   }
+})
+
+  }
