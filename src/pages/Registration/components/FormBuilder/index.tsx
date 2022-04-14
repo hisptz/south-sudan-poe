@@ -46,6 +46,7 @@ const FormBuilder = ({
                                 render={({field, fieldState}) => (
                                     <div key={key} style={{width: "100%"}}>
                                         <CustomInput
+                                            filterable
                                             optionSet={control.optionSet}
                                             input={{
                                                 name: "",
