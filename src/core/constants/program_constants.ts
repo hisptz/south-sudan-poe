@@ -1,0 +1,3 @@
+export const PROGRAM ={
+ POE_ARRIVAL_HEALTH_POGRAM:'ArXGGyMgxL4'
+} 
