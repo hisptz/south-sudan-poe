@@ -1,10 +1,33 @@
 import { Card, Button, IconEdit24 } from "@dhis2/ui";
 import styles from "./Profile.module.css";
 import Back from "../../shared/components/Back";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import QRCODE from "../../assets/QR-Code.png";
+import { useCurrentBookingProfile } from "../../core/hooks/booking.hooks";
+import { currentBookingProfile } from "../../core/states/Booking_state";
+import { useRecoilValue } from "recoil";
+import { Booking } from "../../core/models/Booking.model";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
 
 const Profile = () => {
+   const {id} =useParams<string>()
+ useCurrentBookingProfile(id as string)
+ let currentBookProfile = useRecoilValue<Booking>(currentBookingProfile);
+
+ function downloadDashbord() {
+  const input = document.getElementById('print-profile');
+  html2canvas(input as HTMLElement)
+      .then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF("p", "px", "a4");
+          let width = pdf.internal.pageSize.getWidth();
+        pdf.addImage(imgData, 'PNG', 10, 20, width,width*(canvas.height / canvas.width) );
+          pdf.save(currentBookProfile.firstName+"_Profile.pdf");
+      });
+  }
+
   return (
     <div className={styles.container}>
       <Back />
@@ -19,6 +42,7 @@ const Profile = () => {
           <div
             className={styles["flex-row"]}
             style={{ padding: "20px", minHeight: 400 }}
+            id="print-profile"
           >
             <div className={styles["flex-item"]}>
               <div className={styles["flex-column"]}>
