@@ -9,15 +9,7 @@ class BookingService {
     this.httpService = new HttpService()
   }
 
-  async getBookings() {
-    return await this.httpService
-      .getHttpService(
-        '/events?program=ArXGGyMgxL4&orgUnit=ychsfCBrH6U&order=eventDate%3Adesc&totalPages=false',
-      )
-      .then((response: any) => {
-        return response.data
-      })
-  }
+
 
   async getBookingByPagination(page: number, pageSize: number) {
     return await this.httpService
@@ -47,7 +39,7 @@ class BookingService {
       })
   }
 
-  async getBookingByEVentId(eventId: String) {
+  async getBookingByEvent(eventId: String) {
     return await this.httpService
       .getHttpService(
         `/events/${eventId}?page=1&pageSize=2&program=ArXGGyMgxL4&orgUnit=ychsfCBrH6U&order=eventDate%3Adesc&totalPages=true`,

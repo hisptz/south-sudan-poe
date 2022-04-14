@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Booking } from "../models/Booking.model";
 import BookingService from "../services/BookingService";
@@ -66,22 +66,33 @@ export function useBookingPagination() {
     }
     , [setCurrentSearchedPassportNumberState]);
 }
-  
 
-  export function usePullBookingMetadata(){
-   let setBookingConfigurationState = useSetRecoilState<any>(BookingConfigurationState);
-useEffect(()=>{
-    new BookingService().getMetadatas().then((bookingMetadataResponse)=>{
-         if(bookingMetadataResponse){
-            setBookingConfigurationState(bookingMetadataResponse)
-         }
-    }).catch((error)=>{
-         console.log(error)
-    })
-},[])
+export function usePullBookingMetadata() {
+   const [ loading, setLoading ] = useState<boolean>(false);
+   const [error, setError] = useState<any>();
+  let [bookingState, setBookingConfigurationState] = useRecoilState<any>(
+    BookingConfigurationState
+  );
+  useEffect(() => {
+     setLoading(true)
+    new BookingService()
+      .getMetadatas()
+      .then((bookingMetadataResponse) => {
+        if (bookingMetadataResponse) {
+          setBookingConfigurationState(bookingMetadataResponse);
+        }
+      })
+      .catch((error) => {
+        setError(error)
+      }).finally(()=>setLoading(false));
+  }, []);
 
+  return{
+     error,
+     loading,
+   data: bookingState
   }
-
+}
 
 
 
@@ -89,10 +100,10 @@ useEffect(()=>{
 
   export function useCurrentBookingProfile(event:string){
       let setCurrentBookingProfile = useSetRecoilState<Booking>(currentBookingProfile);
-new BookingService().getBookingByEVentId(event).then((bookingProfileResponse)=>{
+new BookingService().getBookingByEvent(event).then((bookingProfileResponse)=>{
    if(bookingProfileResponse){
        setCurrentBookingProfile(new Booking(bookingProfileResponse))
    }
-})
+})}
 
-  }
+  
