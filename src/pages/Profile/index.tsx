@@ -51,7 +51,7 @@ const Profile = () => {
                     Name:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    John Doe Joe
+                    {currentBookProfile.fullName}
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
@@ -59,7 +59,7 @@ const Profile = () => {
                     Passport:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    XSRGFSFUISJ
+                    {currentBookProfile.passport}
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
@@ -67,7 +67,7 @@ const Profile = () => {
                     Phone number:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    +25578368389
+                   {currentBookProfile.phoneNumner}
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
@@ -75,7 +75,7 @@ const Profile = () => {
                     Email:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    user@gmail.com
+                   {currentBookProfile.email}
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
@@ -83,7 +83,7 @@ const Profile = () => {
                     Gender:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    Male
+                   {currentBookProfile.gender}
                   </label>
                 </div>
               </div>
@@ -95,7 +95,7 @@ const Profile = () => {
                     Point of Entry:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    Juma inernational airport
+                    {currentBookProfile.poe}
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
@@ -111,7 +111,7 @@ const Profile = () => {
                     Flight number:
                   </label>
                   <label className="label-subtitle" htmlFor="value">
-                    T831237
+                    {currentBookProfile.flightNumber}
                   </label>
                 </div>
                 <div className={styles["flex-item"]}>
@@ -128,7 +128,7 @@ const Profile = () => {
               <div className={styles["QR-code"]}>
                 <img src={QRCODE} alt="" />
               </div>
-              <Button>Print</Button>
+              <Button onClick={downloadDashbord}>Print</Button>
             </div>
           </div>
         </Card>
