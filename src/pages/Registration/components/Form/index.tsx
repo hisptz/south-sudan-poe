@@ -1,67 +1,15 @@
 import {Button, CircularLoader} from "@dhis2/ui";
 import styles from "./Form.module.css";
 import FormBuilder from "../FormBuilder";
-import {FormProvider, set, useForm} from "react-hook-form";
-import React, {useCallback, useEffect, useMemo} from "react";
-import {usePullBookingMetadata} from "../../../../core/hooks/booking.hooks";
-import {Link, useNavigate, useParams} from "react-router-dom";
-import BookingService from "../../../../core/services/BookingService";
-import {useAlert} from "@dhis2/app-runtime";
-import {createBooking, updateBooking} from "./services";
-import {useOrgUnitField} from "./hooks/orgUnit";
-import {METADATA} from "../../../../core/constants";
-import {cloneDeep, findIndex, get, isEmpty} from "lodash";
+import {FormProvider} from "react-hook-form";
+import React from "react";
+import {Link} from "react-router-dom";
+import useFormControl from "./hooks/form";
 
 const Form = () => {
-    const {error, loading, data: formMetaData} = usePullBookingMetadata();
-    const {loading: orgUnitsLoading, orgUnitField} = useOrgUnitField();
-    const {show, hide} = useAlert(
-        ({message}) => message,
-        ({type}) => ({...type, duration: 3000})
-    );
-    const navigate = useNavigate()
+    const {loading, error, sections, dataElements, onSubmit, form} = useFormControl();
 
-    const form = useForm({
-        shouldFocusError: true
-    });
-    const param = useParams();
-
-    useEffect(() => {
-        new BookingService().getBookingByEvent(param.id as string).then((data) => {
-            let obj = {};
-            data.dataValues.forEach((x: any) => {
-                const key = x.dataElement;
-                Object.assign(obj, {[key]: x.value});
-            });
-            form.reset(obj);
-        });
-    }, [param.id]);
-
-    const onSubmit = useCallback((data) => {
-        param.id != null
-            ? updateBooking(data, param.id as string, {show, hide, navigate})
-            : createBooking(data, {show, hide});
-    }, []);
-
-    const sections = useMemo(() => {
-        if (formMetaData && !orgUnitsLoading) {
-            const metadataSections: any = cloneDeep(formMetaData?.programStages?.[0]?.programStageSections);
-            if (metadataSections && !isEmpty(metadataSections)) {
-                const tripSectionIndex = findIndex(metadataSections, (x: { id: METADATA; }) => x.id === METADATA.TRIP_INFO_SECTION_ID);
-                if (tripSectionIndex > -1) {
-                    const dataElements = get(metadataSections, `${tripSectionIndex}.dataElements`);
-                    set(metadataSections, `${tripSectionIndex}.dataElements`, [orgUnitField, ...dataElements]);
-                }
-            }
-
-            return metadataSections;
-        }
-
-        return [];
-    }, [formMetaData, orgUnitsLoading]);
-
-
-    if (loading || orgUnitsLoading) {
+    if (loading) {
         return (
             <div
                 style={{
@@ -94,7 +42,7 @@ const Form = () => {
                                 title={x.displayFormName}
                                 controls={x.dataElements}
                                 stageDataElements={
-                                    formMetaData.programStages[0]?.programStageDataElements
+                                    dataElements
                                 }
                             />
                         )
