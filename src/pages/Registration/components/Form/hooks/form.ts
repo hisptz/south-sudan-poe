@@ -8,6 +8,7 @@ import BookingService from "../../../../../core/services/BookingService";
 import {createBooking, updateBooking} from "../services";
 import {cloneDeep, findIndex, get, isEmpty, set} from "lodash";
 import {METADATA} from "../../../../../core/constants";
+import {sanitizeFields} from "../utils";
 
 
 export default function useFormControl() {
@@ -32,13 +33,17 @@ export default function useFormControl() {
                 const key = x.dataElement;
                 Object.assign(obj, {[key]: x.value});
             });
+            set(obj, 'orgUnit', data.orgUnit);
             form.reset(obj);
         });
     }, [param.id]);
     const onSubmit = useCallback((data) => {
+
+        const sanitizedData = sanitizeFields(data);
+
         param.id != null
-            ? updateBooking(data, param.id as string, {show, hide, navigate})
-            : createBooking(data, {show, hide});
+            ? updateBooking(sanitizedData, param.id as string, {show, hide, navigate})
+            : createBooking(sanitizedData, {show, hide});
     }, []);
 
     const sections = useMemo(() => {

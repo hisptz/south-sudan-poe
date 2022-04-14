@@ -2,13 +2,12 @@ import {BookingEvent, DataValue} from "../../../../../core/interface/events";
 import {METADATA} from "../../../../../core/constants";
 import BookingService from "../../../../../core/services/BookingService";
 
-function generatePayload(dataValues: DataValue[], event?: string): BookingEvent {
+function generatePayload(dataValues: DataValue[], orgUnit: string, event?: string): BookingEvent {
     return {
         program: METADATA.PROGRAM,
         programStage: METADATA.PROGRAM_STAGE,
-        orgUnit: "ychsfCBrH6U",
+        orgUnit,
         status: "ACTIVE",
-        orgUnitName: "Juba Int Airport",
         attributeCategoryOptions: METADATA.ATTRIBUTE_CATEGORY_OPTION,
         attributeOptionCombo: METADATA.ATTRIBUTE_OPTION_COMBO,
         eventDate: new Date().toISOString(),
@@ -27,13 +26,9 @@ function showMessage(message: string, type: string, {show, hide}: any) {
 
 }
 
-export function createBooking(data: any, {show, hide, navigate}: any): void {
-    let dataValues: any[] = [];
-    Object.keys(data).forEach((key) => {
-        dataValues.push({dataElement: key, value: data[key]});
-    });
+export function createBooking({orgUnit, dataValues}: any, {show, hide, navigate}: any): void {
 
-    const body = generatePayload(dataValues);
+    const body = generatePayload(dataValues, orgUnit);
 
     new BookingService()
         .createBooking(body)
@@ -45,13 +40,9 @@ export function createBooking(data: any, {show, hide, navigate}: any): void {
         });
 }
 
-export function updateBooking(data: any, eventId: string, {show, hide, navigate}: any): void {
-    let dataValues: any[] = [];
-    Object.keys(data).forEach((key) => {
-        dataValues.push({dataElement: key, value: data[key]});
-    });
+export function updateBooking({orgUnit, dataValues}: any, eventId: string, {show, hide, navigate}: any): void {
 
-    const body = generatePayload(dataValues, eventId);
+    const body = generatePayload(dataValues, orgUnit, eventId);
 
     new BookingService()
         .updateBooking(body, eventId)
