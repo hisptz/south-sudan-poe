@@ -67,7 +67,7 @@ function updateBooking(data: any, eventId: string, { show, hide,navigate }: any)
   };
 
   new BookingService()
-    .updateBooking(body, eventId)
+    .updateBookings(body, eventId)
     .then((res) => navigate(`/profile/${eventId}`))
     .catch((error) => showMessge("error", "critical", { show, hide }));
 }
@@ -140,7 +140,7 @@ const Form = () => {
         <div className={styles["form-group"]}>
           <Link to="/">
             <Button name="Primary button" value="default">
-              Cancel
+              Cancel+
             </Button>
           </Link>
           <Button

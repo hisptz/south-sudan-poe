@@ -1,10 +1,11 @@
 import { Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button ,Pagination} from '@dhis2/ui'
-import { useEffect,useState } from 'react';
+import { useEffect,useMemo,useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { Booking, BookingTableData } from '../../../../core/models/Booking.model';
 import { bookingTableList } from '../../../../core/states/Booking_state';
 import styles from './Table.module.css'
+import {chunk} from "lodash";
 
 const Table = () => {
 
@@ -12,12 +13,16 @@ const Table = () => {
     const onPageChange = (newPage:any) => {
     setPage(newPage - 1);
   };
+let pageSize:number = 8;
 
-
-    
         let setBookingTableList = useRecoilValue<Booking[]>(bookingTableList);
 
-  let bookingTableData:BookingTableData[] =   Booking.getTableData(setBookingTableList)
+  let bookingTableData:BookingTableData[] =   Booking.getTableData(setBookingTableList);
+  const chunks = useMemo(
+    () => chunk(bookingTableData, pageSize),
+    [bookingTableData, pageSize]
+  );
+    
    
     return (<div>
         <DTable suppressZebraStriping>
@@ -35,10 +40,10 @@ const Table = () => {
                 </TableRowHead>
             </TableHead>
             <TableBody>
-             {bookingTableData?.map((booking:BookingTableData, index:number) => {
+             {chunks[page]?.map((booking:BookingTableData, index:number) => {
                  let profileLink: string  = /profile/ + booking.id;
                  let RegistrationLink: string  = /registration/ + booking.id;
-                    return   <TableRow key={index}>
+                    return   <TableRow key={index+"booking-table-key"}>
                         <TableCell>
                             {booking.date}
                             </TableCell>
@@ -59,15 +64,15 @@ const Table = () => {
                 <TableRow>
                     <TableCell colSpan="12"           
 >
-          <Pagination
+{chunks.length > 1 &&       <Pagination
             hidePageSizeSelect
             total={bookingTableData.length}
-            pageCount={10}
-            pageSize={10}
+            pageCount={chunks.length}
+            pageSize={pageSize}
             page={page + 1}
             onPageChange={onPageChange}
             onPageSizeChange={() => {}}
-          />
+          />}
                     </TableCell>
                 </TableRow>
             </TableFoot>
