@@ -4,6 +4,7 @@
     padding: 16px;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .toolbar div {
@@ -24,6 +25,43 @@
 }
 
 .dropdown {
-    flex-basis: 200px;
     align-self: flex-end
+}
+
+.logo {
+    width: 200px;
+    height: 64px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .toolbar {
+        height: 56px;
+    }
+
+    .toolbar h1 {
+        font-size: 24px;
+        margin: 2px 2px 0;
+    }
+
+    .toolbar h3 {
+        margin: 2px;
+        font-size: 14px;
+    }
+
+    .titles {
+        flex: 1;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .logo {
+        width: 100px;
+        height: 32px;
+    }
+
+    .dropdown {
+        display: none;
+    }
 }

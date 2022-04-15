@@ -25,7 +25,7 @@ const FormBuilder = ({
 }) => {
     return (
         <>
-            <div className={styles["flex-row"]}>
+            <div className={styles["form-grid"]}>
                 <div className={styles["label-container"]}>
                     <label>{title}</label>
                 </div>
