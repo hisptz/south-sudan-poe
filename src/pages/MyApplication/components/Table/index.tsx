@@ -1,116 +1,137 @@
-import { CircularLoader,Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button ,Pagination} from '@dhis2/ui'
-import { useEffect,useMemo,useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Booking, BookingTableData } from '../../../../core/models/Booking.model';
+import {
+    CircularLoader,
+    Pagination,
+    Table as DTable,
+    TableBody,
+    TableCell,
+    TableCellHead,
+    TableFoot,
+    TableHead,
+    TableRow,
+    TableRowHead
+} from '@dhis2/ui'
+import React, {useMemo} from 'react';
+import {Link} from 'react-router-dom';
+import {Booking, BookingTableData} from '../../../../core/models/Booking.model';
 import styles from './Table.module.css'
-import {chunk} from "lodash";
-import React from 'react';
-import { useBookingPagination } from '../../../../core/hooks/booking.hooks';
+import NoResults from "../NoResults";
+import {useRecoilState, useRecoilValueLoadable} from "recoil";
+import {bookingPaginationSelector, bookingTableList} from "../../../../core/states/Booking_state";
+import Loader from "../../../../shared/components/Loader";
 
 const Table = () => {
+    const [pagination, setPagination] = useRecoilState(bookingPaginationSelector);
+    const data = useRecoilValueLoadable(bookingTableList);
 
-  const {data,loading} = useBookingPagination()
+    const dataLoading = data.state === "loading";
 
-  const [page, setPage] = useState(0);
-    const onPageChange = (newPage:any) => {
-    setPage(newPage - 1);
-  };
-let pageSize:number = 8;
+    const onPageChange = (newPage: any) => {
+        setPagination((prevState: any) => ({
+            ...prevState,
+            page: newPage
+        }))
+    };
 
-        // let setBookingTableList = useRecoilValue<Booking[]>(bookingTableList);
-
-  let bookingTableData:BookingTableData[] =   Booking.getTableData(data);
-  const chunks = useMemo(
-    () => chunk(bookingTableData, pageSize),
-    [bookingTableData, pageSize]
-  );
-    
-
-  if (loading) {
-    return (
-        <div
-            style={{
-                height: "500px",
-                padding: 16,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-            }}
-        >
-            <div style={{margin: "auto"}}>
-                <CircularLoader/>
-            </div>
-        </div>
+    const tableData = useMemo(
+        () => {
+            if (data.state === "hasValue") {
+                return Booking.getTableData(data.contents);
+            }
+            return [];
+        },
+        [data]
     );
-}
+
+    if (data.state === "hasError") {
+        return <div>{data.contents.toString()}</div>
+    }
+
+    if (data.state === "hasValue" && data.contents.length === 0) {
+        return <NoResults/>
+    }
 
 
-   
     return (<div>
-            <React.Suspense fallback={<div>Loading</div>}>
-
-        <DTable suppressZebraStriping>
-            <TableHead>
-                <TableRowHead>
-                <TableCellHead>
-                        S/n
-                    </TableCellHead>
-                    <TableCellHead>
-                        Date
-                    </TableCellHead>
-                    <TableCellHead>
-                        Point of Entry
-                    </TableCellHead>
-                    <TableCellHead>
-                        Actions
-                    </TableCellHead>
-                </TableRowHead>
-            </TableHead>
-            <TableBody>
-             {chunks[page]?.map((booking:BookingTableData, index:number) => {
-                 let profileLink: string  = /profile/ + booking.id;
-                 let RegistrationLink: string  = /registration/ + booking.id;
-                 const newTo = { 
-                    pathname: profileLink, 
-                    canbeEdited: index !== 0 ?true :false
-                  };
-                    return   <TableRow key={index+"booking-table-key"}>
-                         <TableCell>
-                            {booking.position}
-                            </TableCell>
-                        <TableCell>
-                            {booking.date}
-                            </TableCell>
-                            <TableCell>
-                            {booking.poe}
-                            </TableCell>
-                            <TableCell dense>
-                        <Link className={styles["Table-Link"]} to={newTo}  >View</Link>
-                        <Link hidden={index !== 0 ?true :false}
-                        className={styles["Table-Link"]} to={RegistrationLink}>Edit</Link>
-                    </TableCell>
+        <React.Suspense fallback={<Loader/>}>
+            <DTable suppressZebraStriping>
+                <TableHead>
+                    <TableRowHead>
+                        <TableCellHead>
+                            S/n
+                        </TableCellHead>
+                        <TableCellHead>
+                            Date
+                        </TableCellHead>
+                        <TableCellHead>
+                            Point of Entry
+                        </TableCellHead>
+                        <TableCellHead>
+                            Actions
+                        </TableCellHead>
+                    </TableRowHead>
+                </TableHead>
+                {
+                    dataLoading ? <>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell colSpan={12}>
+                                    <div style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        minHeight: 500
+                                    }}>
+                                        <CircularLoader small/>
+                                    </div>
+                                </TableCell>
                             </TableRow>
-                    
-             }) }
+                        </TableBody>
+                    </> : <TableBody>
+                        {tableData?.map((booking: BookingTableData, index: number) => {
+                            let profileLink: string = /profile/ + booking.id;
+                            let RegistrationLink: string = /registration/ + booking.id;
+                            const newTo = {
+                                pathname: profileLink,
+                                canbeEdited: index !== 0
+                            };
+                            return <TableRow key={index + "booking-table-key"}>
+                                <TableCell>
+                                    {booking.position}
+                                </TableCell>
+                                <TableCell>
+                                    {booking.date}
+                                </TableCell>
+                                <TableCell>
+                                    {booking.poe}
+                                </TableCell>
+                                <TableCell dense>
+                                    <Link className={styles["Table-Link"]} to={newTo}>View</Link>
+                                    <Link hidden={index !== 0}
+                                          className={styles["Table-Link"]} to={RegistrationLink}>Edit</Link>
+                                </TableCell>
+                            </TableRow>
 
-            </TableBody>
-            <TableFoot >
-                <TableRow>
-                    <TableCell colSpan="12"           
->
-{chunks.length > 1 &&       <Pagination
-            hidePageSizeSelect
-            total={bookingTableData.length}
-            pageCount={chunks.length}
-            pageSize={pageSize}
-            page={page + 1}
-            onPageChange={onPageChange}
-            onPageSizeChange={() => {}}
-          />}
-                    </TableCell>
-                </TableRow>
-            </TableFoot>
-        </DTable>
+                        })}
+
+                    </TableBody>
+                }
+                <TableFoot>
+                    <TableRow>
+                        <TableCell colSpan="12"
+                        >
+                            {pagination && <Pagination
+                                hidePageSizeSelect
+                                {...pagination}
+                                onPageChange={onPageChange}
+                                onPageSizeChange={() => {
+                                }}
+                            />}
+                        </TableCell>
+                    </TableRow>
+                </TableFoot>
+            </DTable>
         </React.Suspense>
 
     </div>)

@@ -1,25 +1,23 @@
-import { Button,InputField } from '@dhis2/ui';
-import { useSetRecoilState } from 'recoil';
-import { currentSearchedPassportNumberState } from '../../../../core/states/Booking_state';
+import {Button, InputField} from '@dhis2/ui';
+import {useRecoilCallback} from 'recoil';
+import {bookingPaginationSelector, currentSearchedPassportNumberState} from '../../../../core/states/Booking_state';
 import styles from './Search.module.css'
-
-import { useBookingPagination} from '../../../../core/hooks/booking.hooks';
-import { useState } from 'react';
+import {useState} from 'react';
 
 function Search() {
-    let setCurrentSearchedPassportNumberState = useSetRecoilState<string>(currentSearchedPassportNumberState);
     const [searchValue, setSearchValue] = useState<string>('');
 
-   function Search(searchIndex:string){
-        setCurrentSearchedPassportNumberState(searchIndex);
-    }
+    const search = useRecoilCallback(({set, reset}) => (searchValue: string) => {
+        set(currentSearchedPassportNumberState, searchValue);
+        reset(bookingPaginationSelector)
+    })
     return (
         <div className={styles.container}>
-            <InputField 
-             value={searchValue}
-             onChange={({value}:any) => setSearchValue(value)}
-             placeholder={"Passport Number"}
-            /> <Button name="Primary button" onClick={()=> Search(searchValue)} primary value="default">Search</Button>
+            <InputField
+                value={searchValue}
+                onChange={({value}: any) => setSearchValue(value)}
+                placeholder={"Passport Number"}
+            /> <Button name="Primary button" onClick={() => search(searchValue)} primary value="default">Search</Button>
         </div>
     )
 }

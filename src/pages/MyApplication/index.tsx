@@ -2,27 +2,45 @@ import Search from "./components/Search";
 import Table from "./components/Table";
 import {Card} from "@dhis2/ui";
 import styles from "./MyApplication.module.css";
-import Back from "../../shared/components/Back";
+import {useRecoilCallback, useRecoilValue} from "recoil";
+import {currentSearchedPassportNumberState} from "../../core/states/Booking_state";
+import {Suspense, useEffect} from "react";
+import Loader from "../../shared/components/Loader";
+import Landing from "./components/Landing";
 
 const MyApplication = () => {
+    const searchKeyword = useRecoilValue(currentSearchedPassportNumberState)
+    const resetStates = useRecoilCallback(({reset}) => () => {
+        reset(currentSearchedPassportNumberState);
+    })
+
+    useEffect(() => {
+        return () => {
+            resetStates()
+        };
+    }, []);
 
     return (
         <div className={styles.container}>
-            <div style={{paddingLeft: 16, paddingTop: 16}}>
-                <Back/>
-            </div>
             <div className="content-body">
                 <h2>My Applications</h2>
                 <Card style={{padding: "10px"}}>
-                    <div className={styles["inner-container"]}>
+                    <div className={styles["search-container"]}>
                         <div className={styles.search}>
                             <Search/>
                         </div>
                     </div>
                     <div className={styles["inner-container"]}>
-                        <div className={styles.table}>
-                            <Table/>
-                        </div>
+                        {
+                            !searchKeyword && <Landing/>
+                        }
+                        {
+                            searchKeyword && <div className={styles.table}>
+                                <Suspense fallback={<Loader small/>}>
+                                    <Table/>
+                                </Suspense>
+                            </div>
+                        }
                     </div>
                 </Card>
             </div>

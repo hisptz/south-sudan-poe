@@ -1,10 +1,11 @@
-import {Button, CircularLoader} from "@dhis2/ui";
+import {Button} from "@dhis2/ui";
 import styles from "./Form.module.css";
 import FormBuilder from "../FormBuilder";
 import {FormProvider} from "react-hook-form";
 import React from "react";
 import {Link} from "react-router-dom";
 import useFormControl from "./hooks/form";
+import Loader from "../../../../shared/components/Loader";
 
 const Form = () => {
     const {loading, error, sections, dataElements, onSubmit, form, saving} = useFormControl();
@@ -12,18 +13,8 @@ const Form = () => {
 
     if (loading) {
         return (
-            <div
-                style={{
-                    height: "500px",
-                    padding: 16,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                }}
-            >
-                <div style={{margin: "auto"}}>
-                    <CircularLoader/>
-                </div>
+            <div style={{minHeight: 500, justifyContent: "center", alignItems: "center", display: "flex"}}>
+                <Loader small/>
             </div>
         );
     }

@@ -1,4 +1,5 @@
-import {atom, selectorFamily} from "recoil";
+import {atom, selector, selectorFamily} from "recoil";
+import {BookingEvent} from "../interface/events";
 import {Booking} from "../models/Booking.model";
 import BookingService from "../services/BookingService";
 
@@ -8,9 +9,18 @@ export interface Pagination {
 }
 
 
-const bookingPaginationState = atom<Pagination[]>({
-    key: 'bookingPaginationState', // unique ID (with respect to other atoms/selectors)
-    default: []
+const bookingPaginationSelector = atom({
+    key: "bookingPaginationState",
+    default: selector<Pagination | any>({
+        key: 'bookingPaginationSelector', // unique ID (with respect to other atoms/selectors)
+        get: async ({get}) => {
+            const searchedKeyword = get(currentSearchedPassportNumberState);
+            if (!searchedKeyword) return {page: 1, pageSize: 10};
+            const response = await new BookingService().getFilteredBookingPagination(searchedKeyword);
+            if (!response) return {page: 1, pageSize: 10, total: 0};
+            return response.pager;
+        },
+    })
 })
 
 
@@ -20,9 +30,20 @@ const currentSearchedPassportNumberState = atom<string>({
 })
 
 
-const bookingTableList = atom<Booking[]>({
+const bookingTableList = selector<Booking[]>({
     key: "bookingTableList",
-    default: []
+    get: async ({get}) => {
+        const searchedKeyword = get(currentSearchedPassportNumberState);
+        const pagination = get(bookingPaginationSelector);
+
+        if (!searchedKeyword) return [];
+        if (pagination.total === 0) return [];
+
+        const response = await new BookingService().getBooking(pagination, searchedKeyword);
+        if (!response) return [];
+        return response.events?.map((event: BookingEvent) => new Booking(event))
+
+    }
 })
 
 const currentBookingProfile = selectorFamily<Booking | any, string | undefined>({
@@ -42,7 +63,7 @@ const currentBookingProgileId = atom<string>({
 })
 
 export {
-    bookingPaginationState,
+    bookingPaginationSelector,
     currentSearchedPassportNumberState,
     bookingTableList,
     currentBookingProfile,
