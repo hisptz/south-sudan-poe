@@ -10,6 +10,8 @@ import {cloneDeep, findIndex, get, isEmpty, set} from "lodash";
 import {METADATA} from "../../../../../core/constants";
 import {sanitizeFields} from "../utils";
 import {PASSPORT_NUMBER_DATA_ELEMENT_ID} from "../constant";
+import {useRecoilCallback} from "recoil";
+import {currentBookingProfile} from "../../../../../core/states/Booking_state";
 
 
 export default function useFormControl() {
@@ -18,6 +20,10 @@ export default function useFormControl() {
     const {loading: orgUnitsLoading, orgUnitField} = useOrgUnitField();
     const param = useParams();
     const {state: locationState} = useLocation();
+
+    const resetProfileData = useRecoilCallback(({refresh}) => (id: string) => {
+        refresh(currentBookingProfile(id))
+    })
 
 
     const {show, hide} = useAlert(
@@ -29,7 +35,6 @@ export default function useFormControl() {
     const form = useForm({
         shouldFocusError: true
     });
-
 
     useEffect(() => {
 
@@ -49,15 +54,15 @@ export default function useFormControl() {
         if (state?.passportId) {
             form.reset({[PASSPORT_NUMBER_DATA_ELEMENT_ID]: state?.passportId})
         }
-    }, [param.id]);
+    }, [param.id, locationState, form]);
 
     const onSubmit = useCallback((data) => {
         setSaving(true);
         const sanitizedData = sanitizeFields(data);
         param.id != null
-            ? updateBooking(sanitizedData, param.id as string, {show, hide, navigate, setSaving})
-            : createBooking(sanitizedData, {show, hide, setSaving});
-    }, []);
+            ? updateBooking(sanitizedData, param.id as string, {show, hide, navigate, setSaving, resetProfileData})
+            : createBooking(sanitizedData, {show, hide, setSaving, navigate});
+    }, [hide, navigate, param.id]);
 
     const sections = useMemo(() => {
         if (formMetaData && !orgUnitsLoading) {
@@ -73,10 +78,9 @@ export default function useFormControl() {
             return metadataSections;
         }
 
-        return [];
+        return [orgUnitField];
     }, [formMetaData, orgUnitsLoading]);
     const dataElements = get(formMetaData, `programStages.0.programStageDataElements`) ?? []
-
 
     return {
         loading: loading || orgUnitsLoading,

@@ -1,6 +1,7 @@
 import {BookingEvent, DataValue} from "../../../../../core/interface/events";
 import {METADATA} from "../../../../../core/constants";
 import BookingService from "../../../../../core/services/BookingService";
+import {uid} from "../../../../../shared/utils";
 
 function generatePayload(dataValues: DataValue[], orgUnit: string, event?: string): BookingEvent {
     return {
@@ -11,7 +12,7 @@ function generatePayload(dataValues: DataValue[], orgUnit: string, event?: strin
         attributeCategoryOptions: METADATA.ATTRIBUTE_CATEGORY_OPTION,
         attributeOptionCombo: METADATA.ATTRIBUTE_OPTION_COMBO,
         eventDate: new Date().toISOString(),
-        event: event ?? "",
+        event: event ?? uid(),
         dataValues,
     }
 }
@@ -34,7 +35,7 @@ export function createBooking({orgUnit, dataValues}: any, {show, hide, navigate,
         .createBooking(body)
         .then((res) => {
             showMessage("Booking successfully saved", "success", {show, hide});
-            navigate(`/profile/${res}`);
+            navigate(`/profile/${body.event}`);
         })
         .catch((error) => {
             showMessage(`Error saving booking: ${error?.message ?? "An unknown error occurred"}`, "critical", {
@@ -48,7 +49,8 @@ export function updateBooking({orgUnit, dataValues}: any, eventId: string, {
     show,
     hide,
     navigate,
-    setSaving
+    setSaving,
+    resetProfileData
 }: any): void {
 
     const body = generatePayload(dataValues, orgUnit, eventId);
@@ -57,6 +59,7 @@ export function updateBooking({orgUnit, dataValues}: any, eventId: string, {
         .updateBooking(body, eventId)
         .then((res) => {
             showMessage("Booking successfully updated", "success", {show, hide});
+            resetProfileData(eventId);
             navigate(`/profile/${eventId}`);
         })
         .catch((error) => {

@@ -5,25 +5,32 @@ import {currentBookingProfile} from "../../core/states/Booking_state";
 import {useRecoilValue} from "recoil";
 import {Booking} from "../../core/models/Booking.model";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import JSPdf from "jspdf";
 import React from "react";
 import QRCode from "react-qr-code";
+import {useAlert} from "@dhis2/app-runtime";
 
 
 const Profile = () => {
     const {id} = useParams<string>();
     let currentBookProfile = useRecoilValue<Booking>(currentBookingProfile(id));
+    const {show} = useAlert(({message}) => message, ({type}) => ({...type, duration: 3000}))
 
     function downloadDashboard() {
         const input = document.getElementById('print-profile');
         html2canvas(input as HTMLElement)
             .then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF("p", "px", "a5");
+                const pdf = new JSPdf("p", "px", "a5");
                 let width = pdf.internal.pageSize.getWidth();
                 pdf.addImage(imgData, 'PNG', -2, 30, width, width * (canvas.height / canvas.width));
                 pdf.save(currentBookProfile.firstName + "_Profile.pdf");
-            });
+            }).catch(error => {
+            show({
+                message: `Download failed: ${error?.message ?? "An unknown error occurred"}`,
+                type: {info: true}
+            })
+        })
     }
 
     let linkToEditProfile = "/registration/" + currentBookProfile.id;
@@ -126,9 +133,10 @@ const Profile = () => {
                             </div>
                             <div className={styles["QR-code-container"]}>
                                 <div className={styles["QR-code"]}>
-                                    <QRCode value="Hello world!"/>
+                                    <QRCode size={320}
+                                            value={currentBookProfile.toQRCodeData()}/>
                                 </div>
-                                <Button onClick={downloadDashboard}>Print</Button>
+                                <Button id="print-button" onClick={downloadDashboard}>Print</Button>
                             </div>
                         </div>
                     </Card>

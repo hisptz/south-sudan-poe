@@ -19,7 +19,7 @@ function Layout() {
                         <Back/>
                     </div>
                 }
-                <ErrorBoundary FallbackComponent={Error}>
+                <ErrorBoundary resetKeys={[location]} FallbackComponent={Error}>
                     <Suspense fallback={<Loader small/>}>
                         <Outlet/>
                     </Suspense>
