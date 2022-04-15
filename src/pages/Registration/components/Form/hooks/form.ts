@@ -1,7 +1,7 @@
 import {usePullBookingMetadata} from "../../../../../core/hooks/booking.hooks";
 import {useOrgUnitField} from "./orgUnit";
 import {useAlert} from "@dhis2/app-runtime";
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useCallback, useEffect, useMemo, useState} from "react";
 import BookingService from "../../../../../core/services/BookingService";
@@ -9,12 +9,16 @@ import {createBooking, updateBooking} from "../services";
 import {cloneDeep, findIndex, get, isEmpty, set} from "lodash";
 import {METADATA} from "../../../../../core/constants";
 import {sanitizeFields} from "../utils";
+import {PASSPORT_NUMBER_DATA_ELEMENT_ID} from "../constant";
 
 
 export default function useFormControl() {
     const [saving, setSaving] = useState(false);
     const {error, loading, data: formMetaData} = usePullBookingMetadata();
     const {loading: orgUnitsLoading, orgUnitField} = useOrgUnitField();
+    const param = useParams();
+    const {state: locationState} = useLocation();
+
 
     const {show, hide} = useAlert(
         ({message}) => message,
@@ -25,7 +29,7 @@ export default function useFormControl() {
     const form = useForm({
         shouldFocusError: true
     });
-    const param = useParams();
+
 
     useEffect(() => {
 
@@ -39,6 +43,11 @@ export default function useFormControl() {
                 set(obj, 'orgUnit', data.orgUnit);
                 form.reset(obj);
             });
+        }
+
+        const state: any = locationState;
+        if (state?.passportId) {
+            form.reset({[PASSPORT_NUMBER_DATA_ELEMENT_ID]: state?.passportId})
         }
     }, [param.id]);
 

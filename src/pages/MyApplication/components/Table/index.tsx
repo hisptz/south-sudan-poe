@@ -16,6 +16,7 @@ import {Booking, BookingTableData} from '../../../../core/models/Booking.model';
 import styles from './Table.module.css'
 import {chunk} from "lodash";
 import {useBookingPagination} from '../../../../core/hooks/booking.hooks';
+import NoResults from "../NoResults";
 
 const Table = () => {
 
@@ -50,6 +51,10 @@ const Table = () => {
                 </div>
             </div>
         );
+    }
+
+    if (bookingTableData.length === 0) {
+        return <NoResults/>
     }
 
 
