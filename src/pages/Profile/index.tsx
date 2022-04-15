@@ -22,9 +22,9 @@ const Profile = () => {
   html2canvas(input as HTMLElement)
       .then((canvas) => {
           const imgData = canvas.toDataURL('image/png');
-          const pdf = new jsPDF("p", "px", "a4");
+          const pdf = new jsPDF("p", "px", "a5");
           let width = pdf.internal.pageSize.getWidth();
-        pdf.addImage(imgData, 'PNG', 10, 20, width,width*(canvas.height / canvas.width) );
+        pdf.addImage(imgData, 'PNG', -2, 30, width,width*(canvas.height / canvas.width) );
           pdf.save(currentBookProfile.firstName+"_Profile.pdf");
       });
   }
