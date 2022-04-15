@@ -25,6 +25,7 @@ export function useBookingPagination() {
             (pagerEventResponse: any) => {
 
                 if (pagerEventResponse) {
+        setLoading(true)
 
                     let pageTotal = pagerEventResponse.pager.total;
                     let pageSize: number = 15;
@@ -57,12 +58,10 @@ export function useBookingPagination() {
                             bookingResponse.events?.map((event: any) => {
                                 _bookingTableList.push(new Booking(event))
                             })
-                            setLoading(false)
+
 
                             return set(bookingTableList, _bookingTableList)
 
-                        } else {
-                            setLoading(false)
                         }
                     }).catch((error) => {
                         setLoading(false)
@@ -118,6 +117,20 @@ export function usePullBookingMetadata() {
         loading,
         data: bookingState
     }
+}
+
+
+
+
+
+  export function useCurrentBookingProfile(event:string){
+      let setCurrentBookingProfile = useSetRecoilState<Booking>(currentBookingProfile);
+      new BookingService().getBookingByEvent(event).then((bookingProfileResponse)=>{
+        if(bookingProfileResponse){
+            setCurrentBookingProfile(new Booking(bookingProfileResponse))
+        }
+     })
+
 }
 
 
