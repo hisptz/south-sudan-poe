@@ -1,35 +1,50 @@
-import { atom } from "recoil";
-import { Booking } from "../models/Booking.model";
-export interface Pagination{
-    page:number,
-    pageSize:number
+import {atom, selectorFamily} from "recoil";
+import {Booking} from "../models/Booking.model";
+import BookingService from "../services/BookingService";
+
+export interface Pagination {
+    page: number,
+    pageSize: number
 }
 
 
 const bookingPaginationState = atom<Pagination[]>({
     key: 'bookingPaginationState', // unique ID (with respect to other atoms/selectors)
-   default:[]
+    default: []
 })
 
 
 const currentSearchedPassportNumberState = atom<string>({
-    key:"currentSearchedPassportNumberState",
-    default:""
+    key: "currentSearchedPassportNumberState",
+    default: ""
 })
 
 
 const bookingTableList = atom<Booking[]>({
-    key:"bookingTableList",
-    default:[]
+    key: "bookingTableList",
+    default: []
 })
 
-const currentBookingProfile = atom<Booking>({
-    key:"currentBookingProfile",
+const currentBookingProfile = selectorFamily<Booking | any, string | undefined>({
+    key: "currentBookingProfile",
+    get: (id?: string) => async () => {
+        if (id) {
+            const booking = await new BookingService().getBookingByEvent(id);
+            return new Booking(booking);
+        }
+        return undefined;
+    }
 })
 
 const currentBookingProgileId = atom<string>({
-    key:"currentProfileBookingId",
-    default:""
+    key: "currentProfileBookingId",
+    default: ""
 })
 
-export {bookingPaginationState,currentSearchedPassportNumberState,bookingTableList,currentBookingProfile,currentBookingProgileId}
+export {
+    bookingPaginationState,
+    currentSearchedPassportNumberState,
+    bookingTableList,
+    currentBookingProfile,
+    currentBookingProgileId
+}

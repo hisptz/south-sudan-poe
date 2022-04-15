@@ -44,7 +44,10 @@ const FormBuilder = ({
                                 }}
                                 name={control.id}
                                 render={({field, fieldState}) => (
-                                    <div key={key} style={{width: "100%"}}>
+                                    <div key={key} style={{
+                                        width: "100%",
+                                        maxWidth: "100%",
+                                    }}>
                                         <CustomInput
                                             filterable
                                             optionSet={control.optionSet}
