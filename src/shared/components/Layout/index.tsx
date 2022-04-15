@@ -12,7 +12,7 @@ function Layout() {
                 <ErrorBoundary FallbackComponent={Error}>
                     <Outlet/>
                 </ErrorBoundary>
-
+                <div style={{paddingTop: 64}}/>
             </div>
         </div>);
 }
