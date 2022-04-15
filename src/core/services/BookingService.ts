@@ -72,7 +72,7 @@ class BookingService {
   }
 
   async getBooking( pagination:Pagination, passportNumber:string) {
-    console.log("in pagination ",pagination)
+
      return await this.httpService
      .getHttpService(
        `/events?page=${pagination?.page}&pageSize=${pagination?.pageSize}&program=ArXGGyMgxL4&orgUnit=ychsfCBrH6U&order=eventDate%3Adesc&filter=v5KB4meGBFe:EQ:${passportNumber}&totalPages=true`,

@@ -37,7 +37,6 @@ export function createBooking({orgUnit, dataValues}: any, {show, hide, navigate,
             navigate(`/profile/${res}`);
         })
         .catch((error) => {
-            console.error(error);
             showMessage(`Error saving booking: ${error?.message ?? "An unknown error occurred"}`, "critical", {
                 show,
                 hide
@@ -61,7 +60,6 @@ export function updateBooking({orgUnit, dataValues}: any, eventId: string, {
             navigate(`/profile/${eventId}`);
         })
         .catch((error) => {
-            console.error(error);
             showMessage(`Error updating booking: ${error?.message ?? "An unknown error occurred"}`, "critical", {
                 show,
                 hide
