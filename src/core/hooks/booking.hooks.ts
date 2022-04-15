@@ -18,12 +18,11 @@ export function useBookingPagination() {
 
 
     const researchOnPassportNumber = useRecoilCallback(({ set }) => () => {
-     
+    
    new   BookingService().getFilteredBookingPagination(currentSearchedPassportNumber).then(
     (pagerEventResponse:any)=>{
 
        if(pagerEventResponse){
-         setLoading(true)
 
           let pageTotal = pagerEventResponse.pager.total;
           let pageSize:number = 15;
@@ -35,6 +34,7 @@ export function useBookingPagination() {
           if(_bookingEventPaginationFilters.length > 0){
            set(bookingPaginationState,_bookingEventPaginationFilters)
           }else{
+
             set(bookingPaginationState,[{
               "page": 1,
               "pageSize": 15,
@@ -45,7 +45,10 @@ export function useBookingPagination() {
 
 
        }
-     return  _bookingEventPaginationFilters?.map((pager:Pagination)=>{
+     
+       _bookingEventPaginationFilters?.map((pager:Pagination)=>{
+      
+
            new BookingService().getBooking(pager,currentSearchedPassportNumber).then((bookingResponse)=>{
               if(bookingResponse){
                  bookingResponse.events?.map((event:any)=>{
@@ -55,23 +58,33 @@ export function useBookingPagination() {
 
                  return   set(bookingTableList,_bookingTableList)
 
+              }else{
+                setLoading(false)
               }
            }).catch((error)=>{
+            setLoading(false)
            })
         })
 
-       
+        setTimeout(()=>{
+          setLoading(false)
+        },7000)
     }
     
      
-    )})
+    ).catch(error=>{
+      setLoading(false)
+    })})
     
 
 
     useEffect(() => {
-      researchOnPassportNumber()
+      researchOnPassportNumber();
+   
     }
+    
     , [currentSearchedPassportNumber]);
+   
 
     return {
       data:bookingTableListState,

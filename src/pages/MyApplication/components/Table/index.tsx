@@ -1,9 +1,7 @@
 import { CircularLoader,Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button ,Pagination} from '@dhis2/ui'
 import { useEffect,useMemo,useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 import { Booking, BookingTableData } from '../../../../core/models/Booking.model';
-import { bookingTableList } from '../../../../core/states/Booking_state';
 import styles from './Table.module.css'
 import {chunk} from "lodash";
 import React from 'react';
@@ -45,6 +43,8 @@ let pageSize:number = 8;
         </div>
     );
 }
+
+
    
     return (<div>
             <React.Suspense fallback={<div>Loading</div>}>
@@ -70,6 +70,10 @@ let pageSize:number = 8;
              {chunks[page]?.map((booking:BookingTableData, index:number) => {
                  let profileLink: string  = /profile/ + booking.id;
                  let RegistrationLink: string  = /registration/ + booking.id;
+                 const newTo = { 
+                    pathname: profileLink, 
+                    canbeEdited: index !== 0 ?true :false
+                  };
                     return   <TableRow key={index+"booking-table-key"}>
                          <TableCell>
                             {booking.position}
@@ -81,7 +85,7 @@ let pageSize:number = 8;
                             {booking.poe}
                             </TableCell>
                             <TableCell dense>
-                        <Link className={styles["Table-Link"]} to={profileLink}>View</Link>
+                        <Link className={styles["Table-Link"]} to={newTo}  >View</Link>
                         <Link hidden={index !== 0 ?true :false}
                         className={styles["Table-Link"]} to={RegistrationLink}>Edit</Link>
                     </TableCell>

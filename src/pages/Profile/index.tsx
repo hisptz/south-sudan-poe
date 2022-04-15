@@ -13,7 +13,7 @@ import React from "react";
 
 
 const Profile = () => {
-   const {id} =useParams<string>()
+   const {id,canbeEdited} =useParams<string>()
  useCurrentBookingProfile(id as string)
  let currentBookProfile = useRecoilValue<Booking>(currentBookingProfile);
 
@@ -30,7 +30,7 @@ const Profile = () => {
   }
   let linkToEditProfile = "/registration/"+currentBookProfile.id;
 
-
+console.log(useParams())
 
   return (
     <React.Suspense fallback={<div>Loading</div>}>
