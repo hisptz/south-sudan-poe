@@ -51,7 +51,7 @@ const Table = () => {
     }
 
 
-    return (<div>
+    return (<div style={{padding: 16}}>
         <React.Suspense fallback={<Loader/>}>
             <DTable suppressZebraStriping>
                 <TableHead>

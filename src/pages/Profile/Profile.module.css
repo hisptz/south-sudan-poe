@@ -30,7 +30,8 @@
 
 .QR-code {
     width: 100%;
-    height: fit-content;
+    height: auto;
+    text-align: center;
     border: 1px solid darkgray;
 }
 

@@ -126,7 +126,8 @@ const Profile = () => {
                             </div>
                             <div className={styles["QR-code-container"]}>
                                 <div className={styles["QR-code"]}>
-                                    <QRCode value={currentBookProfile.toQRCodeData()}/>
+                                    <QRCode size={320}
+                                            value={currentBookProfile.toQRCodeData()}/>
                                 </div>
                                 <Button onClick={downloadDashboard}>Print</Button>
                             </div>

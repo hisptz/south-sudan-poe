@@ -9,7 +9,9 @@ export default function Landing() {
             alignItems: "center",
             justifyContent: "center",
             minHeight: 500,
-            width: "100%"
+            margin: "auto",
+            padding: 16,
+            textAlign: "center"
         }}>
             <div className="icon-64">
                 <IconSearch24/>
