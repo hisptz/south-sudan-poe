@@ -16,7 +16,13 @@ code {
 }
 
 .content-body {
-    padding: 0 15%;
+    padding: 0 10%;
+}
+
+@media only screen and (max-width: 768px) {
+    .content-body {
+        padding: 0 16px;
+    }
 }
 
 span.jsx-2059239790 {
