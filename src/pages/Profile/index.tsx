@@ -1,6 +1,5 @@
 import {Button, Card, IconEdit24} from "@dhis2/ui";
 import styles from "./Profile.module.css";
-import Back from "../../shared/components/Back";
 import {Link, useParams} from "react-router-dom";
 import {currentBookingProfile} from "../../core/states/Booking_state";
 import {useRecoilValue} from "recoil";
@@ -32,7 +31,6 @@ const Profile = () => {
     return (
         <React.Suspense fallback={<div>Loading</div>}>
             <div className={styles.container}>
-                <Back/>
                 <div className="content-body">
                     <h2>
                         Traveller profile{" "}

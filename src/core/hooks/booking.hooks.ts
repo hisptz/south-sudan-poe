@@ -18,15 +18,12 @@ export function useBookingPagination() {
     const [loading, setLoading] = useState(false);
     let _bookingEventPaginationFilters: Pagination[] = [];
 
-
-    const researchOnPassportNumber = useRecoilCallback(({set}) => () => {
-
+    const onPassportNoSearch = useRecoilCallback(({set}) => () => {
         new BookingService().getFilteredBookingPagination(currentSearchedPassportNumber).then(
             (pagerEventResponse: any) => {
 
                 if (pagerEventResponse) {
                     setLoading(true)
-
                     let pageTotal = pagerEventResponse.pager.total;
                     let pageSize: number = 15;
                     for (let page = 1; page <= Math.ceil((pageTotal / pageSize)); page++) {
@@ -46,20 +43,13 @@ export function useBookingPagination() {
 
 
                     }
-
-
                 }
-
                 _bookingEventPaginationFilters?.map((pager: Pagination) => {
-
-
                     new BookingService().getBooking(pager, currentSearchedPassportNumber).then((bookingResponse) => {
                         if (bookingResponse) {
                             bookingResponse.events?.map((event: any) => {
                                 _bookingTableList.push(new Booking(event))
                             })
-
-
                             return set(bookingTableList, _bookingTableList)
 
                         }
@@ -79,7 +69,7 @@ export function useBookingPagination() {
 
 
     useEffect(() => {
-            researchOnPassportNumber();
+            onPassportNoSearch();
 
         }
 
