@@ -52,6 +52,9 @@ let pageSize:number = 8;
         <DTable suppressZebraStriping>
             <TableHead>
                 <TableRowHead>
+                <TableCellHead>
+                        S/n
+                    </TableCellHead>
                     <TableCellHead>
                         Date
                     </TableCellHead>
@@ -68,6 +71,9 @@ let pageSize:number = 8;
                  let profileLink: string  = /profile/ + booking.id;
                  let RegistrationLink: string  = /registration/ + booking.id;
                     return   <TableRow key={index+"booking-table-key"}>
+                         <TableCell>
+                            {booking.position}
+                            </TableCell>
                         <TableCell>
                             {booking.date}
                             </TableCell>

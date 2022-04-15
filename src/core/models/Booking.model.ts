@@ -7,11 +7,13 @@ export interface BookingResponse {
 }
 
 export interface BookingTableData {
+  
     id:string,
   date: string;
   poe: string;
+  position:number;
 
-}
+}  
 
 export class Booking {
     constructor(public event:BookingEvent){}
@@ -81,14 +83,15 @@ export class Booking {
 
 
   toTableData(
-    position?: number,
+    position: number,
     excludeIndexPosition?: boolean
   ): BookingTableData {
 
     const tableData: BookingTableData = {
       id: this.id,
       poe: this.poe,
-      date:this.dateEnroll
+      date:this.dateEnroll,
+      position:position
     };
 
     return tableData ;
