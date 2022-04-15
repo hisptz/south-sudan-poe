@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { Booking } from "../models/Booking.model";
 export interface Pagination{
     page:number,
     pageSize:number
@@ -11,4 +12,24 @@ const bookingPaginationState = atom<Pagination[]>({
 })
 
 
-export {bookingPaginationState}
+const currentSearchedPassportNumberState = atom<string>({
+    key:"currentSearchedPassportNumberState",
+    default:""
+})
+
+
+const bookingTableList = atom<Booking[]>({
+    key:"bookingTableList",
+    default:[]
+})
+
+const currentBookingProfile = atom<Booking>({
+    key:"currentBookingProfile",
+})
+
+const currentBookingProgileId = atom<string>({
+    key:"currentProfileBookingId",
+    default:""
+})
+
+export {bookingPaginationState,currentSearchedPassportNumberState,bookingTableList,currentBookingProfile,currentBookingProgileId}

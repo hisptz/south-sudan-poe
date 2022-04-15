@@ -7,11 +7,13 @@ export interface BookingResponse {
 }
 
 export interface BookingTableData {
+  
     id:string,
   date: string;
   poe: string;
+  position:number;
 
-}
+}  
 
 export class Booking {
     constructor(public event:BookingEvent){}
@@ -50,12 +52,20 @@ export class Booking {
     return "";
   }
 
+
+  get phoneNumner():string{
+    return EventDataValueUtil.getDataElementValue("Cs1wQfbUHSV",this.event.dataValues);
+  }
   get lastName(): string {
     return EventDataValueUtil.getDataElementValue("gms6oEPUk7D",this.event.dataValues);
   }
 
   get sortedEvents(): Array<any> {
   return []
+  }
+
+  get fullName():string{
+      return this.firstName + " " + this.lastName;
   }
 
   get age():string{
@@ -67,19 +77,21 @@ export class Booking {
   }
 
   get dateEnroll():string{
-      return this.event.eventDate;
+    let newDateEnroll = this.event.eventDate
+      return newDateEnroll.split("T")[0];
   }
 
 
   toTableData(
-    position?: number,
+    position: number,
     excludeIndexPosition?: boolean
   ): BookingTableData {
 
     const tableData: BookingTableData = {
       id: this.id,
       poe: this.poe,
-      date:this.dateEnroll
+      date:this.dateEnroll,
+      position:position
     };
 
     return tableData ;
@@ -104,30 +116,5 @@ export class Booking {
     return age;
   }
 
-/**
- *  this.eventPayLoad = {
-        trackedEntityInstance: trackedEntityInstanceId,
-        trackedEntityType: CONSTANT.SHARED_TRACKED_ENTITY_TYPE.person,
-        orgUnit: this.selectedOu,
-        attributes: _.map(Object.keys(this.attributesData), (att) => {
-          return {
-            attribute: att,
-            value: this.attributesData[att],
-          };
-        }),
-        enrollments: [
-          {
-            enrollment: enrollmentId,
-            trackedEntityInstance: trackedEntityInstanceId,
-            trackedEntityType: CONSTANT.SHARED_TRACKED_ENTITY_TYPE.person,
-            program: CONSTANT.SHARED_PROGRAM.arrival_traveller_screening,
-            orgUnit: this.selectedOu,
-            enrollmentDate: enrollmentDate,
-            incidentDate: new Date(),
-            events: this.getEventsData(),
-          },
-        ],
-      };
- */
 
 }

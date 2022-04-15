@@ -10,7 +10,6 @@ class HttpService {
         return response
       })
       .catch((error) => {
-        console.log({ error })
       })
   }
 
@@ -21,7 +20,6 @@ class HttpService {
         return response
       })
       .catch((error) => {
-        console.log("error is ",{ error })
       })
   }
 
@@ -32,7 +30,6 @@ class HttpService {
         return response
       })
       .catch((error) => {
-        console.log({ error })
       })
   }
 }
