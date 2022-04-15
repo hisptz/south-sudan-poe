@@ -27,6 +27,7 @@ const Profile = () => {
           pdf.save(currentBookProfile.firstName+"_Profile.pdf");
       });
   }
+  let linkToEditProfile = "/registration/"+currentBookProfile.id;
 
   return (
     <div className={styles.container}>
@@ -34,7 +35,7 @@ const Profile = () => {
       <div className="content-body">
         <h2>
           Traveller profile{" "}
-          <Link to="/registration/123">
+          <Link to={linkToEditProfile}>
             <IconEdit24 />
           </Link>{" "}
         </h2>
