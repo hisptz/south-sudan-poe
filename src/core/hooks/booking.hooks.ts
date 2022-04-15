@@ -23,6 +23,7 @@ export function useBookingPagination() {
     (pagerEventResponse:any)=>{
 
        if(pagerEventResponse){
+        setLoading(true)
 
           let pageTotal = pagerEventResponse.pager.total;
           let pageSize:number = 15;
@@ -54,13 +55,10 @@ export function useBookingPagination() {
                  bookingResponse.events?.map((event:any)=>{
                    _bookingTableList.push(new Booking(event))
                  })
-                 setLoading(false)
 
                  return   set(bookingTableList,_bookingTableList)
 
-              }else{
-                setLoading(false)
-              }
+                }
            }).catch((error)=>{
             setLoading(false)
            })
