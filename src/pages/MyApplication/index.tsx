@@ -2,8 +2,21 @@ import Search from "./components/Search";
 import Table from "./components/Table";
 import {Card} from "@dhis2/ui";
 import styles from "./MyApplication.module.css";
+import {useRecoilCallback} from "recoil";
+import {currentSearchedPassportNumberState} from "../../core/states/Booking_state";
+import {useEffect} from "react";
 
 const MyApplication = () => {
+
+    const resetStates = useRecoilCallback(({reset}) => () => {
+        reset(currentSearchedPassportNumberState);
+    })
+
+    useEffect(() => {
+        return () => {
+            resetStates()
+        };
+    }, []);
 
     return (
         <div className={styles.container}>
