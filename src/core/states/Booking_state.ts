@@ -27,4 +27,9 @@ const currentBookingProfile = atom<Booking>({
     key:"currentBookingProfile",
 })
 
-export {bookingPaginationState,currentSearchedPassportNumberState,bookingTableList,currentBookingProfile}
+const currentBookingProgileId = atom<string>({
+    key:"currentProfileBookingId",
+    default:""
+})
+
+export {bookingPaginationState,currentSearchedPassportNumberState,bookingTableList,currentBookingProfile,currentBookingProgileId}

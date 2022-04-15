@@ -25,13 +25,13 @@ const FormBuilder = ({
 }) => {
     return (
         <>
-            <div className={styles["flex-row"]}>
+            <div className={styles["form-grid"]}>
                 <div className={styles["label-container"]}>
                     <label>{title}</label>
                 </div>
                 <div className={styles["content-container"]}>
                     {controls.map((control, key) => {
-                        const mandatory = stageDataElements.filter(
+                        const mandatory = control.compulsory ?? stageDataElements.filter(
                             (x) => x.dataElement.id === control.id
                         )[0]?.compulsory;
                         return (
@@ -46,6 +46,7 @@ const FormBuilder = ({
                                 render={({field, fieldState}) => (
                                     <div key={key} style={{width: "100%"}}>
                                         <CustomInput
+                                            filterable
                                             optionSet={control.optionSet}
                                             input={{
                                                 name: "",

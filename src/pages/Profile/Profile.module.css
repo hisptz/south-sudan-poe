@@ -21,16 +21,25 @@
     margin-bottom: 4px;
 }
 
-.QR-code-container{
+.QR-code-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 8px;
 }
 
-.QR-code{
-    width: 250px;
+.QR-code {
+    width: 100%;
     height: fit-content;
     border: 1px solid darkgray;
 }
 
+@media only screen and (max-width: 768px) {
+    .flex-item {
+        flex-direction: row;
+    }
+
+    .flex-row {
+        flex-direction: column;
+    }
+}

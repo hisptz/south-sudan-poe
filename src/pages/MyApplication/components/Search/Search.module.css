@@ -1,15 +1,28 @@
-.container{
-    display: flex;
-    flex-direction: row;
-    box-sizing: content-box;
-    gap: 16px;
-    padding: 10px;
+.container {
+    display: grid;
+    grid-template-columns: 85% 15%;
+    grid-gap: 16px;
 }
 
-.container input{
-    flex-grow: 1;
+.container input {
+    flex: 1;
 }
 
-.container button{
-    flex-basis: 100px;
+.container button {
+    width: fit-content;
+    align-self: flex-end;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        box-sizing: unset;
+
+    }
+
+    .container {
+        flex-basis: auto;
+    }
 }

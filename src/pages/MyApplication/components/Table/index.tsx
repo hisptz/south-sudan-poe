@@ -1,4 +1,4 @@
-import { Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button ,Pagination} from '@dhis2/ui'
+import { CircularLoader,Table as DTable, TableHead, TableRowHead, TableCellHead, TableBody, TableRow, TableCell, TableFoot, TableFooterButton, Button ,Pagination} from '@dhis2/ui'
 import { useEffect,useMemo,useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -6,8 +6,12 @@ import { Booking, BookingTableData } from '../../../../core/models/Booking.model
 import { bookingTableList } from '../../../../core/states/Booking_state';
 import styles from './Table.module.css'
 import {chunk} from "lodash";
+import React from 'react';
+import { useBookingPagination } from '../../../../core/hooks/booking.hooks';
 
 const Table = () => {
+
+  const {data,loading} = useBookingPagination()
 
   const [page, setPage] = useState(0);
     const onPageChange = (newPage:any) => {
@@ -15,16 +19,36 @@ const Table = () => {
   };
 let pageSize:number = 8;
 
-        let setBookingTableList = useRecoilValue<Booking[]>(bookingTableList);
+        // let setBookingTableList = useRecoilValue<Booking[]>(bookingTableList);
 
-  let bookingTableData:BookingTableData[] =   Booking.getTableData(setBookingTableList);
+  let bookingTableData:BookingTableData[] =   Booking.getTableData(data);
   const chunks = useMemo(
     () => chunk(bookingTableData, pageSize),
     [bookingTableData, pageSize]
   );
     
+
+  if (loading) {
+    return (
+        <div
+            style={{
+                height: "500px",
+                padding: 16,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+            }}
+        >
+            <div style={{margin: "auto"}}>
+                <CircularLoader/>
+            </div>
+        </div>
+    );
+}
    
     return (<div>
+            <React.Suspense fallback={<div>Loading</div>}>
+
         <DTable suppressZebraStriping>
             <TableHead>
                 <TableRowHead>
@@ -77,7 +101,10 @@ let pageSize:number = 8;
                 </TableRow>
             </TableFoot>
         </DTable>
+        </React.Suspense>
+
     </div>)
+
 }
 
 export default Table;

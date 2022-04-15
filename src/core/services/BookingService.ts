@@ -2,13 +2,13 @@ import * as CONSTANTS from '../constants/'
 import { BookingEvent } from '../interface/events'
 import { Pagination } from '../states/Booking_state'
 import { HttpService } from './http_service'
+import {METADATA} from "../constants/";
 
 class BookingService {
   httpService: any
   constructor() {
     this.httpService = new HttpService()
   }
-
 
 
   async getBookingByPagination(page: number, pageSize: number) {
@@ -21,18 +21,17 @@ class BookingService {
       })
   }
   async createBooking(bookingObject: BookingEvent) {
-    
-          return await this.httpService
-      .postHttpService('/events', bookingObject)
+    return await this.httpService
+      .postHttpService("/events", bookingObject)
       .then((response: any) => {
         return response.data
       })
   }
 
-  async getMetadatas() {
+  async getMetadata() {
     return await this.httpService
       .getHttpService(
-        '/programs/ArXGGyMgxL4.json?fields=programStages[id,displayFormName,translations,programStageDataElements[id,compulsory],programStageSections[id,displayFormName,translations,dataElements[id,displayFormName,valueType,translations,optionSet[id,options[name,code,translations]]]]]',
+        `/programs/${METADATA.PROGRAM}.json?fields=programStages[id,displayFormName,translations,programStageDataElements[id,compulsory,dataElement],programStageSections[id,displayFormName,translations,dataElements[id,displayFormName,valueType,translations,optionSet[id,options[name,code,translations]]]]]`
       )
       .then((response: any) => {
         return response.data
@@ -49,7 +48,7 @@ class BookingService {
       })
   }
 
-  async updateBookings(bookingObject: any, eventId: String) {
+  async updateBooking(bookingObject: any, eventId: String) {
     return await this.httpService
       .putHttpService(`/events/${eventId}`, bookingObject)
       .then((response: any) => {
@@ -62,13 +61,14 @@ class BookingService {
   async getFilteredBookingPagination(
     passportNumber: string,
   ) {
-    return await this.httpService
+    
+    return passportNumber.length >1 ? await this.httpService
       .getHttpService(
         `/events?page=1&pageSize=10&program=ArXGGyMgxL4&orgUnit=ychsfCBrH6U&order=eventDate%3Adesc&filter=v5KB4meGBFe:EQ:${passportNumber}&totalPages=true`,
       )
       .then((response: any) => {
         return response.data
-      })
+      }) :''
   }
 
   async getBooking( pagination:Pagination, passportNumber:string) {

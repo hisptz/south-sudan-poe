@@ -1,4 +1,4 @@
-import { Card, Button, IconEdit24 } from "@dhis2/ui";
+import {Button, Card, IconEdit24} from "@dhis2/ui";
 import styles from "./Profile.module.css";
 import Back from "../../shared/components/Back";
 import { Link, useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 import { Booking } from "../../core/models/Booking.model";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import React from "react";
 
 
 const Profile = () => {
@@ -29,7 +30,10 @@ const Profile = () => {
   }
   let linkToEditProfile = "/registration/"+currentBookProfile.id;
 
+
+
   return (
+    <React.Suspense fallback={<div>Loading</div>}>
     <div className={styles.container}>
       <Back />
       <div className="content-body">
@@ -135,6 +139,7 @@ const Profile = () => {
         </Card>
       </div>
     </div>
+    </React.Suspense>
   );
 };
 

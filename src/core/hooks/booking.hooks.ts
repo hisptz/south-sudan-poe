@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilCallback, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Booking } from "../models/Booking.model";
 import BookingService from "../services/BookingService";
 import { BookingConfigurationState } from "../states/Booking_Configuration_state/booking_configuration";
@@ -8,63 +8,76 @@ import { bookingPaginationState,bookingTableList,currentBookingProfile,currentSe
 
 
 export function useBookingPagination() {
-//create RecoilCallback to bind two statess
-    let setPaginatiionState = useSetRecoilState<Pagination[]>(bookingPaginationState);
-    let setCurrentSearchedPassportNumberState = useRecoilState<string>(currentSearchedPassportNumberState);
     let currentSearchedPassportNumber = useRecoilValue<string>(currentSearchedPassportNumberState);
-    let setBookingTableList = useSetRecoilState<Booking[]>(bookingTableList);
+    let bookingTableListState = useRecoilValue<Booking[]>(bookingTableList);
     let _bookingTableList:Booking[] = [];
-    const componentWillUnmount = useRef(false)
+    const [loading, setLoading] = useState(false);
+    let _bookingEventPaginationFilters:Pagination[] = [];
+      
+
+
+
+    const researchOnPassportNumber = useRecoilCallback(({ set }) => () => {
+     
+   new   BookingService().getFilteredBookingPagination(currentSearchedPassportNumber).then(
+    (pagerEventResponse:any)=>{
+
+       if(pagerEventResponse){
+         setLoading(true)
+
+          let pageTotal = pagerEventResponse.pager.total;
+          let pageSize:number = 15;
+          for(let page=1; page <= Math.ceil((pageTotal/pageSize)) ; page++){
+              _bookingEventPaginationFilters.push({
+       "page": page,
+       "pageSize": pageSize,
+     }) }
+          if(_bookingEventPaginationFilters.length > 0){
+           set(bookingPaginationState,_bookingEventPaginationFilters)
+          }else{
+            set(bookingPaginationState,[{
+              "page": 1,
+              "pageSize": 15,
+           }])
+
+          
+          }
+
+
+       }
+     return  _bookingEventPaginationFilters?.map((pager:Pagination)=>{
+           new BookingService().getBooking(pager,currentSearchedPassportNumber).then((bookingResponse)=>{
+              if(bookingResponse){
+                 bookingResponse.events?.map((event:any)=>{
+                   _bookingTableList.push(new Booking(event))
+                 })
+                 setLoading(false)
+
+                 return   set(bookingTableList,_bookingTableList)
+
+              }
+           }).catch((error)=>{
+              console.log(error)
+           })
+        })
+
+       
+    }
+    
+     
+    )})
+    
+
 
     useEffect(() => {
-        let _bookingEventPaginationFilters:Pagination[] = [];
-   new   BookingService().getFilteredBookingPagination(currentSearchedPassportNumber).then(
-         (pagerEventResponse:any)=>{
-            if(pagerEventResponse){
-               let pageTotal = pagerEventResponse.pager.total;
-               let pageSize:number = 15;
-               for(let page=1; page <= Math.ceil((pageTotal/pageSize)) ; page++){
-                   _bookingEventPaginationFilters.push({
-            "page": page,
-            "pageSize": pageSize,
-          }) }
-               if(_bookingEventPaginationFilters.length > 0){
-                setPaginatiionState(_bookingEventPaginationFilters)
-               }else{
-               setPaginatiionState([{
-                "page": 1,
-                "pageSize": 15,
-             }])
-               }
-
-            }
-          return  _bookingEventPaginationFilters?.map((pager:Pagination)=>{
-                new BookingService().getBooking(pager,currentSearchedPassportNumber).then((bookingResponse)=>{
-                   if(bookingResponse){
-                      console.log(bookingResponse)
-                      bookingResponse.events?.map((event:any)=>{
-                        _bookingTableList.push(new Booking(event))
-                      })
-                      return  setBookingTableList(_bookingTableList)
-
-                   }
-                }).catch((error)=>{
-                   console.log(error)
-                })
-             })
-
-            
-         }
-
-     )
-     return () => {
-      // This line only evaluates to true after the componentWillUnmount happens 
-      if (componentWillUnmount.current) {
-         return ;
-      }
-  }
+      researchOnPassportNumber()
     }
-    , [setCurrentSearchedPassportNumberState]);
+    , [currentSearchedPassportNumber]);
+
+    return {
+      data:bookingTableListState,
+      loading:loading
+    }
 }
 
 export function usePullBookingMetadata() {
@@ -76,7 +89,7 @@ export function usePullBookingMetadata() {
   useEffect(() => {
      setLoading(true)
     new BookingService()
-      .getMetadatas()
+      .getMetadata()
       .then((bookingMetadataResponse) => {
         if (bookingMetadataResponse) {
           setBookingConfigurationState(bookingMetadataResponse);
@@ -100,10 +113,12 @@ export function usePullBookingMetadata() {
 
   export function useCurrentBookingProfile(event:string){
       let setCurrentBookingProfile = useSetRecoilState<Booking>(currentBookingProfile);
-new BookingService().getBookingByEvent(event).then((bookingProfileResponse)=>{
-   if(bookingProfileResponse){
-       setCurrentBookingProfile(new Booking(bookingProfileResponse))
-   }
-})}
+      new BookingService().getBookingByEvent(event).then((bookingProfileResponse)=>{
+        if(bookingProfileResponse){
+            setCurrentBookingProfile(new Booking(bookingProfileResponse))
+        }
+     })
+
+}
 
   
