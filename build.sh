@@ -4,6 +4,7 @@ APP_NAME=poe-south-sudan-v"$APP_VERSION"
 
 echo Building app version v"$APP_VERSION"...
 npm run build:app
+cp manifest.webapp build/
 echo Done!
 
 echo Bundling app...
