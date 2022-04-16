@@ -1,6 +1,6 @@
 {
   "name": "sudan-poe",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.00",
   "private": true,
   "dependencies": {
     "@dhis2/app-runtime": "^3.4.3",
