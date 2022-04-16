@@ -3,12 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {RecoilRoot} from 'recoil';
+import {Provider} from '@dhis2/app-runtime';
+import Alerts from "./shared/components/Alerts";
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <RecoilRoot>
+            <Provider config={{baseUrl: process.env.REACT_APP_BASEURL ?? "", apiVersion: 33}}>
+                <App/>
+                <Alerts/>
+            </Provider>
+        </RecoilRoot>
+
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

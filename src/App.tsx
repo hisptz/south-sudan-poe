@@ -1,15 +1,17 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import MainRouter from './App-routing';
+import MainOutlet from './App-routing';
 import "./App.css"
-import Toolbar from './shared/components/Layout/components/Toolbar';
+import {usePullBookingMetadata} from './core/hooks/booking.hooks';
+import Loader from "./shared/components/Loader";
 
 function App() {
-  return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <MainRouter />
-    </React.Suspense>
-  );
+    usePullBookingMetadata();
+
+    return (
+        <React.Suspense fallback={<Loader/>}>
+            <MainOutlet/>
+        </React.Suspense>
+    );
 }
 
 export default App;

@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+}
+
+.inner-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: 500px;
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.inner-container .table,
+.search {
+    margin: auto;
+}
+
+.table {
+    flex-basis: 700px;
+}
+
+.search {
+    flex-basis: 900px;
+    padding: 16px;
+}
