@@ -9,7 +9,7 @@ import Layout from "./shared/components/Layout";
 export default function MainOutlet() {
 
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Routes>
                 <Route element={<Layout/>} path="/">
                     <Route index element={<Home/>}/>
