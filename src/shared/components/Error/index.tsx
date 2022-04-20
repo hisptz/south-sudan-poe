@@ -1,6 +1,6 @@
 import {IconError24} from '@dhis2/ui'
 
-export default function Error({error, resetErrorBoundary}: { error: any, resetErrorBoundary: () => void }) {
+export default function Error({error, resetErrorBoundary}: { error: any, resetErrorBoundary?: () => void }) {
 
     return (
         <div style={{
