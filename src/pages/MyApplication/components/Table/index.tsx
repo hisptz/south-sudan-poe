@@ -10,21 +10,26 @@ import {
     TableRow,
     TableRowHead
 } from '@dhis2/ui'
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {Link} from 'react-router-dom';
 import {Booking, BookingTableData} from '../../../../core/models/Booking.model';
 import styles from './Table.module.css'
 import NoResults from "../NoResults";
-import {useRecoilState, useRecoilValueLoadable} from "recoil";
-import {bookingPaginationSelector, bookingTableList} from "../../../../core/states/Booking_state";
+import {useRecoilState, useRecoilValueLoadable, useResetRecoilState, useSetRecoilState} from "recoil";
+import {bookingPaginationSelector, bookingTableList, currentSearchedPassportNumberState} from "../../../../core/states/Booking_state";
 import Loader from "../../../../shared/components/Loader";
+import { useAlert, useAlerts } from '@dhis2/app-runtime';
+import { type } from 'os';
 
 const Table = () => {
-    const [pagination, setPagination] = useRecoilState(bookingPaginationSelector);
+    const {state:paginationState, contents:paginationContent} = useRecoilValueLoadable(bookingPaginationSelector);
+    const setPagination = useSetRecoilState(bookingPaginationSelector);
+    const resetSearch=useResetRecoilState(currentSearchedPassportNumberState)
     const data = useRecoilValueLoadable(bookingTableList);
 
     const dataLoading = data.state === "loading";
-
+    const paginationLoading = paginationState === "loading";
+    const {show,hide}=useAlert(({message})=>message, ({type})=>({...type, duration: 3000}))
     const onPageChange = (newPage: any) => {
         setPagination((prevState: any) => ({
             ...prevState,
@@ -42,13 +47,29 @@ const Table = () => {
         [data]
     );
 
-    if (data.state === "hasError") {
-        return <div>{data.contents.toString()}</div>
-    }
+    useEffect(()=>{
+       if(data.state==="hasError"||paginationState==="hasError"){
+
+          resetSearch();
+           show({
+               message: data.state === "hasError" ? `${data.contents}` : paginationContent,
+               type:{
+                   critical: true
+               }
+           })
+
+           setTimeout(()=>{
+                hide();
+           }, 3000)
+       }
+    },[data.state,paginationState])
+
 
     if (data.state === "hasValue" && data.contents.length === 0) {
         return <NoResults/>
     }
+
+    const pagination = paginationContent;
 
 
     return (<div style={{padding: 16}}>

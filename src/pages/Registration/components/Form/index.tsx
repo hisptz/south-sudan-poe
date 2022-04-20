@@ -6,6 +6,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import useFormControl from "./hooks/form";
 import Loader from "../../../../shared/components/Loader";
+import Error from "../../../../shared/components/Error";
 
 const Form = () => {
     const {loading, error, sections, dataElements, onSubmit, form, saving} = useFormControl();
@@ -19,7 +20,7 @@ const Form = () => {
         );
     }
 
-    if (error) return <div>Error: {error.message}</div>;
+    if (error) return <Error error={error}/>;
 
     if (!sections) return <div>No form metadata</div>;
 
