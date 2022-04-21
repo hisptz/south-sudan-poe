@@ -1,12 +1,12 @@
 {
   "name": "sudan-poe",
-  "version": "1.0.0-alpha.01",
+  "version": "1.0.0-alpha.02",
   "private": true,
   "dependencies": {
     "@dhis2/app-runtime": "^3.4.3",
     "@dhis2/d2-i18n": "^1.1.0",
     "@dhis2/ui": "^8.1.11",
-    "@hisptz/react-ui": "^1.0.42",
+    "@hisptz/react-ui": "^1.0.43",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",

@@ -37,7 +37,7 @@ export class Booking {
         return EventDataValueUtil.getDataElementValue("K6ciAYeQKWL", this.event.dataValues);
     }
 
-    get nationationality(): string {
+    get nationality(): string {
         return EventDataValueUtil.getDataElementValue("MQ1WrfzMvbE", this.event.dataValues);
     }
 
@@ -58,7 +58,7 @@ export class Booking {
     }
 
 
-    get phoneNumner(): string {
+    get phoneNumber(): string {
         return EventDataValueUtil.getDataElementValue("Cs1wQfbUHSV", this.event.dataValues);
     }
 
@@ -111,7 +111,7 @@ export class Booking {
             gender: this.gender,
             arrivalDate: this.dateEnroll,
             flightNo: this.flightNumber,
-            nationality: this.nationationality,
+            nationality: this.nationality,
             pointOfEntry: this.poe
         })
     }

@@ -74,7 +74,7 @@ const Profile = () => {
                                             Phone number:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
-                                            {currentBookProfile.phoneNumner}
+                                            {currentBookProfile.phoneNumber}
                                         </label>
                                     </div>
                                     <div className={styles["flex-item"]}>
@@ -126,7 +126,7 @@ const Profile = () => {
                                             Nationality:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
-                                            Tanzania
+                                            {currentBookProfile.nationality}
                                         </label>
                                     </div>
                                 </div>

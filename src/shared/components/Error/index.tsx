@@ -1,6 +1,6 @@
 import {IconError24} from '@dhis2/ui'
 
-export default function Error({error, resetErrorBoundary}: { error: any, resetErrorBoundary: () => void }) {
+export default function Error({error, resetErrorBoundary}: { error: any, resetErrorBoundary?: () => void }) {
 
     return (
         <div style={{
@@ -10,7 +10,8 @@ export default function Error({error, resetErrorBoundary}: { error: any, resetEr
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "column",
-            gap: 8
+            gap: 8,
+            minHeight: 500
         }}>
 
             <div className="icon-64">
