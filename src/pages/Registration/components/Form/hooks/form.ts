@@ -58,8 +58,9 @@ export default function useFormControl() {
 
     const onSubmit = useCallback((data) => {
         setSaving(true);
-        const sanitizedData = sanitizeFields(data);
-        param.id != null
+        
+        const sanitizedData = sanitizeFields(data,(locationState as any)?.expired);
+        param.id != null&&!(locationState as any)?.expired
             ? updateBooking(sanitizedData, param.id as string, {show, hide, navigate, setSaving, resetProfileData})
             : createBooking(sanitizedData, {show, hide, setSaving, navigate});
     }, [hide, navigate, param.id]);

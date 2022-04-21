@@ -48,11 +48,12 @@ const expiredBooking = selector<{ expired: Boolean; eventId: string } | undefine
     key: "expiredBooking",
     get: async ({ get }) => {
         const bookings = get(bookingTableList);
-        if (bookings) {
-            const day1 = new Date(bookings ? bookings[0].eventDate : 0);
+        if (bookings?.length) {
+            const day1 = new Date(bookings ? bookings[0]?.eventDate : 0);
             const day2 = new Date(new Date().toUTCString());
+
             return {
-                expired: day1.getTime() + 24 * 60 * 60 * 1000 > day2.getTime(),
+                expired: day1.getTime() + 24 * 60 * 60 * 1000 - day2.getTime() < 0,
                 eventId: bookings[0].id,
             };
         }

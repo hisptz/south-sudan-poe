@@ -35,7 +35,7 @@ const Table = () => {
     const { state: paginationState, contents: paginationContent } = useRecoilValueLoadable(
         bookingPaginationSelector
     );
-    const { state: expiredState } = useRecoilValueLoadable(expiredBooking);
+    const { state,contents:expiredContent } = useRecoilValueLoadable(expiredBooking);
     const setPagination = useSetRecoilState(bookingPaginationSelector);
     const resetSearch = useResetRecoilState(currentSearchedPassportNumberState);
     const data = useRecoilValueLoadable(bookingTableList);
@@ -129,7 +129,7 @@ const Table = () => {
                                         <TableCell>{booking.position}</TableCell>
                                         <TableCell>{booking.date}</TableCell>
                                         <TableCell>{booking.poe}</TableCell>
-                                        {!expiredState ? (
+                                        {!expiredContent?.expired ? (
                                             <TableCell dense>
                                                 <Link
                                                     className={styles["Table-Link"]}

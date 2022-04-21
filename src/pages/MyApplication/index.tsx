@@ -49,6 +49,7 @@ const MyApplication = () => {
                                 <Suspense fallback={<Loader small />}>
                                     <div
                                         style={{
+                                            flex:1,
                                             display: "flex",
                                             flexDirection: "column",
                                             gap: "16px",
