@@ -81,6 +81,10 @@ export class Booking {
             )
         ).toString();
     }
+    
+    get eventDate(){
+        return this.event.eventDate;
+    }
 
     get dateEnroll(): string {
         let newDateEnroll = this.event.eventDate

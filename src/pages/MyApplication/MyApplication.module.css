@@ -21,10 +21,19 @@
 }
 
 .table {
-    flex-basis: 700px;
+    flex-basis: 800px;
 }
 
 .search {
     flex-basis: 900px;
     padding: 16px;
+}
+
+.box-content {
+    text-align: center;
+    line-height: 1.5;
+}
+
+.box-content span{
+    margin: 0 8px;
 }
