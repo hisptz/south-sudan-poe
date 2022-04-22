@@ -3,6 +3,7 @@ import styles from "./Registration.module.css"
 import Form from "./components/Form";
 import {Card} from '@dhis2/ui'
 import Loader from "../../shared/components/Loader";
+import Search from "../MyApplication/components/Search";
 
 const Registration = () => {
 
