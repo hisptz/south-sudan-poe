@@ -8,7 +8,7 @@
     flex: 1;
 }
 
-.container button {
+.container .button-container {
     width: fit-content;
     align-self: flex-end;
 }

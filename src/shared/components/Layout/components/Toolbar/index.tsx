@@ -1,5 +1,5 @@
 import styles from './Toolbar.module.css'
-import flag from '../../../../../assets/south-sudan-flag.png'
+import flag from '../../../../../assets/south-sudan-logo.jpg'
 import Dropdown from '../../../Dropdown';
 
 function Toolbar(args: any) {
