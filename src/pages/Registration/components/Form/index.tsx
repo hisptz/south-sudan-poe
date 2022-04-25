@@ -25,7 +25,7 @@ const Form = () => {
 
     return (
         <FormProvider {...form}>
-            <div className={styles.container}>
+            <form className={styles.container} onSubmit={form.handleSubmit(onSubmit)}>
                 {sections &&
                     sections?.map(
                         (x: any, key: any) => (
@@ -47,16 +47,16 @@ const Form = () => {
                         </Button>
                     </Link>
                     <Button
+                        type="submit"
                         primary
                         loading={saving}
-                        onClick={form.handleSubmit(onSubmit)}
                         name="Primary button"
                         value="default"
                     >
                         {saving ? "Saving..." : "Save"}
                     </Button>
                 </div>
-            </div>
+            </form>
         </FormProvider>
     );
 

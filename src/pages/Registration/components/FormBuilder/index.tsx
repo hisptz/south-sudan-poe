@@ -23,6 +23,7 @@ const FormBuilder = ({
         dataElement: { id: string };
     }[];
 }) => {
+    const formIds=["YCHZU8pxHLI","gms6oEPUk7D"];
     return (
         <>
             <div className={styles["form-grid"]}>
@@ -54,7 +55,13 @@ const FormBuilder = ({
                                             input={{
                                                 name: "",
                                                 value: field.value,
-                                                onChange: field.onChange,
+                                                onChange: (value:any)=>{
+      
+                                                    if(formIds.includes(control.id)&&/[0-9]{1,}/g.test(value)){
+                                                        return ;
+                                                    }
+                                                    field.onChange(value);
+                                                }
                                             }}
                                             validations={{
                                                 required: mandatory
