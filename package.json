@@ -32,6 +32,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "translation:extract": "npm run d2-app-scripts i18n extract",
+    "translation:generate": "npm run d2-app-scripts i18n extract",
     "start": "react-scripts start",
     "build:app": "react-scripts build",
     "build": "./build.sh",
