@@ -1,31 +1,44 @@
-export const LANGUAGES = [
+export interface Language {
+    locale: string;
+    name: string;
+    flag?: string;
+}
+
+export const LANGUAGES: Language[] = [
     {
         name: "English",
-        code: "en",
+        locale: "en",
+        flag: "🇬🇧"
 
     },
     {
         name: "Español",
-        code: "es",
+        locale: "es",
+        flag: "🇪🇸"
     },
     {
         name: "Français",
-        code: "fr",
+        locale: "fr",
+        flag: "🇫🇷"
     },
     {
         name: "Arabic",
-        code: "ar",
+        locale: "ar",
+        flag: "🇸🇦"
     },
     {
         name: "Russian",
-        code: "ru",
+        locale: "ru",
+        flag: "🇷🇺"
     },
     {
         name: "Chinese",
-        code: "zh",
+        locale: "zh",
+        flag: "🇨🇳"
     },
     {
         name: "Swahili",
-        code: "sw",
+        locale: "sw",
+        flag: "🇹🇿"
     }
 ]

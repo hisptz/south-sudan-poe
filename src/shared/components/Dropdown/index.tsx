@@ -1,27 +1,34 @@
-import { Layer, Popper, FlyoutMenu, MenuItem, IconChevronDown16 } from "@dhis2/ui";
-import { useRef, useState } from "react";
+import {FlyoutMenu, MenuItem} from "@dhis2/ui";
+import {useState} from "react";
+import {Language, LANGUAGES} from "../../../core/constants/languages";
+import {changeLocale} from "../../utils/language";
+import {DropdownButton} from '@dhis2/ui'
+import {find} from "lodash";
 
-function Dropdown(args: any) {
-    const ref = useRef<HTMLButtonElement | any>();
+function Dropdown() {
+    const [language, setLanguage] = useState<Language>(LANGUAGES[0]);
     const [open, setOpen] = useState(false);
-    const [language, setLanguage] = useState("en");
-    const toggle = () => setOpen(!open);
+
+    const onLanguageChange = (locale: string) => () => {
+        changeLocale(locale);
+        setLanguage(find(LANGUAGES, {locale}) as Language);
+        setOpen(false);
+    }
 
     return (
         <>
-            <button ref={ref} onClick={toggle}>
-                {language == "en" ? "English" : "Arabic"} &nbsp;&nbsp; <IconChevronDown16 />
-            </button>
-            {open && (
-                <Layer onClick={toggle}>
-                    <Popper reference={ref} placement="bottom-start">
-                        <FlyoutMenu {...args}>
-                            <MenuItem label="English" onClick={() => setLanguage("en")} />
-                            <MenuItem label="Arabic" onClick={() => setLanguage("ar")} />
-                        </FlyoutMenu>
-                    </Popper>
-                </Layer>
-            )}
+            <DropdownButton
+                open={open}
+                onClick={() => setOpen(prevState => !prevState)}
+                component={
+                    <FlyoutMenu>
+                        {
+                            LANGUAGES.map(({locale, name, flag}) => (
+                                <MenuItem label={`${name}`} onClick={onLanguageChange(locale)}/>
+                            ))
+                        }
+                    </FlyoutMenu>}
+            >{language.flag} {language.name}</DropdownButton>
         </>
     );
 }
