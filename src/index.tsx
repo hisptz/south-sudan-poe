@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {RecoilRoot} from 'recoil';
 import {Provider} from '@dhis2/app-runtime';
 import Alerts from "./shared/components/Alerts";
-
+import "./locales"
 
 ReactDOM.render(
     <React.StrictMode>
