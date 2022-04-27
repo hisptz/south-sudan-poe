@@ -4,6 +4,8 @@ import "./App.css"
 import {usePullBookingMetadata} from './core/hooks/booking.hooks';
 import Loader from "./shared/components/Loader";
 
+
+
 function App() {
     usePullBookingMetadata();
 

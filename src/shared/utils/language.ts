@@ -12,10 +12,19 @@ export function isLangRTL(code: string) {
 
 export function changeLocale(locale: string) {
 
-    moment.locale(locale)
-    i18n.changeLanguage(locale)
+    // moment.locale(locale)
+    i18n.changeLanguage(simplifyLocale(locale))
     document.documentElement.setAttribute(
         'dir',
         isLangRTL(locale) ? 'rtl' : 'ltr'
     )
+}
+
+
+const simplifyLocale = (locale: string) => {
+    const idx = locale.indexOf('-')
+    if (idx === -1) {
+        return locale
+    }
+    return locale.substr(0, idx)
 }

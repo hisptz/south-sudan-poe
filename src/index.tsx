@@ -6,7 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {RecoilRoot} from 'recoil';
 import {Provider} from '@dhis2/app-runtime';
 import Alerts from "./shared/components/Alerts";
-import "./locales"
+import "./locales";
+import i18n from "@dhis2/d2-i18n";
+
+i18n.setDefaultNamespace('default')
+
 
 ReactDOM.render(
     <React.StrictMode>

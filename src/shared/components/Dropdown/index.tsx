@@ -1,17 +1,18 @@
 import {FlyoutMenu, MenuItem} from "@dhis2/ui";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import {Language, LANGUAGES} from "../../../core/constants/languages";
-import {changeLocale} from "../../utils/language";
 import {DropdownButton} from '@dhis2/ui'
 import {find} from "lodash";
+import {useRecoilState} from "recoil";
+import {LocaleState} from "../../../core/states/language";
 
-function Dropdown() {
-    const [language, setLanguage] = useState<Language>(LANGUAGES[0]);
+function LanguageSelector() {
+    const [locale, setLocale] = useRecoilState(LocaleState);
+    const language = useMemo<Language>(() => find(LANGUAGES, {locale: locale}) as Language ?? LANGUAGES[0] as Language, [locale]);
     const [open, setOpen] = useState(false);
 
     const onLanguageChange = (locale: string) => () => {
-        changeLocale(locale);
-        setLanguage(find(LANGUAGES, {locale}) as Language);
+        setLocale(locale);
         setOpen(false);
     }
 
@@ -23,14 +24,15 @@ function Dropdown() {
                 component={
                     <FlyoutMenu>
                         {
-                            LANGUAGES.map(({locale, name, flag}) => (
-                                <MenuItem label={`${name}`} onClick={onLanguageChange(locale)}/>
+                            LANGUAGES.map(({locale, name}) => (
+                                <MenuItem key={`${locale}-option`} label={`${name}`}
+                                          onClick={onLanguageChange(locale)}/>
                             ))
                         }
                     </FlyoutMenu>}
-            >{language.flag} {language.name}</DropdownButton>
+            >{language?.flag} {language?.name}</DropdownButton>
         </>
     );
 }
 
-export default Dropdown;
+export default LanguageSelector;
