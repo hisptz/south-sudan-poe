@@ -5,8 +5,119 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-04-27T11:14:28.276Z\n"
-"PO-Revision-Date: 2022-04-27T11:14:28.276Z\n"
+"POT-Creation-Date: 2022-04-28T09:46:55.242Z\n"
+"PO-Revision-Date: 2022-04-28T09:46:55.242Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
+
+msgid ""
+"We are glad that you have chosen to travel to South Sudan. For your safety "
+"and the well-being of those around you, please be informed that it is "
+"mandatory to complete the Public Health Surveillance Form online within 24 "
+"hours before arrival. You can start by searching your passport on the field "
+"above and complete the travellers form."
+msgstr ""
+"We are glad that you have chosen to travel to South Sudan. For your safety "
+"and the well-being of those around you, please be informed that it is "
+"mandatory to complete the Public Health Surveillance Form online within 24 "
+"hours before arrival. You can start by searching your passport on the field "
+"above and complete the travellers form."
+
+msgid "Register"
+msgstr "Register"
+
+msgid "My Application"
+msgstr "My Application"
+
+msgid "Passport Number"
+msgstr "Passport Number"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "S/n"
+msgstr "S/n"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Point of Entry"
+msgstr "Point of Entry"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "View"
+msgstr "View"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "All applications with passport number {{searchKeyword}} has expired"
+msgstr "All applications with passport number {{searchKeyword}} has expired"
+
+msgid "Click here"
+msgstr "Click here"
+
+msgid "to register new"
+msgstr "to register new"
+
+msgid "Traveller profile"
+msgstr "Traveller profile"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Passport"
+msgstr "Passport"
+
+msgid "Phone number"
+msgstr "Phone number"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Gender"
+msgstr "Gender"
+
+msgid "Arrival Date"
+msgstr "Arrival Date"
+
+msgid "Flight number"
+msgstr "Flight number"
+
+msgid "Nationality"
+msgstr "Nationality"
+
+msgid "Print"
+msgstr "Print"
+
+msgid "Booking successfully saved"
+msgstr "Booking successfully saved"
+
+msgid "Booking successfully updated"
+msgstr "Booking successfully updated"
+
+msgid "Registration"
+msgstr "Registration"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Something went wrong."
+msgstr "Something went wrong."
+
+msgid "Ministry of Health"
+msgstr "Ministry of Health"
+
+msgctxt "Continues 'to register new'"
+msgid "Click here"
+msgstr "Click here"
+
+msgctxt "Starts with 'Click here'"
+msgid "to register new"
+msgstr "to register new"
