@@ -2,6 +2,7 @@ import {BookingEvent, DataValue} from "../../../../../core/interface/events";
 import {METADATA} from "../../../../../core/constants";
 import BookingService from "../../../../../core/services/BookingService";
 import {uid} from "../../../../../shared/utils";
+import i18n from '@dhis2/d2-i18n'
 
 function generatePayload(dataValues: DataValue[], orgUnit: string, event?: string): BookingEvent {
     return {
@@ -34,11 +35,13 @@ export function createBooking({orgUnit, dataValues}: any, {show, hide, navigate,
     new BookingService()
         .createBooking(body)
         .then((res) => {
-            showMessage("Booking successfully saved", "success", {show, hide});
+            showMessage(i18n.t("Booking successfully saved"), "success", {show, hide});
             navigate(`/profile/${body.event}`);
         })
         .catch((error) => {
-            showMessage(`Error saving booking: ${error?.message ?? "An unknown error occurred"}`, "critical", {
+            showMessage(i18n.t("Error saving booking: {{error}}", {
+                error: error.message
+            }), "critical", {
                 show,
                 hide
             });
@@ -58,12 +61,14 @@ export function updateBooking({orgUnit, dataValues}: any, eventId: string, {
     new BookingService()
         .updateBooking(body, eventId)
         .then((res) => {
-            showMessage("Booking successfully updated", "success", {show, hide});
+            showMessage(i18n.t("Booking successfully updated"), "success", {show, hide});
             resetProfileData(eventId);
             navigate(`/profile/${eventId}`);
         })
         .catch((error) => {
-            showMessage(`Error updating booking: ${error?.message ?? "An unknown error occurred"}`, "critical", {
+            showMessage(i18n.t("Error updating booking: {{error}}", {
+                error: error.message
+            }), "critical", {
                 show,
                 hide
             });
