@@ -24,12 +24,14 @@ import {
 } from "../../../../core/states/Booking_state";
 import Loader from "../../../../shared/components/Loader";
 import {useAlert} from "@dhis2/app-runtime";
+import i18n from '@dhis2/d2-i18n';
+
 
 const Table = () => {
     const {state: paginationState, contents: paginationContent} = useRecoilValueLoadable(
         bookingPaginationSelector
     );
-    const {state, contents: expiredContent} = useRecoilValueLoadable(expiredBooking);
+    const {contents: expiredContent} = useRecoilValueLoadable(expiredBooking);
     const setPagination = useSetRecoilState(bookingPaginationSelector);
     const resetSearch = useResetRecoilState(currentSearchedPassportNumberState);
     const data = useRecoilValueLoadable(bookingTableList);
@@ -82,10 +84,10 @@ const Table = () => {
                 <DTable suppressZebraStriping>
                     <TableHead>
                         <TableRowHead>
-                            <TableCellHead>S/n</TableCellHead>
-                            <TableCellHead>Date</TableCellHead>
-                            <TableCellHead>Point of Entry</TableCellHead>
-                            <TableCellHead>Actions</TableCellHead>
+                            <TableCellHead>{i18n.t("S/n")}</TableCellHead>
+                            <TableCellHead>{i18n.t("Date")}</TableCellHead>
+                            <TableCellHead>{i18n.t("Point of Entry")}</TableCellHead>
+                            <TableCellHead>{i18n.t("Actions")}</TableCellHead>
                         </TableRowHead>
                     </TableHead>
                     {dataLoading ? (
@@ -129,14 +131,14 @@ const Table = () => {
                                                     className={styles["Table-Link"]}
                                                     to={newTo}
                                                 >
-                                                    View
+                                                    {i18n.t("View")}
                                                 </Link>
                                                 <Link
                                                     hidden={index !== 0}
                                                     className={styles["Table-Link"]}
                                                     to={RegistrationLink}
                                                 >
-                                                    Edit
+                                                    {i18n.t("Edit")}
                                                 </Link>
                                             </TableCell>
                                         ) : (
