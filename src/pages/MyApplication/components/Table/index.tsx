@@ -37,7 +37,6 @@ const Table = () => {
     const data = useRecoilValueLoadable(bookingTableList);
 
     const dataLoading = data.state === "loading";
-    const paginationLoading = paginationState === "loading";
     const {show, hide} = useAlert(
         ({message}) => message,
         ({type}) => ({...type, duration: 3000})

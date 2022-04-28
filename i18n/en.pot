@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-04-28T09:46:55.242Z\n"
-"PO-Revision-Date: 2022-04-28T09:46:55.242Z\n"
+"POT-Creation-Date: 2022-04-28T10:25:21.686Z\n"
+"PO-Revision-Date: 2022-04-28T10:25:21.686Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
@@ -29,6 +29,18 @@ msgstr "Register"
 
 msgid "My Application"
 msgstr "My Application"
+
+msgid "Enter the passport number above to search for the existing applications"
+msgstr "Enter the passport number above to search for the existing applications"
+
+msgid "No Results"
+msgstr "No Results"
+
+msgid "Sorry, we couldn't find any bookings for your passport number"
+msgstr "Sorry, we couldn't find any bookings for your passport number"
+
+msgid "Create Booking"
+msgstr "Create Booking"
 
 msgid "Passport Number"
 msgstr "Passport Number"
@@ -53,6 +65,9 @@ msgstr "View"
 
 msgid "Edit"
 msgstr "Edit"
+
+msgid "My Applications"
+msgstr "My Applications"
 
 msgid "All applications with passport number {{searchKeyword}} has expired"
 msgstr "All applications with passport number {{searchKeyword}} has expired"
@@ -93,6 +108,15 @@ msgstr "Nationality"
 msgid "Print"
 msgstr "Print"
 
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Saving..."
+msgstr "Saving..."
+
+msgid "Save"
+msgstr "Save"
+
 msgid "Booking successfully saved"
 msgstr "Booking successfully saved"
 
@@ -113,6 +137,14 @@ msgstr "Something went wrong."
 
 msgid "Ministry of Health"
 msgstr "Ministry of Health"
+
+msgctxt "The passport is shown next to these words in bold"
+msgid "Sorry, we couldn't find any bookings for your passport number"
+msgstr "Sorry, we couldn't find any bookings for your passport number"
+
+msgctxt "Navigates to the registration page"
+msgid "Create Booking"
+msgstr "Create Booking"
 
 msgctxt "Continues 'to register new'"
 msgid "Click here"

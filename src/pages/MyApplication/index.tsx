@@ -29,7 +29,7 @@ const MyApplication = () => {
     return (
         <div className={styles.container}>
             <div className="content-body">
-                <h2>My Applications</h2>
+                <h2>{i18n.t("My Applications")}</h2>
                 <Card style={{padding: "10px"}}>
                     <div className={styles["search-container"]}>
                         <div className={styles.search}>

@@ -1,4 +1,6 @@
 import {IconSearch24} from '@dhis2/ui'
+import i18n from '@dhis2/d2-i18n';
+
 
 export default function Landing() {
 
@@ -17,7 +19,9 @@ export default function Landing() {
                 <IconSearch24/>
             </div>
             <h3>
-                Enter the passport number above to search for the existing applications
+                {
+                    i18n.t("Enter the passport number above to search for the existing applications")
+                }
             </h3>
         </div>
     )
