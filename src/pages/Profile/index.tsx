@@ -4,8 +4,6 @@ import {Link, useParams} from "react-router-dom";
 import {currentBookingProfile} from "../../core/states/Booking_state";
 import {useRecoilValue} from "recoil";
 import {Booking} from "../../core/models/Booking.model";
-import html2canvas from "html2canvas";
-import JSPdf from "jspdf";
 import React, { useState } from "react";
 import QRCode from "react-qr-code";
 import {useAlert} from "@dhis2/app-runtime";
