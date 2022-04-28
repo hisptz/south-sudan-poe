@@ -1,6 +1,7 @@
 import styles from "./FormBuilder.module.css";
 import {CustomInput} from "@hisptz/react-ui";
 import {Controller} from "react-hook-form";
+import { Dhis2FormValidator} from "../../../../shared/utils/form-validator";
 
 const FormBuilder = ({
                          title,
@@ -35,6 +36,7 @@ const FormBuilder = ({
                         const mandatory = control.compulsory ?? stageDataElements.filter(
                             (x) => x.dataElement.id === control.id
                         )[0]?.compulsory;
+
                         return (
                             <Controller
                                 key={`${control.id}-form-input`}
@@ -42,6 +44,7 @@ const FormBuilder = ({
                                     required: mandatory
                                         ? `${control.displayFormName} is required`
                                         : false,
+                                    validate: (value: any)=>Dhis2FormValidator.validate(control.id,value)
                                 }}
                                 name={control.id}
                                 render={({field, fieldState}) => (
@@ -60,14 +63,11 @@ const FormBuilder = ({
                                                     if(formIds.includes(control.id)&&/[0-9]{1,}/g.test(value)){
                                                         return ;
                                                     }
+
                                                     field.onChange(value);
                                                 }
                                             }}
-                                            validations={{
-                                                required: mandatory
-                                                    ? `${control.displayFormName} is required`
-                                                    : false,
-                                            }}
+
                                             { /*@ts-ignore */ ...""}
                                             error={Boolean(fieldState.error)}
                                             validationText={fieldState.error?.message}
