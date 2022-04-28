@@ -57,6 +57,12 @@ export class Booking {
         return "";
     }
 
+    get arrivalDate(): string {
+        const date = new Date(this.eventDate);
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+    }
+
 
     get phoneNumber(): string {
         return EventDataValueUtil.getDataElementValue("Cs1wQfbUHSV", this.event.dataValues);
@@ -81,8 +87,8 @@ export class Booking {
             )
         ).toString();
     }
-    
-    get eventDate(){
+
+    get eventDate() {
         return this.event.eventDate;
     }
 
@@ -91,6 +97,13 @@ export class Booking {
         return newDateEnroll.split("T")[0];
     }
 
+    static getTableData(
+        travellerBooking: Booking[],
+    ): BookingTableData[] {
+        return (travellerBooking || []).map((booking, index) => {
+            return booking.toTableData(index + 1);
+        });
+    }
 
     toTableData(
         position: number,
@@ -118,15 +131,6 @@ export class Booking {
             nationality: this.nationality,
             pointOfEntry: this.poe
         })
-    }
-
-
-    static getTableData(
-        travellerBooking: Booking[],
-    ): BookingTableData[] {
-        return (travellerBooking || []).map((booking, index) => {
-            return booking.toTableData(index + 1);
-        });
     }
 
     calculateAge(date: Date) {
