@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
+
 }
 
 .toolbar div {
@@ -56,12 +58,7 @@
         flex-direction: column;
     }
 
-    .logo {
-        width: 100px;
-        height: 32px;
-    }
-
-    .dropdown {
+    .dropdown-text {
         display: none;
     }
 }
