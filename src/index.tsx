@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import "./locales";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {RecoilRoot} from 'recoil';
 import {Provider} from '@dhis2/app-runtime';
 import Alerts from "./shared/components/Alerts";
-import "./locales/index";
 import i18n from "@dhis2/d2-i18n";
+import {changeLocale} from "./shared/utils/language";
 
 i18n.setDefaultNamespace('default')
-
+const locale = localStorage.getItem('locale') || 'en';
+changeLocale(locale);
 
 ReactDOM.render(
     <React.StrictMode>
