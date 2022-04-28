@@ -9,7 +9,6 @@ import i18n from '@dhis2/d2-i18n'
 
 function App() {
     i18n.changeLanguage(useRecoilValue(LocaleState));
-    useRecoilValue(LocaleState);
     usePullBookingMetadata();
 
     return (
