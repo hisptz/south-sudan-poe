@@ -1,8 +1,20 @@
 .flex-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    
 }
+
+.flex-row_print {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 4%;
+    
+}
+
 
 .flex-column {
     display: flex;
@@ -14,7 +26,11 @@
     flex-direction: column;
     margin-bottom: 16px;
 }
-
+.flex-column_print .flex-item_print {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
 .label-title {
     font-weight: 600;
     font-size: 18px;
@@ -35,6 +51,25 @@
     border: 1px solid darkgray;
 }
 
+.logo{
+    width: 90px !important;
+    height: 90px !important;
+    margin-bottom: 30px;
+    align-items: center;
+    align-content: center;
+    padding-left: 10%;
+}
+.no_print{
+    display: none;
+}
+
+.prifile{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 5%;
+    background-color: white;
+}
 @media only screen and (max-width: 768px) {
     .flex-item {
         flex-direction: row;
@@ -42,5 +77,19 @@
 
     .flex-row {
         flex-direction: column;
+    }
+
+    .flex-item_print {
+        flex-direction: row;
+    }
+
+    .flex-row_print {
+        flex-direction: column;
+    }
+}
+
+@media print {
+    @page {
+        size: landscape
     }
 }
