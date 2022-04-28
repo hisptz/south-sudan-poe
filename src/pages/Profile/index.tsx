@@ -9,7 +9,8 @@ import JSPdf from "jspdf";
 import React from "react";
 import QRCode from "react-qr-code";
 import {useAlert} from "@dhis2/app-runtime";
-
+import i18n from '@dhis2/d2-i18n'
+import Loader from "../../shared/components/Loader";
 
 const Profile = () => {
     const {id} = useParams<string>();
@@ -36,11 +37,13 @@ const Profile = () => {
     let linkToEditProfile = "/registration/" + currentBookProfile.id;
 
     return (
-        <React.Suspense fallback={<div>Loading</div>}>
+        <React.Suspense fallback={<Loader/>}>
             <div className={styles.container}>
                 <div className="content-body">
                     <h2>
-                        Traveller profile{" "}
+                        {
+                            i18n.t("Traveller profile")
+                        }
                         <Link to={linkToEditProfile}>
                             <IconEdit24/>
                         </Link>{" "}
@@ -55,7 +58,7 @@ const Profile = () => {
                                 <div className={styles["flex-column"]}>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Name:
+                                            {i18n.t("Name")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.fullName}
@@ -63,7 +66,7 @@ const Profile = () => {
                                     </div>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Passport:
+                                            {i18n.t("Passport")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.passport}
@@ -71,7 +74,7 @@ const Profile = () => {
                                     </div>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Phone number:
+                                            {i18n.t("Phone number")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.phoneNumber}
@@ -79,7 +82,7 @@ const Profile = () => {
                                     </div>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Email:
+                                            {i18n.t("Email")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.email}
@@ -87,7 +90,7 @@ const Profile = () => {
                                     </div>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Gender:
+                                            {i18n.t("Gender")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.gender}
@@ -99,7 +102,7 @@ const Profile = () => {
                                 <div className={styles["flex-column"]}>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Point of Entry:
+                                            {i18n.t("Point of Entry")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.poe}
@@ -107,15 +110,15 @@ const Profile = () => {
                                     </div>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Arrival date:
+                                            {i18n.t("Arrival Date")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
-                                            28/03/2022
+                                            {currentBookProfile.arrivalDate}
                                         </label>
                                     </div>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Flight number:
+                                            {i18n.t("Flight number")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.flightNumber}
@@ -123,7 +126,7 @@ const Profile = () => {
                                     </div>
                                     <div className={styles["flex-item"]}>
                                         <label className={styles["label-title"]} htmlFor="name">
-                                            Nationality:
+                                            {i18n.t("Nationality")}:
                                         </label>
                                         <label className="label-subtitle" htmlFor="value">
                                             {currentBookProfile.nationality}
@@ -136,7 +139,7 @@ const Profile = () => {
                                     <QRCode size={320}
                                             value={currentBookProfile.toQRCodeData()}/>
                                 </div>
-                                <Button id="print-button" onClick={downloadDashboard}>Print</Button>
+                                <Button id="print-button" onClick={downloadDashboard}>{i18n.t("Print")}</Button>
                             </div>
                         </div>
                     </Card>
