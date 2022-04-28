@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-04-28T10:25:21.686Z\n"
-"PO-Revision-Date: 2022-04-28T10:25:21.686Z\n"
+"POT-Creation-Date: 2022-04-28T12:45:45.205Z\n"
+"PO-Revision-Date: 2022-04-28T12:45:45.205Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
@@ -107,6 +107,9 @@ msgstr "Nationality"
 
 msgid "Print"
 msgstr "Print"
+
+msgid "Welcome to South Sudan"
+msgstr "Welcome to South Sudan"
 
 msgid "Cancel"
 msgstr "Cancel"
