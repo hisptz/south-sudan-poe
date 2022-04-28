@@ -32,6 +32,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "translation:extract": "d2-app-scripts i18n extract",
+    "translation:generate": "d2-app-scripts i18n generate",
+    "prestart": "npm run translation:extract && npm run translation:generate",
+    "prebuild": "npm run translation:extract && npm run translation:generate",
     "start": "react-scripts start",
     "build:app": "react-scripts build",
     "build": "./build.sh",
@@ -57,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "@dhis2/cli-app-scripts": "^9.0.0",
     "@types/lodash": "^4.14.181"
   },
   "proxy": "http://localhost:5000",
