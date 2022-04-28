@@ -1,5 +1,7 @@
 import {Button, IconArrowLeft24} from "@dhis2/ui";
 import {useNavigate} from "react-router-dom";
+import i18n from '@dhis2/d2-i18n';
+
 
 const Back = () => {
     const navigate = useNavigate();
@@ -11,7 +13,9 @@ const Back = () => {
             value="default"
             onClick={() => navigate(-1)}
         >
-            Back
+            {
+                i18n.t("Back")
+            }
         </Button>
     );
 };
