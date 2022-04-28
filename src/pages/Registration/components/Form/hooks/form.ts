@@ -33,7 +33,8 @@ export default function useFormControl() {
     const navigate = useNavigate()
 
     const form = useForm({
-        shouldFocusError: true
+        shouldFocusError: true,
+        shouldUseNativeValidation:true
     });
 
     useEffect(() => {
