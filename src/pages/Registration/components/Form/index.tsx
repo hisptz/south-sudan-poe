@@ -15,8 +15,6 @@ import { Accordion, AccordionDetails, AccordionSummary,Typography } from "@mui/m
 const Form = () => {
     const [expanded, setExpanded] = React.useState(false);
 
-      
-
 
     const handleChange = (panel:any) => (event:any, isExpanded:any) => {
        console.log(panel, isExpanded,event);
