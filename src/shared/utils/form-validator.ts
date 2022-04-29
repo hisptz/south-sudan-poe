@@ -75,8 +75,9 @@ export class Dhis2FormValidator {
         ).map((x) => {
             return Object.assign(
                 {},
-                {   // eslint-disable-next-line
-                    eq: Function(`return ${this.translateDhis2Eq(x.condition)}`),
+                {   
+                    //eslint-disable-next-line
+                    eq: eval(this.translateDhis2Eq(x.condition) as string),
                     message: x.message as string,
                 }
             );
@@ -92,8 +93,8 @@ export class Dhis2FormValidator {
                 Object.assign(
                     {},
                     {
-                        // eslint-disable-next-line
-                        eq: Function(`return ${this.translateDhis2Eq(x.condition)}`),
+                        //eslint-disable-next-line
+                        eq: eval(this.translateDhis2Eq(x.condition) as string),
                     }
                 )
             )[0];
@@ -106,7 +107,7 @@ export class Dhis2FormValidator {
                 JSON.stringify(this.elements[key])
             ) as string;
         });
-
+       
         return condition;
     }
 }
