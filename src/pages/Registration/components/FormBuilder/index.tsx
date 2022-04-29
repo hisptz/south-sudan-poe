@@ -2,6 +2,8 @@ import styles from "./FormBuilder.module.css";
 import {CustomInput} from "@hisptz/react-ui";
 import {Controller} from "react-hook-form";
 import { Dhis2FormValidator} from "../../../../shared/utils/form-validator";
+import { useState } from "react";
+import { Action, Dhis2Elements } from "../../../../core/constants/dhis2Element";
 
 const FormBuilder = ({
                          title,
@@ -25,6 +27,8 @@ const FormBuilder = ({
     }[];
 }) => {
     const formIds=["YCHZU8pxHLI","gms6oEPUk7D"];
+    const [formValue,setFormValue]=useState<any>();
+    const [hiddenElements,setHiddenElements]=useState<any>();
     return (
         <>
             <div className={styles["form-grid"]}>
@@ -37,7 +41,7 @@ const FormBuilder = ({
                             (x) => x.dataElement.id === control.id
                         )[0]?.compulsory;
 
-                        return (
+                        return !Dhis2FormValidator.hide(control.id,formValue,hiddenElements??Dhis2Elements)&&(
                             <Controller
                                 key={`${control.id}-form-input`}
                                 rules={{
@@ -63,7 +67,12 @@ const FormBuilder = ({
                                                     if(formIds.includes(control.id)&&/[0-9]{1,}/g.test(value)){
                                                         return ;
                                                     }
-
+                                                    const di=Dhis2FormValidator.canHideControl(control.id,value);
+                                                    if(di.canHide){
+                                                        setHiddenElements(di.elements)
+                                                    }
+                                                    
+                                                    setFormValue({...{[control.id]:value}});
                                                     field.onChange(value);
                                                 }
                                             }}

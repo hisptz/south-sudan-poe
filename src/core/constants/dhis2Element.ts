@@ -127,7 +127,7 @@ export const Dhis2Elements = [
         displayName: "Breathing difficulties",
     },
     {
-        condition: "EWZcuvPOrJF != 'True'",
+        condition: "EWZcuvPOrJF != true || JGnHr6WI3AY != 'Yes'",
         action: Action.hideField,
         message: "",
         dataElement: "BH5SRLl5PfH",
