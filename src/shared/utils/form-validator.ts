@@ -2,21 +2,23 @@ import { Action, Dhis2Elements } from "../../core/constants/dhis2Element";
 import { Dhis2FormElement } from "../../core/interface/dhis2FormElement.interface";
 
 /**
- * @ts-ignore
  * @param data
  * @returns
  * @description Please do not remove this function,used at runtime in this file
+ * 
  */
+ //eslint-disable-next-line
 function hasValue(data: string) {
-    return data !== null && data?.length != 0;
+    return data !== null && data?.length !== 0;
 }
 
 /**
- * @ts-ignore
  * @param data
  * @returns
  * @description Please do not remove this function,used at runtime in this file
+ * 
  */
+//eslint-disable-next-line
 function length(data: any) {
     return data?.toString()?.length ?? 0;
 }
@@ -73,8 +75,8 @@ export class Dhis2FormValidator {
         ).map((x) => {
             return Object.assign(
                 {},
-                {
-                    eq: eval(this.translateDhis2Eq(x.condition) as string) as boolean,
+                {   // eslint-disable-next-line
+                    eq: Function(`return ${this.translateDhis2Eq(x.condition)}`),
                     message: x.message as string,
                 }
             );
@@ -90,7 +92,8 @@ export class Dhis2FormValidator {
                 Object.assign(
                     {},
                     {
-                        eq: eval(this.translateDhis2Eq(x.condition) as string),
+                        // eslint-disable-next-line
+                        eq: Function(`return ${this.translateDhis2Eq(x.condition)}`),
                     }
                 )
             )[0];
