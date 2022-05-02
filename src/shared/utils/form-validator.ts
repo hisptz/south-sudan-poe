@@ -5,18 +5,18 @@ import { Dhis2FormElement } from "../../core/interface/dhis2FormElement.interfac
  * @param data
  * @returns
  * @description Please do not remove this function,used at runtime in this file
- * 
+ *
  */
- //eslint-disable-next-line
+//eslint-disable-next-line
 function hasValue(data: string) {
-    return data !== null && data?.length !== 0;
+    return data !== null && data?.length !== 0 && typeof data != "undefined";
 }
 
 /**
  * @param data
  * @returns
  * @description Please do not remove this function,used at runtime in this file
- * 
+ *
  */
 //eslint-disable-next-line
 function length(data: any) {
@@ -29,11 +29,11 @@ export class Dhis2FormValidator {
     static validate(dataElement: string, value: any) {
         Object.assign(this.elements, { [dataElement]: value });
 
-        const control = this.controlElement(dataElement, Action.showError);
+        const control = this.controlElement(dataElement);
 
         if (Boolean(control?.eq)) return control?.message;
 
-        return false;
+        return true;
     }
 
     static hide(dataElement: string, value: any, elements: any[]) {
@@ -55,33 +55,23 @@ export class Dhis2FormValidator {
 
         const elements = Dhis2Elements.filter(
             (x) => x.action === Action.hideField && x.condition?.includes(dataElement)
-        ).map((x) =>
-            Object.assign(
-                {},
-                {
-                    dataElement: x.dataElement,
-                    respondedDataElement: x.respondedDataElement,
-                    condition: x.condition,
-                    action: x.action,
-                }
-            )
         );
         return { canHide, elements };
     }
 
-    static controlElement(dataElement: string, action: Action) {
+    static controlElement(dataElement: string, action: Action = Action.showError) {
         return Dhis2Elements.filter(
             (x) => x.action === action && x.dataElement === dataElement
-        ).map((x) => {
-            return Object.assign(
+        ).map((x) =>
+            Object.assign(
                 {},
-                {   
+                {
                     //eslint-disable-next-line
                     eq: eval(this.translateDhis2Eq(x.condition) as string),
                     message: x.message as string,
                 }
-            );
-        })[0];
+            )
+        )[0];
     }
 
     static skipControlElement(dataElement: string, elements: Dhis2FormElement[]) {
@@ -107,7 +97,7 @@ export class Dhis2FormValidator {
                 JSON.stringify(this.elements[key])
             ) as string;
         });
-       
+
         return condition;
     }
 }
