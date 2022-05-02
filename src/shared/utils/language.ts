@@ -12,6 +12,7 @@ export function isLangRTL(code: string) {
 }
 
 export function changeLocale(locale: string) {
+
     moment.locale(locale)
     console.info(`Setting locale to ${locale}`)
     i18n.changeLanguage(simplifyLocale(locale))

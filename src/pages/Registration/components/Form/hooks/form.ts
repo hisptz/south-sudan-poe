@@ -34,11 +34,11 @@ export default function useFormControl() {
 
     const form = useForm({
         shouldFocusError: true,
-        shouldUseNativeValidation:true,
-        reValidateMode:"onBlur",
+        shouldUseNativeValidation:true
     });
 
     useEffect(() => {
+
         if (param.id) {
             new BookingService().getBookingByEvent(param.id as string).then((data) => {
                 let obj = {};
@@ -55,12 +55,11 @@ export default function useFormControl() {
         if (state?.passportId) {
             form.reset({[PASSPORT_NUMBER_DATA_ELEMENT_ID]: state?.passportId})
         }
-
     }, [param.id, locationState, form]);
-
 
     const onSubmit = useCallback((data) => {
         setSaving(true);
+        
         const sanitizedData = sanitizeFields(data,(locationState as any)?.expired);
         param.id != null&&!(locationState as any)?.expired
             ? updateBooking(sanitizedData, param.id as string, {show, hide, navigate, setSaving, resetProfileData})

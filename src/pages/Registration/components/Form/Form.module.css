@@ -1,9 +1,5 @@
 .container {
     padding: 16px;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .form-group {

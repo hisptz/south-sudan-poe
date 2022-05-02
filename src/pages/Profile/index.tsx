@@ -157,9 +157,7 @@ const Profile = () => {
                 </div>
             </div>
             <div >
-        {/* 
-         Printing profile 
-        */}
+         
           <div>
               <div  className={styles[ isPrint ? "prifile" : 'no_print']}  id="print-profile">
               <img
