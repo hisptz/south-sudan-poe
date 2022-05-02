@@ -34,11 +34,11 @@ export default function useFormControl() {
 
     const form = useForm({
         shouldFocusError: true,
-        shouldUseNativeValidation:true
+        shouldUseNativeValidation:true,
+        reValidateMode:"onBlur",
     });
 
     useEffect(() => {
-
         if (param.id) {
             new BookingService().getBookingByEvent(param.id as string).then((data) => {
                 let obj = {};
