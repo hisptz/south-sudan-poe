@@ -31,7 +31,7 @@ export class Dhis2FormValidator {
 
         if (Boolean(control?.eq)) return control?.message;
 
-        return false;
+        return true;
     }
 
     static controlElement(dataElement: string) {

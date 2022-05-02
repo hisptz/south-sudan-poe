@@ -36,14 +36,13 @@ const FormBuilder = ({
                         const mandatory = control.compulsory ?? stageDataElements.filter(
                             (x) => x.dataElement.id === control.id
                         )[0]?.compulsory;
-
                         return (
                             <Controller
                                 key={`${control.id}-form-input`}
                                 rules={{
                                     required: mandatory
                                         ? `${control.displayFormName} is required`
-                                        : false,
+                                        : true,
                                     validate: (value: any)=>Dhis2FormValidator.validate(control.id,value)
                                 }}
                                 name={control.id}
@@ -56,10 +55,9 @@ const FormBuilder = ({
                                             filterable
                                             optionSet={control.optionSet}
                                             input={{
-                                                name: "",
+                                                name: control.id,
                                                 value: field.value,
                                                 onChange: (value:any)=>{
-      
                                                     if(formIds.includes(control.id)&&/[0-9]{1,}/g.test(value)){
                                                         return ;
                                                     }
