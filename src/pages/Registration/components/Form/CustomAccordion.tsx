@@ -1,6 +1,6 @@
 import { AccordionDetails, AccordionSummary, Typography } from '@mui/material'
 import Accordion from '@mui/material/Accordion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FormBuilder from '../FormBuilder'
 import { FORM_CONFIG_SECTION } from './constant'
 import { IconChevronDown24 } from '@dhis2/ui'
@@ -43,6 +43,16 @@ export function CustomAccordion({
     }
    
   }
+ 
+  useEffect(() => {
+    if( keyValue === 0) {
+        setExpanded(!isExpand) 
+
+    }
+
+  },[])
+      
+
 
   return (
     <Accordion
