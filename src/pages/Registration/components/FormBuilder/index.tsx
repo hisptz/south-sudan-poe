@@ -52,7 +52,7 @@ const FormBuilder = ({
                                     rules={{
                                         required: mandatory
                                             ? `${control.displayFormName} is required`
-                                            : true,
+                                            : false,
                                         validate: (value: any) =>
                                             Dhis2FormValidator.validate(control.id, value),
                                     }}
@@ -78,15 +78,19 @@ const FormBuilder = ({
                                                                 if (/[0-9]{1,}/g.test(value))
                                                                     return;
                                                                 break;
+                                                            case DATA_ELEMENTS.durationStayInSouthSudan:
+                                                                if (value <0) return;
+                                                                break;
                                                         }
+
                                                         const { canHide, elements } =
                                                             Dhis2FormValidator.canHideControl(
                                                                 control.id,
                                                                 value
                                                             );
-                                                        if (canHide) {
+
+                                                        if (canHide)
                                                             setHiddenElements(elements);
-                                                        }
 
                                                         setFormValue({
                                                             ...{ [control.id]: value },

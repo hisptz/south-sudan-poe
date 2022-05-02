@@ -8,6 +8,7 @@ export enum Action {
 export const DATA_ELEMENTS = {
     firstName:"YCHZU8pxHLI",
     lastName:"gms6oEPUk7D",
+    durationStayInSouthSudan:"oBhPNGyqn2a",
     departureCountry: "cZpW431xdsq",
     passport:"v5KB4meGBFe",
     otherPassport:"e2Erb6wn0rc",

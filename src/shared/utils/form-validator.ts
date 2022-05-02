@@ -29,7 +29,7 @@ export class Dhis2FormValidator {
     static validate(dataElement: string, value: any) {
         Object.assign(this.elements, { [dataElement]: value });
 
-        const control = this.controlElement(dataElement);
+        const control = this.controlElement(dataElement, Action.showError);
 
         if (Boolean(control?.eq)) return control?.message;
 
@@ -42,7 +42,6 @@ export class Dhis2FormValidator {
             : Object.assign(this.elements, value);
 
         const control = this.skipControlElement(dataElement, elements);
-
         return Boolean(control?.eq);
     }
 
@@ -59,7 +58,7 @@ export class Dhis2FormValidator {
         return { canHide, elements };
     }
 
-    static controlElement(dataElement: string, action: Action = Action.showError) {
+    static controlElement(dataElement: string, action: Action) {
         return Dhis2Elements.filter(
             (x) => x.action === action && x.dataElement === dataElement
         ).map((x) =>
