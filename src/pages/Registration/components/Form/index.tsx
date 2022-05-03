@@ -1,43 +1,36 @@
-import { Button } from '@dhis2/ui'
-import styles from './Form.module.css'
-import { FormProvider } from 'react-hook-form'
-import { Link } from 'react-router-dom'
-import useFormControl from './hooks/form'
-import Loader from '../../../../shared/components/Loader'
-import Error from '../../../../shared/components/Error'
-import i18n from '@dhis2/d2-i18n'
-import { DevTool } from '@hookform/devtools'
-import { CustomAccordion } from './CustomAccordion'
+import { Button } from "@dhis2/ui";
+import styles from "./Form.module.css";
+import { FormProvider } from "react-hook-form";
+import { Link } from "react-router-dom";
+import useFormControl from "./hooks/form";
+import Loader from "../../../../shared/components/Loader";
+import Error from "../../../../shared/components/Error";
+import i18n from "@dhis2/d2-i18n";
+import { DevTool } from "@hookform/devtools";
+import { CustomAccordion } from "./CustomAccordion";
 
 const Form = () => {
-  const {
-    loading,
-    error,
-    sections,
-    dataElements,
-    onSubmit,
-    form,
-    saving,
-  } = useFormControl()
+  const { loading, error, sections, dataElements, onSubmit, form, saving } =
+    useFormControl();
 
   if (loading) {
     return (
       <div
         style={{
           minHeight: 500,
-          justifyContent: 'center',
-          alignItems: 'center',
-          display: 'flex',
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
         }}
       >
         <Loader small />
       </div>
-    )
+    );
   }
 
-  if (error) return <Error error={error} />
+  if (error) return <Error error={error} />;
 
-  if (!sections) return <div>No form metadata</div>
+  if (!sections) return <div>No form metadata</div>;
 
   return (
     <FormProvider {...form}>
@@ -46,22 +39,22 @@ const Form = () => {
           sections?.map((sectionPosition: any, key: any) => {
             let sectionDataElementId: any[] =
               key === 0
-                ? sections[key]['dataElements']
-                : sections[key - 1]['dataElements']
+                ? sections[key]["dataElements"]
+                : sections[key - 1]["dataElements"];
             return (
               <CustomAccordion
-              keyValue={key}
+                keyValue={key}
                 sectionPosition={sectionPosition}
                 dataElements={dataElements}
                 sectionDataElementIds={sectionDataElementId}
               />
-            )
+            );
           })}
 
-        <div className={styles['form-group']}>
+        <div className={styles["form-group"]}>
           <Link to="/">
             <Button name="Primary button" value="default">
-              {i18n.t('Cancel')}
+              {i18n.t("Cancel")}
             </Button>
           </Link>
           <Button
@@ -71,13 +64,13 @@ const Form = () => {
             name="Primary button"
             value="default"
           >
-            {saving ? i18n.t('Saving...') : i18n.t('Save')}
+            {saving ? i18n.t("Saving...") : i18n.t("Save")}
           </Button>
         </div>
       </form>
       <DevTool control={form?.control} />
     </FormProvider>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;
