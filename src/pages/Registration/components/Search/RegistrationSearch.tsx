@@ -47,7 +47,11 @@ const RegistrationSearch = () => {
                     navigate(`/profile/${contents.eventId}`,)
                 }
             } else {
-                navigate("/registration")
+                navigate("/registration", {
+                    state: {
+                        passportId: searchKeyword
+                    }
+                })
             }
         }
     }, [state, contents, searchKeyword]);
