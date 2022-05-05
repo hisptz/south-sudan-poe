@@ -76,16 +76,13 @@ export class Dhis2FormValidator {
   static skipControlElement(dataElement: string, elements: Dhis2FormElement[]) {
     return elements
       ?.filter((x) => x.respondedDataElement === dataElement && x.action === Action.hideField)
-      .map((x) => {
-        // console.log(x.respondedDataElement,x.condition)
-        return Object.assign(
-          {},
-          {
-            //eslint-disable-next-line
-            eq: eval(this.translateDhis2Eq(x.condition) as string),
-          }
-        );
-      })[0];
+      .map((x) =>Object.assign(
+        {},
+        {
+          //eslint-disable-next-line
+          eq: eval(this.translateDhis2Eq(x.condition) as string),
+        }
+      ))[0];
   }
 
   static translateDhis2Eq(condition?: string) {
