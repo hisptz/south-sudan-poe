@@ -9,3 +9,8 @@ export const FORM_CONFIG_SECTION = {
   TRIP_INFO: "utlt6SfyIs9",
   HEALTH_INFO: "CstdZxfieOG",
 };
+
+
+export const TEMPLATE_FIELDS = [
+    ""
+]

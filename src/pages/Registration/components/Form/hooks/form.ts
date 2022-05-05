@@ -7,10 +7,11 @@ import {useCallback, useEffect, useMemo, useState} from "react";
 import {createBooking, updateBooking} from "../services";
 import {cloneDeep, findIndex, get, isEmpty, set} from "lodash";
 import {METADATA} from "../../../../../core/constants";
-import {getEventFormData, sanitizeFields} from "../utils";
+import {getEventFormData, getTemplateFormData, sanitizeFields} from "../utils";
 import {PASSPORT_NUMBER_DATA_ELEMENT_ID} from "../constant";
 import {useRecoilCallback} from "recoil";
 import {currentBookingProfile} from "../../../../../core/states/Booking_state";
+import {DataElement, FormSection} from "../../../interfaces/form";
 
 export default function useFormControl() {
     const [dataLoading, setDataLoading] = useState(false);
@@ -47,7 +48,7 @@ export default function useFormControl() {
             const state: any = locationState;
             if (state?.eventId) {
                 setDataLoading(true);
-                form.reset(await getEventFormData(state.eventId));
+                form.reset(getTemplateFormData(await getEventFormData(state.eventId)));
                 setDataLoading(false);
                 return;
             }
@@ -78,15 +79,15 @@ export default function useFormControl() {
         [hide, navigate, param.id]
     );
 
-    const sections = useMemo(() => {
+    const sections: FormSection[] = useMemo(() => {
         if (formMetaData && !orgUnitsLoading) {
-            const metadataSections: any = cloneDeep(
+            const metadataSections: FormSection[] = cloneDeep(
                 formMetaData?.programStages?.[0]?.programStageSections
             );
             if (metadataSections && !isEmpty(metadataSections)) {
                 const tripSectionIndex = findIndex(
                     metadataSections,
-                    (x: { id: METADATA }) => x.id === METADATA.TRIP_INFO_SECTION_ID
+                    (x: { id: string }) => x.id === METADATA.TRIP_INFO_SECTION_ID
                 );
                 if (tripSectionIndex > -1) {
                     const dataElements = get(
@@ -99,13 +100,11 @@ export default function useFormControl() {
                     ]);
                 }
             }
-
             return metadataSections;
         }
-
-        return [orgUnitField];
+        return [];
     }, [formMetaData, orgUnitsLoading]);
-    const dataElements =
+    const dataElements: DataElement[] =
         get(formMetaData, `programStages.0.programStageDataElements`) ?? [];
 
     return {

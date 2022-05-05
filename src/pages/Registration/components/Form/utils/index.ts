@@ -1,5 +1,6 @@
-import {get, set} from "lodash";
+import {forIn, get, set} from "lodash";
 import BookingService from "../../../../../core/services/BookingService";
+import {DATA_ELEMENTS} from "../../../../../core/constants/dhis2Element";
 
 export const getEventFormData = async (eventId: string) => {
     try {
@@ -18,7 +19,28 @@ export const getEventFormData = async (eventId: string) => {
     }
 }
 
+const templateFields = [
+    DATA_ELEMENTS.firstName,
+    DATA_ELEMENTS.lastName,
+    DATA_ELEMENTS.passport,
+    DATA_ELEMENTS.otherPassport,
+    DATA_ELEMENTS.age,
+    DATA_ELEMENTS.sex,
+    DATA_ELEMENTS.nationality,
+    DATA_ELEMENTS.issuingCountry,
+    DATA_ELEMENTS.otherIssuingCountry
+]
 
+export function getTemplateFormData(formData: any) {
+    const templateData = {...formData};
+
+    forIn(templateData, (value, key) => {
+        if (!templateFields.includes(key)) {
+            delete templateData[key];
+        }
+    })
+    return templateData;
+}
 
 export function sanitizeFields(
     fields: { [key: string]: any },
