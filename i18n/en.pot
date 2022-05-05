@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-05-05T07:44:25.571Z\n"
-"PO-Revision-Date: 2022-05-05T07:44:25.571Z\n"
+"POT-Creation-Date: 2022-05-05T12:37:05.984Z\n"
+"PO-Revision-Date: 2022-05-05T12:37:05.984Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
@@ -111,6 +111,9 @@ msgstr "Print"
 msgid "Welcome to South Sudan"
 msgstr "Welcome to South Sudan"
 
+msgid "Could not load data from server. Please try again later."
+msgstr "Could not load data from server. Please try again later."
+
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -125,9 +128,6 @@ msgstr "Booking successfully saved"
 
 msgid "Booking successfully updated"
 msgstr "Booking successfully updated"
-
-msgid "My Application "
-msgstr "My Application "
 
 msgid "Registration"
 msgstr "Registration"

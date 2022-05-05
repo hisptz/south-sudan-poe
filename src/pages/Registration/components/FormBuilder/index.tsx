@@ -8,6 +8,7 @@ import {
     Dhis2Elements,
 } from "../../../../core/constants/dhis2Element";
 import {DataElement, FormDataElement} from "../../interfaces/form";
+import {getCurrentDate} from "../Form/utils";
 
 const FormBuilder = ({
                          title,
@@ -76,8 +77,6 @@ const FormBuilder = ({
                                                                 if (value < 0) return;
                                                                 break;
                                                         }
-
-
                                                         const {canHide, elements} =
                                                             Dhis2FormValidator.canHideControl(
                                                                 control.id,
@@ -106,6 +105,7 @@ const FormBuilder = ({
                                                 required={mandatory}
                                                 valueType={control.valueType}
                                                 label={control.displayFormName}
+                                                max={control.valueType === "AGE" ? getCurrentDate() : undefined}
                                             />
                                         </div>
                                     )}

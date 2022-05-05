@@ -8,7 +8,7 @@
     "@dhis2/ui": "^8.1.11",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@hisptz/react-ui": "^1.0.43",
+    "@hisptz/react-ui": "^1.0.44",
     "@hookform/devtools": "^4.1.0",
     "@mui/material": "^5.6.3",
     "@testing-library/jest-dom": "^5.16.4",
