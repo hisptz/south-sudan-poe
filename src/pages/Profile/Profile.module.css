@@ -1,7 +1,16 @@
 .flex-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.flex-row_print {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 4%;
 }
 
 .flex-column {
@@ -13,6 +22,13 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+}
+
+.flex-column_print .flex-item_print {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    text-align: left;
 }
 
 .label-title {
@@ -35,6 +51,27 @@
     border: 1px solid darkgray;
 }
 
+.logo {
+    width: 120px !important;
+    height: auto !important;
+
+}
+
+.no_print {
+    position: absolute;
+    top: -1000000px;
+    left: -1000000px;
+    width: 100vw;
+}
+
+.profile {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 5%;
+    background-color: white;
+}
+
 @media only screen and (max-width: 768px) {
     .flex-item {
         flex-direction: row;
@@ -42,5 +79,19 @@
 
     .flex-row {
         flex-direction: column;
+    }
+
+    .flex-item_print {
+        flex-direction: row;
+    }
+
+    .flex-row_print {
+        flex-direction: column;
+    }
+}
+
+@media print {
+    @page {
+        size: landscape;
     }
 }

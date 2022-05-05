@@ -1,19 +1,23 @@
 .container {
-    padding: 16px;
+  padding: 16px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .form-group input {
-    margin-top: 4px !important;
+  margin-top: 4px !important;
 }
 
 .checkbox-container {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }

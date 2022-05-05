@@ -1,54 +1,59 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  text-align: center;
 }
-
 
 .container h1,
 p {
-    align-self: center;
+  align-self: center;
 }
 
 .container p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .cards-container {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  gap: 32px;
 }
 
 .card {
-    margin: 10px;
-    width: 250px;
-    min-height: 250px;
-    padding: 10px;
+
+}
+
+.intro{
+  text-align: center;
+  width: 50%;
 }
 
 .card img {
-    width: 250px;
-    height: auto;
+  width: 250px;
+  height: auto;
 }
 
 .card label {
-    text-decoration: none !important;
-    padding: 8px;
+  text-decoration: none !important;
+  padding: 8px;
 }
 
 @media only screen and (max-width: 768px) {
-    .cards-container {
-        flex-direction: column;
-        gap: 32px;
-    }
+  .cards-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .intro{
+    width: 100%;
+  }
 
-    .card {
-        margin: 0;
-        width: 100%;
-        padding: 0;
-        height: auto;
-    }
+  .card {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    height: auto;
+  }
 }

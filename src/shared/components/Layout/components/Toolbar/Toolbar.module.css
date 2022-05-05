@@ -1,67 +1,60 @@
 .toolbar {
-    background: #F2F2F2;
-    height: 120px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  background: #f2f2f2;
+  height: 120px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .toolbar div {
-    margin-left: 10px;
-
+  margin-left: 10px;
 }
 
 .toolbar h1 {
-    margin: 0
+  margin: 0;
 }
 
 .toolbar h3 {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .titles {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .dropdown {
-    align-self: flex-end
+  align-self: flex-end;
 }
 
 .logo {
-    width: auto;
-    height: 72px;
+  width: auto;
+  height: 75%;
 }
 
-
 @media only screen and (max-width: 768px) {
-    .toolbar {
-        height: 56px;
-    }
+  .toolbar {
+    height: 56px;
+  }
 
-    .toolbar h1 {
-        font-size: 24px;
-        margin: 2px 2px 0;
-    }
+  .toolbar h1 {
+    font-size: 24px;
+    margin: 2px 2px 0;
+  }
 
-    .toolbar h3 {
-        margin: 2px;
-        font-size: 14px;
-    }
+  .toolbar h3 {
+    margin: 2px;
+    font-size: 14px;
+  }
 
-    .titles {
-        flex: 1;
-        display: flex;
-        align-items: start;
-        flex-direction: column;
-    }
+  .titles {
+    flex: 1;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
 
-    .logo {
-        width: 100px;
-        height: 32px;
-    }
-
-    .dropdown {
-        display: none;
-    }
+  .dropdown-text {
+    display: none;
+  }
 }

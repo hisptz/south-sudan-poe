@@ -1,3 +1,1 @@
-
-
-export const portsOfEntryOrgUnitGroups = ["BU04XOR04VI"]
+export const portsOfEntryOrgUnitGroups = ["BU04XOR04VI"];

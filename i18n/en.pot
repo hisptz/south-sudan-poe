@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2022-05-05T14:42:10.920Z\n"
+"PO-Revision-Date: 2022-05-05T14:42:10.920Z\n"
+
+msgid "WELCOME TO SOUTH SUDAN"
+msgstr "WELCOME TO SOUTH SUDAN"
+
+msgid ""
+"We are glad that you have chosen to travel to South Sudan. For your safety "
+"and the well-being of those around you, please be informed that it is "
+"mandatory to complete the Public Health Surveillance Form online within 24 "
+"hours before arrival. You can start by searching your passport on the field "
+"above and complete the travellers form."
+msgstr ""
+"We are glad that you have chosen to travel to South Sudan. For your safety "
+"and the well-being of those around you, please be informed that it is "
+"mandatory to complete the Public Health Surveillance Form online within 24 "
+"hours before arrival. You can start by searching your passport on the field "
+"above and complete the travellers form."
+
+msgid "Register"
+msgstr "Register"
+
+msgid "My Application"
+msgstr "My Application"
+
+msgid "Enter the passport number above to search for the existing applications"
+msgstr "Enter the passport number above to search for the existing applications"
+
+msgid "No Results"
+msgstr "No Results"
+
+msgid "Sorry, we couldn't find any bookings for your passport number"
+msgstr "Sorry, we couldn't find any bookings for your passport number"
+
+msgid "Create Booking"
+msgstr "Create Booking"
+
+msgid "Passport Number"
+msgstr "Passport Number"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "S/n"
+msgstr "S/n"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Point of Entry"
+msgstr "Point of Entry"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "View"
+msgstr "View"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "My Applications"
+msgstr "My Applications"
+
+msgid "All applications with passport number {{searchKeyword}} has expired"
+msgstr "All applications with passport number {{searchKeyword}} has expired"
+
+msgid "Click here"
+msgstr "Click here"
+
+msgid "to register new"
+msgstr "to register new"
+
+msgid "Traveller profile"
+msgstr "Traveller profile"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Passport"
+msgstr "Passport"
+
+msgid "Phone number"
+msgstr "Phone number"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Gender"
+msgstr "Gender"
+
+msgid "Arrival Date"
+msgstr "Arrival Date"
+
+msgid "Flight number"
+msgstr "Flight number"
+
+msgid "Nationality"
+msgstr "Nationality"
+
+msgid "Print"
+msgstr "Print"
+
+msgid "Welcome to South Sudan"
+msgstr "Welcome to South Sudan"
+
+msgid "Could not load data from server. Please try again later."
+msgstr "Could not load data from server. Please try again later."
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Saving..."
+msgstr "Saving..."
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Booking successfully saved"
+msgstr "Booking successfully saved"
+
+msgid "Booking successfully updated"
+msgstr "Booking successfully updated"
+
+msgid "Registration"
+msgstr "Registration"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Something went wrong."
+msgstr "Something went wrong."
+
+msgid "Ministry of Health"
+msgstr "Ministry of Health"
+
+msgctxt "The passport is shown next to these words in bold"
+msgid "Sorry, we couldn't find any bookings for your passport number"
+msgstr "Sorry, we couldn't find any bookings for your passport number"
+
+msgctxt "Navigates to the registration page"
+msgid "Create Booking"
+msgstr "Create Booking"
+
+msgctxt "Continues 'to register new'"
+msgid "Click here"
+msgstr "Click here"
+
+msgctxt "Starts with 'Click here'"
+msgid "to register new"
+msgstr "to register new"

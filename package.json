@@ -1,12 +1,16 @@
 {
   "name": "sudan-poe",
-  "version": "1.0.0-alpha.02",
+  "version": "1.0.0-alpha.03",
   "private": true,
   "dependencies": {
     "@dhis2/app-runtime": "^3.4.3",
     "@dhis2/d2-i18n": "^1.1.0",
     "@dhis2/ui": "^8.1.11",
-    "@hisptz/react-ui": "^1.0.43",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@hisptz/react-ui": "^1.0.44",
+    "@hookform/devtools": "^4.1.0",
+    "@mui/material": "^5.6.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -16,9 +20,8 @@
     "@types/react-dom": "^17.0.15",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.26.1",
-    "html2canvas": "^1.0.0-rc.7",
-    "jspdf": "^2.3.1",
     "lodash": "^4.17.21",
+    "print-js": "^1.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-error-boundary": "^3.1.4",
@@ -32,6 +35,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "translation:extract": "d2-app-scripts i18n extract",
+    "translation:generate": "d2-app-scripts i18n generate",
+    "prestart": "npm run translation:extract && npm run translation:generate",
+    "prebuild": "npm run translation:extract && npm run translation:generate",
     "start": "react-scripts start",
     "build:app": "react-scripts build",
     "build": "./build.sh",
@@ -57,6 +64,7 @@
     ]
   },
   "devDependencies": {
+    "@dhis2/cli-app-scripts": "^9.0.0",
     "@types/lodash": "^4.14.181"
   },
   "proxy": "http://localhost:5000",
