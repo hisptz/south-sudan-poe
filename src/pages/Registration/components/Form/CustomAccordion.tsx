@@ -1,27 +1,31 @@
 import {AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import Accordion from "@mui/material/Accordion";
-import {useEffect, useState} from "react";
 import FormBuilder from "../FormBuilder";
-import {IconChevronDown24} from "@dhis2/ui";
+import {IconChevronDown24, IconErrorFilled24, colors} from "@dhis2/ui";
 import {useFormContext} from "react-hook-form";
 import {useParams} from "react-router-dom";
-import {DataElement,  FormSection} from "../../interfaces/form";
+import {DataElement, FormDataElement, FormSection} from "../../interfaces/form";
+import {useMemo} from "react";
+import {intersection} from "lodash";
 
 export function CustomAccordion({
                                     keyValue,
+                                    onExpand,
+                                    expandedAccordions,
                                     section,
                                     dataElements,
                                     previousSectionDataElementIds,
                                     formSectionIdValues
                                 }: {
     keyValue: number,
+    onExpand: (sectionId: string) => void,
+    expandedAccordions: string[],
     section: FormSection,
     dataElements: DataElement[],
     previousSectionDataElementIds: Array<string>,
     formSectionIdValues: Array<string>
 }) {
-    const [isExpand, setExpanded] = useState(false);
-    const {trigger} = useFormContext();
+    const {trigger, formState} = useFormContext();
     const param = useParams();
 
     const handleChange =
@@ -30,24 +34,25 @@ export function CustomAccordion({
                 return dataElements.id;
             });
             if (param.id) {
-                setExpanded(isExpanded);
+                onExpand(panelId);
             }
             if (keyValue === 0) {
-                setExpanded(isExpanded);
+                onExpand(section.id);
             } else {
                 const results = await trigger([...dataElementIds]);
                 if (results) {
-                    setExpanded(isExpanded);
-                    setExpanded(panelId);
+                    onExpand(section.id);
                 }
             }
         };
 
-    useEffect(() => {
-        if (keyValue === 0) {
-            setExpanded(!isExpand);
+    const sectionHasErrors = useMemo(() => {
+        const errors = formState.errors;
+
+        if (errors) {
+            return intersection(section.dataElements.map((dataElement: FormDataElement) => dataElement.id), Object.keys(errors)).length > 0;
         }
-    }, []);
+    }, [formState]);
 
     return (
         <Accordion
@@ -56,11 +61,7 @@ export function CustomAccordion({
             square
             disableGutters
             expanded={
-                section.id === formSectionIdValues[keyValue]
-                    ? isExpand
-                    : param.id
-                        ? isExpand
-                        : !isExpand
+                expandedAccordions.includes(section.id)
             }
             onChange={handleChange(section.id, previousSectionDataElementIds)}
         >
@@ -69,7 +70,13 @@ export function CustomAccordion({
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography>{section.displayFormName}</Typography>
+                <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}} className="w-100">
+                    <Typography
+                        style={{color: sectionHasErrors && colors.red500, fontWeight: "bold"}}>{section.displayFormName}</Typography>
+                    {
+                        sectionHasErrors && <IconErrorFilled24 color={colors.red500}/>
+                    }
+                </div>
             </AccordionSummary>
             <AccordionDetails>
                 <FormBuilder
