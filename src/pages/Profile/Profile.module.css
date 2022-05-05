@@ -1,92 +1,97 @@
 .flex-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .flex-row_print {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  align-items: center;
-  justify-content: space-around;
-  margin-left: 4%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 4%;
 }
 
 .flex-column {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-column .flex-item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
 }
+
 .flex-column_print .flex-item_print {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    text-align: left;
 }
+
 .label-title {
-  font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 4px;
 }
 
 .QR-code-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
 }
 
 .QR-code {
-  width: 100%;
-  height: auto;
-  text-align: center;
-  border: 1px solid darkgray;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    border: 1px solid darkgray;
 }
 
 .logo {
-  width: 90px !important;
-  height: 90px !important;
-  margin-bottom: 30px;
-  align-items: center;
-  align-content: center;
-  padding-left: 10%;
+    width: 120px !important;
+    height: auto !important;
+
 }
+
 .no_print {
-  display: none;
+    position: absolute;
+    top: -1000000px;
+    left: -1000000px;
+    width: 100vw;
 }
 
-.prifile {
-  width: 100%;
-  height: auto;
-  text-align: center;
-  padding-top: 5%;
-  background-color: white;
+.profile {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 5%;
+    background-color: white;
 }
+
 @media only screen and (max-width: 768px) {
-  .flex-item {
-    flex-direction: row;
-  }
+    .flex-item {
+        flex-direction: row;
+    }
 
-  .flex-row {
-    flex-direction: column;
-  }
+    .flex-row {
+        flex-direction: column;
+    }
 
-  .flex-item_print {
-    flex-direction: row;
-  }
+    .flex-item_print {
+        flex-direction: row;
+    }
 
-  .flex-row_print {
-    flex-direction: column;
-  }
+    .flex-row_print {
+        flex-direction: column;
+    }
 }
 
 @media print {
-  @page {
-    size: landscape;
-  }
+    @page {
+        size: landscape;
+    }
 }

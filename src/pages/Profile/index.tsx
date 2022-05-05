@@ -156,13 +156,15 @@ const Profile = () => {
           </Card>
         </div>
       </div>
-      <div>
-        {/* 
-         Printing profile 
+      <div
+      className={styles["no_print"]}
+      >
+        {/*
+         Printing profile
         */}
         <div>
           <div
-            className={styles[isPrint ? "prifile" : "no_print"]}
+            className={styles["profile"]}
             id="print-profile"
           >
             <img
