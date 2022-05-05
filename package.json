@@ -67,6 +67,6 @@
     "@dhis2/cli-app-scripts": "^9.0.0",
     "@types/lodash": "^4.14.181"
   },
-  "proxy": "http://localhost:3003",
+  "proxy": "http://localhost:5000",
   "homepage": "/sspoeportal/"
 }
