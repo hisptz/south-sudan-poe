@@ -1,69 +1,74 @@
 :root {
-    --primary: #001660;
-  }
+  --primary: #001660;
+}
 
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: #E5E5E5;
-    height: 100vh;
-    width: 100%;
-    accent-color: var(--primary)
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #e5e5e5;
+  height: 100vh;
+  width: 100%;
+  accent-color: var(--primary);
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .content-body {
-    padding: 0 128px;
+  padding: 0 128px;
 }
 
-input{
-     opacity: 0.9 !important;
+input {
+  opacity: 0.9 !important;
 }
 
-input:focus,.root.jsx-1165050001:focus,.jsx-3022565294:focus{
-    border: 1px solid var(--primary) !important; 
-    box-shadow: inset 0 0 0 2px   var(--primary) !important;
+input:focus,
+.root.jsx-1165050001:focus,
+.jsx-3022565294:focus {
+  border: 1px solid var(--primary) !important;
+  box-shadow: inset 0 0 0 2px var(--primary) !important;
 }
 
-button[class*="primary"],.progressbar{
-    background: var(--primary)!important; 
+button[class*="primary"],
+.progressbar {
+  background: var(--primary) !important;
 }
 
-.jsx-3022565294:active,div[class*="active"],div[class*="active"]:focus{
-   background-color: var(--primary)!important; 
+.jsx-3022565294:active,
+div[class*="active"],
+div[class*="active"]:focus {
+  background-color: var(--primary) !important;
 }
 
-.jsx-1838964138{
-    border-color: rgba(110, 122, 138, 0.15) rgba(110, 122, 138, 0.15) var(--primary)!important
+.jsx-1838964138 {
+  border-color: rgba(110, 122, 138, 0.15) rgba(110, 122, 138, 0.15)
+    var(--primary) !important;
 }
 
 @media only screen and (max-width: 1366px) {
-    .content-body {
-        padding: 0 64px;
-    }
+  .content-body {
+    padding: 0 64px;
+  }
 }
 
-
 @media only screen and (max-width: 768px) {
-    .content-body {
-        padding: 0 16px;
-    }
+  .content-body {
+    padding: 0 16px;
+  }
 }
 
 span.jsx-2059239790 {
-    padding-left: 4px;
-    color: red;
+  padding-left: 4px;
+  color: red;
 }
 
 #root {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
