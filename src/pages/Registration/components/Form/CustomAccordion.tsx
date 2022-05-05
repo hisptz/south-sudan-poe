@@ -15,7 +15,6 @@ export function CustomAccordion({
                                     section,
                                     dataElements,
                                     previousSectionDataElementIds,
-                                    formSectionIdValues
                                 }: {
     keyValue: number,
     onExpand: (sectionId: string) => void,
@@ -23,19 +22,14 @@ export function CustomAccordion({
     section: FormSection,
     dataElements: DataElement[],
     previousSectionDataElementIds: Array<string>,
-    formSectionIdValues: Array<string>
 }) {
     const {trigger, formState} = useFormContext();
-    const param = useParams();
 
     const handleChange =
         (panelId: any, controlIds: any) => async (event: any, isExpanded: any) => {
             const dataElementIds: any[] = controlIds?.map((dataElements: any) => {
                 return dataElements.id;
             });
-            if (param.id) {
-                onExpand(panelId);
-            }
             if (keyValue === 0) {
                 onExpand(section.id);
             } else {

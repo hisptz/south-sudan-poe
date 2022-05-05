@@ -38,22 +38,23 @@ const FormBuilder = ({
                             )[0]?.compulsory;
 
                         return (
-                            !Dhis2FormValidator.hide(
-                                control.id,
-                                formValue,
-                                hiddenElements ?? Dhis2Elements
-                            ) && (
-                                <Controller
-                                    key={`${control.id}-form-input`}
-                                    rules={{
-                                        required: mandatory
-                                            ? `${control.displayFormName} is required`
-                                            : false,
-                                        validate: (value: any) =>
-                                            Dhis2FormValidator.validate(control.id, value),
-                                    }}
-                                    name={control.id}
-                                    render={({field, fieldState}) => (
+                            <Controller
+                                key={`${control.id}-form-input`}
+                                rules={{
+                                    required: mandatory
+                                        ? `${control.displayFormName} is required`
+                                        : false,
+                                    validate: (value: any) =>
+                                        Dhis2FormValidator.validate(control.id, value),
+                                }}
+                                name={control.id}
+                                render={({field, fieldState}) => {
+                                    return (!Dhis2FormValidator.hide(
+                                        control.id ?? field.name,
+                                        formValue ?? field.value,
+                                        hiddenElements ?? Dhis2Elements
+                                    ) ? (
+
                                         <div
                                             key={key}
                                             style={{
@@ -77,6 +78,7 @@ const FormBuilder = ({
                                                                 if (value < 0) return;
                                                                 break;
                                                         }
+
                                                         const {canHide, elements} =
                                                             Dhis2FormValidator.canHideControl(
                                                                 control.id,
@@ -84,7 +86,6 @@ const FormBuilder = ({
                                                             );
 
                                                         if (canHide) setHiddenElements(elements);
-
 
                                                         setFormValue({
                                                             ...{[control.id]: value},
@@ -108,9 +109,9 @@ const FormBuilder = ({
                                                 max={control.valueType === "AGE" ? getCurrentDate() : undefined}
                                             />
                                         </div>
-                                    )}
-                                />
-                            )
+                                    ) : (<div></div>))
+                                }}
+                            />
                         );
                     })}
                 </div>
