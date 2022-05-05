@@ -7,6 +7,7 @@ import {
   DATA_ELEMENTS,
   Dhis2Elements,
 } from "../../../../core/constants/dhis2Element";
+import {DataElement, FormDataElement} from "../../interfaces/form";
 
 const FormBuilder = ({
   title,
@@ -15,19 +16,9 @@ const FormBuilder = ({
 }: {
   title: string;
   controls:
-    | {
-        id: string;
-        displayFormName: string;
-        valueType: string;
-        value: any;
-        optionSet?: Array<any>;
-      }[]
+    | FormDataElement[]
     | any[];
-  stageDataElements: {
-    id: string;
-    compulsory: boolean;
-    dataElement: { id: string };
-  }[];
+  stageDataElements: DataElement[];
 }) => {
   const [formValue, setFormValue] = useState<any>();
   const [hiddenElements, setHiddenElements] = useState<any>();

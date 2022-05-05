@@ -8,6 +8,7 @@ import Error from "../../../../shared/components/Error";
 import i18n from "@dhis2/d2-i18n";
 import { DevTool } from "@hookform/devtools";
 import { CustomAccordion } from "./CustomAccordion";
+import {FormSection} from "../../interfaces/form";
 
 const Form = () => {
   const { loading, error, sections, dataElements, onSubmit, form, saving } =
@@ -36,17 +37,18 @@ const Form = () => {
     <FormProvider {...form}>
       <form className={styles.container} onSubmit={form.handleSubmit(onSubmit)}>
         {sections &&
-          sections?.map((sectionPosition: any, key: any) => {
-            let sectionDataElementId: any[] =
+          sections?.map((section: FormSection, key: number) => {
+            let previousSectionDataElementIds: any[] =
               key === 0
                 ? sections[key]["dataElements"]
                 : sections[key - 1]["dataElements"];
             return (
               <CustomAccordion
                 keyValue={key}
-                sectionPosition={sectionPosition}
+                section={section}
                 dataElements={dataElements}
-                sectionDataElementIds={sectionDataElementId}
+                previousSectionDataElementIds={previousSectionDataElementIds}
+                formSectionIdValues={sections?.map((section: {id: string}) => section.id)}
               />
             );
           })}
