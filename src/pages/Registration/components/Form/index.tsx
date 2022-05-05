@@ -1,7 +1,7 @@
 import {Button} from "@dhis2/ui";
 import styles from "./Form.module.css";
 import {FormProvider} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import useFormControl from "./hooks/form";
 import Loader from "../../../../shared/components/Loader";
 import Error from "../../../../shared/components/Error";
@@ -24,6 +24,8 @@ const reducer = (expandedAccordions: any[], sectionId: string) => {
 const Form = () => {
     const {loading, error, sections, dataElements, onSubmit, form, saving} =
         useFormControl();
+
+    const navigate = useNavigate();
 
     const [expandedAccordions, setExpandedAccordions] = useReducer(reducer, compact([head(sections)?.id]));
 
@@ -71,11 +73,11 @@ const Form = () => {
                     })}
 
                 <div className={styles["form-group"]}>
-                    <Link to="/">
-                        <Button name="Primary button" value="default">
-                            {i18n.t("Cancel")}
-                        </Button>
-                    </Link>
+                    <Button onClick={() => {
+                        navigate("/");
+                    }} name="Primary button" value="default">
+                        {i18n.t("Cancel")}
+                    </Button>
                     <Button
                         type="submit"
                         primary
