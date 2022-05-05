@@ -90,11 +90,6 @@ const FormBuilder = ({
                                                         setFormValue({
                                                             ...{[control.id]: value},
                                                         });
-
-                                                        if (control.valueType === "TRUE_ONLY") {
-                                                            field.onChange(value ? true : undefined)
-                                                            return;
-                                                        }
                                                         field.onChange(value);
                                                     },
                                                 }}

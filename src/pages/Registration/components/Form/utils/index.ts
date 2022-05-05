@@ -57,7 +57,7 @@ export function sanitizeFields(
     const dataValues = Object.keys(sanitizedFields).map((key) => {
         return {
             dataElement: key,
-            value: sanitizedFields[key],
+            value: typeof sanitizedFields[key] === "boolean" ? sanitizedFields[key] || undefined : sanitizedFields[key],
         };
     });
 
