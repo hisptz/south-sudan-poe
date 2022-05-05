@@ -37,8 +37,8 @@ export class Dhis2FormValidator {
   }
 
   static hide(dataElement: string, value: any, elements: any[]) {
-    !value
-      ? Object.assign(this.elements, { [dataElement]: null })
+    typeof value !== "object"
+      ? Object.assign(this.elements, { [dataElement]: value })
       : Object.assign(this.elements, value);
 
     const control = this.skipControlElement(dataElement, elements);
@@ -75,28 +75,22 @@ export class Dhis2FormValidator {
 
   static skipControlElement(dataElement: string, elements: Dhis2FormElement[]) {
     return elements
-      ?.filter(
-        (x) =>
-          x.respondedDataElement === dataElement &&
-          x.action === Action.hideField
-      )
-      .map((x) =>
-        Object.assign(
+      ?.filter((x) => x.respondedDataElement === dataElement && x.action === Action.hideField)
+      .map((x) => {
+        // console.log(x.respondedDataElement,x.condition)
+        return Object.assign(
           {},
           {
             //eslint-disable-next-line
             eq: eval(this.translateDhis2Eq(x.condition) as string),
           }
-        )
-      )[0];
+        );
+      })[0];
   }
 
   static translateDhis2Eq(condition?: string) {
     Object.keys(this.elements).forEach((key) => {
-      condition = condition?.replaceAll(
-        key,
-        JSON.stringify(this.elements[key])
-      ) as string;
+      condition = condition?.replaceAll(key, JSON.stringify(this.elements[key])) as string;
     });
 
     return condition;
