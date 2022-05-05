@@ -9,8 +9,8 @@ import i18n from "@dhis2/d2-i18n";
 import {DevTool} from "@hookform/devtools";
 import {CustomAccordion} from "./CustomAccordion";
 import {FormSection} from "../../interfaces/form";
-import {useReducer, useState} from "react";
-import {compact, head} from "lodash";
+import {useEffect, useReducer, useState} from "react";
+import {compact, head, isEmpty} from "lodash";
 
 
 const reducer = (expandedAccordions: any[], sectionId: string) => {
@@ -28,6 +28,13 @@ const Form = () => {
     const navigate = useNavigate();
 
     const [expandedAccordions, setExpandedAccordions] = useReducer(reducer, compact([head(sections)?.id]));
+
+    useEffect(() => {
+        if (!loading && !isEmpty(sections) && isEmpty(expandedAccordions)) {
+            setExpandedAccordions(head(sections)?.id ?? "");
+        }
+    }, [loading, sections]);
+
 
     if (loading) {
         return (
@@ -67,7 +74,6 @@ const Form = () => {
                                 section={section}
                                 dataElements={dataElements}
                                 previousSectionDataElementIds={previousSectionDataElementIds}
-                                formSectionIdValues={sections?.map((section: { id: string }) => section.id)}
                             />
                         );
                     })}
