@@ -34,7 +34,8 @@ export default function useFormControl() {
     const form = useForm({
         shouldFocusError: true,
         shouldUseNativeValidation: true,
-        reValidateMode: "onBlur",
+        reValidateMode: "onChange",
+        mode: "onChange",
     });
 
     useEffect(() => {

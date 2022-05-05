@@ -4,7 +4,7 @@ export interface Language {
   flag?: string;
 }
 
-export const defaultLanguage = "sw";
+export const defaultLanguage = "en";
 
 export const LANGUAGES: Language[] = [
   {

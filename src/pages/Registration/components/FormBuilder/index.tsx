@@ -1,24 +1,25 @@
 import styles from "./FormBuilder.module.css";
-import { CustomInput } from "@hisptz/react-ui";
-import { Controller } from "react-hook-form";
-import { Dhis2FormValidator } from "../../../../shared/utils/form-validator";
-import { useState } from "react";
+import {CustomInput} from "@hisptz/react-ui";
+import {Controller} from "react-hook-form";
+import {Dhis2FormValidator} from "../../../../shared/utils/form-validator";
+import {useState} from "react";
 import {
-  DATA_ELEMENTS,
-  Dhis2Elements,
+    DATA_ELEMENTS,
+    Dhis2Elements,
 } from "../../../../core/constants/dhis2Element";
 import {DataElement, FormDataElement} from "../../interfaces/form";
+import {getCurrentDate} from "../Form/utils";
 
 const FormBuilder = ({
-  title,
-  controls,
-  stageDataElements,
-}: {
-  title: string;
-  controls:
-    | FormDataElement[]
-    | any[];
-  stageDataElements: DataElement[];
+                         title,
+                         controls,
+                         stageDataElements,
+                     }: {
+    title: string;
+    controls:
+        | FormDataElement[]
+        | any[];
+    stageDataElements: DataElement[];
 }) => {
   const [formValue, setFormValue] = useState<any>();
   const [hiddenElements, setHiddenElements] = useState<any>();
@@ -35,7 +36,7 @@ const FormBuilder = ({
               stageDataElements.filter(
                 (x) => x.dataElement.id === control.id
               )[0]?.compulsory;
-              
+
             return (
                 <Controller
                   key={`${control.id}-form-input`}
@@ -53,7 +54,7 @@ const FormBuilder = ({
                       formValue??field.value,
                       hiddenElements ?? Dhis2Elements
                     )? (
-                    
+
                       <div
                         key={key}
                         style={{
@@ -77,18 +78,22 @@ const FormBuilder = ({
                                   if (value < 0) return;
                                   break;
                               }
-  
+
                               const { canHide, elements } =
                                 Dhis2FormValidator.canHideControl(
                                   control.id,
                                   value
                                 );
-  
+
                               if (canHide) setHiddenElements(elements);
-  
+
                               setFormValue({
-                                ...{ [control.id]: value },
-                              });
+                                ...{ [control.id]: value },});
+
+                                                        if (control.valueType === "TRUE_ONLY") {
+                                                            field.onChange(value ? true : undefined)
+                                                            return;
+                              }
                               field.onChange(value);
                             },
                           }}
@@ -100,6 +105,7 @@ const FormBuilder = ({
                           required={mandatory}
                           valueType={control.valueType}
                           label={control.displayFormName}
+                          max={control.valueType === "AGE" ? getCurrentDate() : undefined}
                         />
                       </div>
                     ):(<div></div>))

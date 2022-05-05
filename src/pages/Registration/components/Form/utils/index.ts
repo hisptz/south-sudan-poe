@@ -1,4 +1,4 @@
-import {forIn, get, set} from "lodash";
+import {forIn, get, padStart, set} from "lodash";
 import BookingService from "../../../../../core/services/BookingService";
 import {DATA_ELEMENTS} from "../../../../../core/constants/dhis2Element";
 
@@ -30,6 +30,11 @@ const templateFields = [
     DATA_ELEMENTS.issuingCountry,
     DATA_ELEMENTS.otherIssuingCountry
 ]
+
+export function getCurrentDate() {
+    const date = new Date();
+    return `${date.getFullYear()}-${padStart((date.getMonth() + 1).toString(), 2, "0")}-${padStart(date.getDate().toString(), 2, "0")}`;
+}
 
 export function getTemplateFormData(formData: any) {
     const templateData = {...formData};
