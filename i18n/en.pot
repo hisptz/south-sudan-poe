@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-05-05T14:42:10.920Z\n"
-"PO-Revision-Date: 2022-05-05T14:42:10.920Z\n"
+"POT-Creation-Date: 2022-05-11T05:49:02.538Z\n"
+"PO-Revision-Date: 2022-05-11T05:49:02.538Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
@@ -126,8 +126,14 @@ msgstr "Save"
 msgid "Booking successfully saved"
 msgstr "Booking successfully saved"
 
+msgid "Error saving booking, {{errorMessage}}"
+msgstr "Error saving booking, {{errorMessage}}"
+
 msgid "Booking successfully updated"
 msgstr "Booking successfully updated"
+
+msgid "Error updating booking, {{ error }}"
+msgstr "Error updating booking, {{ error }}"
 
 msgid "Registration"
 msgstr "Registration"
