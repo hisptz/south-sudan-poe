@@ -66,3 +66,32 @@ export function sanitizeFields(
         dataValues,
     };
 }
+
+export function translateDisplayName(selectedLocale: string, displayName: string, metadata: any): string {
+    const locale = metadata?.translations?.find((x: any) => x.locale === selectedLocale);
+    if (!locale) return displayName;
+    return locale.value ?? displayName;
+}
+
+export function translateOptionSet(selectedLocale: string, optionSet: any) {
+    if (!optionSet) return optionSet;
+
+    const translatedOptions = optionSet?.options?.map((option: any) => {
+        const {translations} = option ?? {};
+
+        if (!translations) return option;
+
+        const locale = translations.find((x: any) => x.locale === selectedLocale);
+        if (!locale) return option;
+
+        return {
+            ...option,
+            name: locale.value,
+        }
+    });
+
+    return {
+        ...optionSet,
+        options: translatedOptions ?? optionSet?.options
+    }
+}
