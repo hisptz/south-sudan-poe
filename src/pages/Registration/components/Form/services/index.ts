@@ -47,8 +47,8 @@ export function createBooking(
     })
     .catch((error) => {
       showMessage(
-        i18n.t("Error saving booking: {{error}}", {
-          error: error.message,
+        i18n.t("Error saving booking, {{errorMessage}}", {
+          errorMessage: error.message,
         }),
         "critical",
         {
@@ -79,7 +79,7 @@ export function updateBooking(
     })
     .catch((error) => {
       showMessage(
-        i18n.t("Error updating booking: {{error}}", {
+        i18n.t("Error updating booking, {{ error }}", {
           error: error.message,
         }),
         "critical",
