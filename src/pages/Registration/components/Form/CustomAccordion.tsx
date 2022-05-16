@@ -7,6 +7,9 @@ import {useParams} from "react-router-dom";
 import {DataElement, FormDataElement, FormSection} from "../../interfaces/form";
 import {useMemo} from "react";
 import {intersection} from "lodash";
+import {translateDisplayName} from "./utils";
+import {LocaleState} from "../../../../core/states/language";
+import {useRecoilValue} from "recoil";
 
 export function CustomAccordion({
                                     keyValue,
@@ -23,7 +26,10 @@ export function CustomAccordion({
     dataElements: DataElement[],
     previousSectionDataElementIds: Array<string>,
 }) {
+    const selectedLocale = useRecoilValue(LocaleState);
     const {trigger, formState} = useFormContext();
+
+    console.log(section)
 
     const handleChange =
         (panelId: any, controlIds: any) => async (event: any, isExpanded: any) => {
@@ -66,7 +72,10 @@ export function CustomAccordion({
             >
                 <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}} className="w-100">
                     <Typography
-                        style={{color: sectionHasErrors && colors.red500, fontWeight: "bold"}}>{section.displayFormName}</Typography>
+                        style={{
+                            color: sectionHasErrors && colors.red500,
+                            fontWeight: "bold"
+                        }}>{translateDisplayName(selectedLocale, section.displayFormName, section)}</Typography>
                     {
                         sectionHasErrors && <IconErrorFilled24 color={colors.red500}/>
                     }
