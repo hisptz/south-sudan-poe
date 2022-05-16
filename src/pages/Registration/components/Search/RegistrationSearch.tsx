@@ -5,7 +5,7 @@ import {
     useRecoilValue,
     useRecoilValueLoadable,
 } from "recoil";
-import {Suspense, useEffect} from "react";
+import {Suspense, SyntheticEvent, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import i18n from "@dhis2/d2-i18n";
 import Landing from "../../../MyApplication/components/Landing";
@@ -104,6 +104,7 @@ const RegistrationSearch = () => {
 
 function Search() {
     const [searchValue, setSearchValue] = useState<string>("");
+    const [error, setError] = useState<boolean | undefined>();
 
     const search = useRecoilCallback(
         ({set, reset}) =>
@@ -116,8 +117,16 @@ function Search() {
     return (
         <div className={style.container}>
             <InputField
+                validationText={error ? i18n.t("Please enter a valid passport number") : undefined}
+                error={error}
+                min={4}
                 value={searchValue}
-                onChange={({value}: any) => setSearchValue(value)}
+                onChange={({value}: any,) => {
+                    if (error) {
+                        setError(false);
+                    }
+                    setSearchValue(value)
+                }}
                 placeholder={i18n.t("Passport Number")}
             />
             <div
@@ -130,7 +139,13 @@ function Search() {
             >
                 <Button
                     name="Primary button"
-                    onClick={() => search(searchValue)}
+                    onClick={() => {
+                        if (searchValue.length < 4) {
+                            setError(true)
+                        } else {
+                            search(searchValue);
+                        }
+                    }}
                     primary
                     value="default"
                 >
