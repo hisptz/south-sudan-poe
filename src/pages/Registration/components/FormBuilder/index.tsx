@@ -1,7 +1,7 @@
 import styles from "./FormBuilder.module.css";
 import {CustomInput} from "@hisptz/react-ui";
 import {Controller} from "react-hook-form";
-import {Dhis2FormValidator} from "../../../../shared/utils/form-validator";
+import {Dhis2FormValidator, getEmailValidatorPattern} from "../../../../shared/utils/form-validator";
 import {useState} from "react";
 import {
     DATA_ELEMENTS,
@@ -52,6 +52,7 @@ const FormBuilder = ({
                                         : false,
                                     validate: (value: any) =>
                                         Dhis2FormValidator.validate(control.id, value),
+                                    pattern: control.valueType === "EMAIL" ? getEmailValidatorPattern() : undefined
                                 }}
                                 name={control.id}
                                 render={({field, fieldState}) => {

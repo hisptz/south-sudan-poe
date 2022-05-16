@@ -227,4 +227,7 @@ export const Dhis2Elements = [
     respondedDataElement: `${DATA_ELEMENTS.otherPassport}`,
     displayName: "Other Passport Number",
   },
+  {
+    condition: ``
+  }
 ] as Dhis2FormElement[];

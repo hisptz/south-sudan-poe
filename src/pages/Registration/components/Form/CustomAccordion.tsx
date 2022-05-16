@@ -29,8 +29,6 @@ export function CustomAccordion({
     const selectedLocale = useRecoilValue(LocaleState);
     const {trigger, formState} = useFormContext();
 
-    console.log(section)
-
     const handleChange =
         (panelId: any, controlIds: any) => async (event: any, isExpanded: any) => {
             const dataElementIds: any[] = controlIds?.map((dataElements: any) => {
