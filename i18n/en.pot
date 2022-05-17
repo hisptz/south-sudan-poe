@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-05-16T14:23:50.804Z\n"
-"PO-Revision-Date: 2022-05-16T14:23:50.804Z\n"
+"POT-Creation-Date: 2022-05-17T13:15:33.210Z\n"
+"PO-Revision-Date: 2022-05-17T13:15:33.210Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
@@ -41,6 +41,9 @@ msgstr "Sorry, we couldn't find any bookings for your passport number"
 
 msgid "Create Booking"
 msgstr "Create Booking"
+
+msgid "Please enter a valid passport number"
+msgstr "Please enter a valid passport number"
 
 msgid "Passport Number"
 msgstr "Passport Number"
@@ -108,8 +111,14 @@ msgstr "Nationality"
 msgid "Print"
 msgstr "Print"
 
+msgid "South Sudan"
+msgstr "South Sudan"
+
 msgid "Welcome to South Sudan"
 msgstr "Welcome to South Sudan"
+
+msgid "Ministry of Health"
+msgstr "Ministry of Health"
 
 msgid "Could not load data from server. Please try again later."
 msgstr "Could not load data from server. Please try again later."
@@ -138,9 +147,6 @@ msgstr "Error updating booking, {{ error }}"
 msgid "{{ fieldName }} is required"
 msgstr "{{ fieldName }} is required"
 
-msgid "Please enter a valid email address"
-msgstr "Please enter a valid email address"
-
 msgid "Registration"
 msgstr "Registration"
 
@@ -152,9 +158,6 @@ msgstr "Error"
 
 msgid "Something went wrong."
 msgstr "Something went wrong."
-
-msgid "Ministry of Health"
-msgstr "Ministry of Health"
 
 msgctxt "The passport is shown next to these words in bold"
 msgid "Sorry, we couldn't find any bookings for your passport number"
