@@ -57,19 +57,18 @@
 
 }
 
-.no_print {
-    position: absolute;
-    top: -1000000px;
-    left: -1000000px;
-    width: 100vw;
-}
 
 .profile {
-    width: 100%;
+    width: 100vw;
     height: auto;
     text-align: center;
     padding-top: 5%;
     background-color: white;
+
+}
+
+.print-area {
+    display: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -91,7 +90,7 @@
 }
 
 @media print {
-    @page {
-        size: landscape;
+    .print-area {
+        display: block;
     }
 }
