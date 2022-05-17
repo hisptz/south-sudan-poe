@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-05-16T13:42:54.384Z\n"
-"PO-Revision-Date: 2022-05-16T13:42:54.384Z\n"
+"POT-Creation-Date: 2022-05-16T14:23:50.804Z\n"
+"PO-Revision-Date: 2022-05-16T14:23:50.804Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
@@ -137,6 +137,9 @@ msgstr "Error updating booking, {{ error }}"
 
 msgid "{{ fieldName }} is required"
 msgstr "{{ fieldName }} is required"
+
+msgid "Please enter a valid email address"
+msgstr "Please enter a valid email address"
 
 msgid "Registration"
 msgstr "Registration"
