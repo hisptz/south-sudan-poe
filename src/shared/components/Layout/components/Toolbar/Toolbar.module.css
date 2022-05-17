@@ -1,60 +1,85 @@
 .toolbar {
-  background: #f2f2f2;
-  height: 120px;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    background: #f2f2f2;
+    height: 120px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .toolbar div {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .toolbar h1 {
-  margin: 0;
+    margin: 0;
 }
 
 .toolbar h3 {
-  margin-top: 8px;
+    margin-top: 8px;
+    margin-bottom: 0;
 }
 
 .titles {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 .dropdown {
-  align-self: flex-end;
+    align-self: flex-end;
 }
 
 .logo {
-  width: auto;
-  height: 75%;
+    width: auto;
+    height: 100%;
+}
+
+.flag {
+    width: auto;
+    height: 80%;
+}
+
+.flag-area {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 @media only screen and (max-width: 768px) {
-  .toolbar {
-    height: 56px;
-  }
+    .toolbar {
+        height: 56px;
+    }
 
-  .toolbar h1 {
-    font-size: 24px;
-    margin: 2px 2px 0;
-  }
+    .flag{
+        height: 100%;
+        width: auto;
+    }
 
-  .toolbar h3 {
-    margin: 2px;
-    font-size: 14px;
-  }
+    .logo{
+        height: 150%;
+        width: auto;
+    }
 
-  .titles {
-    flex: 1;
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-  }
+    .toolbar h1 {
+        font-size: 24px;
+        margin: 2px 2px 0;
+    }
 
-  .dropdown-text {
-    display: none;
-  }
+    .toolbar h3 {
+        margin: 2px;
+        font-size: 14px;
+    }
+
+    .titles {
+        flex: 1;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .dropdown-text {
+        display: none;
+    }
 }
