@@ -37,7 +37,6 @@ export function CustomAccordion({
 
     const handleChange =
         (panelId: any, controlIds: any, previous?: boolean) => async (event: any, isExpanded: any) => {
-            console.log({panelId, controlIds, isExpanded});
             const dataElementIds: any[] = controlIds?.map((dataElements: any) => {
                 return dataElements.id;
             });

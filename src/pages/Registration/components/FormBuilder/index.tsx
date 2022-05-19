@@ -108,7 +108,7 @@ const FormBuilder = ({
                                                 required={mandatory}
                                                 valueType={control.valueType}
                                                 label={displayName}
-                                                min={control.valueType === "NUMBER" ? 0 : undefined}
+                                                min={control.valueType === "NUMBER" ? "0" : undefined}
                                                 max={control.valueType === "AGE" ? getCurrentDate() : undefined}
                                             />
                                         </div>

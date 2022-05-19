@@ -68,6 +68,7 @@ const Form = () => {
                                 : sections[key - 1]["dataElements"];
                         return (
                             <CustomAccordion
+                                key={`${key}-form-section`}
                                 previousSectionId={key === 0 ? undefined : get(sections[key - 1], "id")}
                                 nextSectionId={key === sections.length - 1 ? undefined : get(sections[key + 1], "id")}
                                 expandedAccordions={expandedAccordions}
