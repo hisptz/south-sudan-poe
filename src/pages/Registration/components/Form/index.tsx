@@ -97,7 +97,6 @@ const Form = () => {
                     </Button>
                 </div>
             </form>
-            <DevTool control={form?.control}/>
         </FormProvider>
     );
 };

@@ -11,6 +11,7 @@ import {LocaleState} from "../../../../core/states/language";
 import {useRecoilValue} from "recoil";
 import classes from "./Form.module.css"
 import i18n from '@dhis2/d2-i18n'
+import {CircularProgressbar} from "react-circular-progressbar";
 
 export function CustomAccordion({
                                     keyValue,
@@ -32,7 +33,7 @@ export function CustomAccordion({
     previousSectionDataElementIds: Array<string>,
 }) {
     const selectedLocale = useRecoilValue(LocaleState);
-    const {trigger, formState} = useFormContext();
+    const {trigger, formState, watch,} = useFormContext();
 
     const handleChange =
         (panelId: any, controlIds: any, previous?: boolean) => async (event: any, isExpanded: any) => {
@@ -60,6 +61,11 @@ export function CustomAccordion({
         }
     }, [formState]);
 
+    const filledSectionFieldsPercentage = useMemo(() => {
+        const values = watch(section.dataElements.map((dataElement: FormDataElement) => dataElement.id));
+        return Math.floor((values?.filter((value: any) => (value !== undefined) && (value !== "")).length / section?.dataElements?.length) * 100);
+    }, [formState])
+
     return (
         <Accordion
             key={keyValue + "-accordion"}
@@ -81,10 +87,31 @@ export function CustomAccordion({
                         style={{
                             color: sectionHasErrors && colors.red500,
                             fontWeight: "bold"
-                        }}>{translateDisplayName(selectedLocale, section.displayFormName, section)}</Typography>
-                    {
-                        sectionHasErrors && <IconErrorFilled24 color={colors.red500}/>
-                    }
+                        }}>{translateDisplayName(selectedLocale, section.displayFormName, section)} </Typography>
+                    <div style={{display: "flex", gap: 16, alignItems: "center"}}>
+                        {
+                            sectionHasErrors && <IconErrorFilled24 color={colors.red500}/>
+                        }
+                        <div style={{
+                            height: 32,
+                            width: 32
+                        }}>
+                            <CircularProgressbar
+                                styles={{
+                                    path: {
+                                        stroke: `var(--primary)`,
+                                    },
+                                    text: {
+                                        fill: `var(--primary)`,
+                                        fontSize: 32,
+                                        fontWeight: "bold"
+                                    }
+                                }} strokeWidth={10}
+                                value={filledSectionFieldsPercentage}
+                                text={`${filledSectionFieldsPercentage}%`}
+                            />
+                        </div>
+                    </div>
                 </div>
             </AccordionSummary>
             <AccordionDetails>
