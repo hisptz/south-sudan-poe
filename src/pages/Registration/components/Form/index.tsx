@@ -10,7 +10,7 @@ import {DevTool} from "@hookform/devtools";
 import {CustomAccordion} from "./CustomAccordion";
 import {FormSection} from "../../interfaces/form";
 import {useEffect, useReducer, useState} from "react";
-import {compact, head, isEmpty} from "lodash";
+import {compact, get, head, isEmpty} from "lodash";
 
 
 const reducer = (expandedAccordions: any[], sectionId: string) => {
@@ -68,6 +68,8 @@ const Form = () => {
                                 : sections[key - 1]["dataElements"];
                         return (
                             <CustomAccordion
+                                previousSectionId={key === 0 ? undefined : get(sections[key - 1], "id")}
+                                nextSectionId={key === sections.length - 1 ? undefined : get(sections[key + 1], "id")}
                                 expandedAccordions={expandedAccordions}
                                 onExpand={setExpandedAccordions}
                                 keyValue={key}

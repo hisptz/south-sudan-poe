@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-05-17T15:00:04.122Z\n"
-"PO-Revision-Date: 2022-05-17T15:00:04.122Z\n"
+"POT-Creation-Date: 2022-05-19T10:14:46.902Z\n"
+"PO-Revision-Date: 2022-05-19T10:14:46.902Z\n"
 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "WELCOME TO SOUTH SUDAN"
@@ -119,6 +119,12 @@ msgstr "Welcome to South Sudan"
 
 msgid "Ministry of Health"
 msgstr "Ministry of Health"
+
+msgid "Previous"
+msgstr "Previous"
+
+msgid "Next"
+msgstr "Next"
 
 msgid "Could not load data from server. Please try again later."
 msgstr "Could not load data from server. Please try again later."

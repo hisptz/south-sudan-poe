@@ -1,15 +1,16 @@
 import {AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import FormBuilder from "../FormBuilder";
-import {IconChevronDown24, IconErrorFilled24, colors} from "@dhis2/ui";
+import {IconChevronDown24, IconErrorFilled24, colors, Button} from "@dhis2/ui";
 import {useFormContext} from "react-hook-form";
-import {useParams} from "react-router-dom";
 import {DataElement, FormDataElement, FormSection} from "../../interfaces/form";
 import {useMemo} from "react";
 import {intersection} from "lodash";
 import {translateDisplayName} from "./utils";
 import {LocaleState} from "../../../../core/states/language";
 import {useRecoilValue} from "recoil";
+import classes from "./Form.module.css"
+import i18n from '@dhis2/d2-i18n'
 
 export function CustomAccordion({
                                     keyValue,
@@ -18,11 +19,15 @@ export function CustomAccordion({
                                     section,
                                     dataElements,
                                     previousSectionDataElementIds,
+                                    previousSectionId,
+                                    nextSectionId
                                 }: {
     keyValue: number,
     onExpand: (sectionId: string) => void,
     expandedAccordions: string[],
     section: FormSection,
+    nextSectionId?: string,
+    previousSectionId?: string,
     dataElements: DataElement[],
     previousSectionDataElementIds: Array<string>,
 }) {
@@ -30,18 +35,21 @@ export function CustomAccordion({
     const {trigger, formState} = useFormContext();
 
     const handleChange =
-        (panelId: any, controlIds: any) => async (event: any, isExpanded: any) => {
+        (panelId: any, controlIds: any, previous?: boolean) => async (event: any, isExpanded: any) => {
+            console.log({panelId, controlIds, isExpanded});
             const dataElementIds: any[] = controlIds?.map((dataElements: any) => {
                 return dataElements.id;
             });
-            if (keyValue === 0) {
-                onExpand(section.id);
+
+            if (previous) {
+                onExpand(panelId);
             } else {
                 const results = await trigger([...dataElementIds]);
                 if (results) {
-                    onExpand(section.id);
+                    onExpand(panelId);
                 }
             }
+
         };
 
     const sectionHasErrors = useMemo(() => {
@@ -86,6 +94,21 @@ export function CustomAccordion({
                     controls={section.dataElements}
                     stageDataElements={dataElements}
                 />
+                <div className={classes["accordion-footer"]}>
+                    {
+                        previousSectionId !== undefined && <Button
+                            onClick={handleChange(previousSectionId, section.dataElements, true)}
+                        >
+                            {i18n.t("Previous")}
+                        </Button>
+                    }
+                    {
+                        nextSectionId !== undefined && <Button
+                            onClick={handleChange(nextSectionId, section.dataElements)}>
+                            {i18n.t("Next")}
+                        </Button>
+                    }
+                </div>
             </AccordionDetails>
         </Accordion>
     );
