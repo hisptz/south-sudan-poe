@@ -119,7 +119,6 @@ function Search() {
             <InputField
                 validationText={error ? i18n.t("Please enter a valid passport number") : undefined}
                 error={error}
-                min={4}
                 value={searchValue}
                 onChange={({value}: any,) => {
                     if (error) {

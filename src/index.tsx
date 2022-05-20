@@ -9,6 +9,8 @@ import { Provider } from "@dhis2/app-runtime";
 import Alerts from "./shared/components/Alerts";
 import i18n from "@dhis2/d2-i18n";
 import { changeLocale } from "./shared/utils/language";
+import 'react-circular-progressbar/dist/styles.css';
+
 
 i18n.setDefaultNamespace("default");
 const locale = localStorage.getItem("locale") || "en";
