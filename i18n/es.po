@@ -5,47 +5,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: South Sudan POE\n"
-"Language: fr\n"
+"Language: es\n"
 
 #: 
 msgid "WELCOME TO SOUTH SUDAN"
-msgstr "BIENVENUE AU SOUDAN DU SUD"
+msgstr "BIENVENIDA A SUDÁN DEL SUR"
 
 #: 
 msgid "We are glad that you have chosen to travel to South Sudan. For your safety and the well-being of those around you, please be informed that it is mandatory to complete the Public Health Surveillance Form online within 24 hours before arrival. You can start by searching your passport on the field above and complete the travellers form."
-msgstr "Nous sommes heureux que vous ayez choisi de voyager au Soudan du Sud. Pour votre sécurité et le bien-être de votre entourage, veuillez noter qu'il est obligatoire de remplir le formulaire de surveillance de la santé publique en ligne dans les 24 heures avant votre arrivée. Vous pouvez commencer par rechercher votre passeport dans le champ ci-dessus et remplir le formulaire du voyageur."
+msgstr "Nos alegramos de que haya elegido viajar a Sudán del Sur. Para su seguridad y el bienestar de quienes lo rodean, tenga en cuenta que es obligatorio completar el Formulario de Vigilancia de Salud Pública en línea dentro de las 24 horas antes de la llegada. Puede comenzar buscando su pasaporte en el campo de arriba y completando el formulario del viajero."
 
 #: 
 msgid "Register"
-msgstr "S'inscrire"
+msgstr "Registro"
 
 #: 
 msgid "My Application"
-msgstr "Mon application"
+msgstr "Mi aplicación"
 
 #: 
 msgid "Enter the passport number above to search for the existing applications"
-msgstr "Entrez le numéro de passeport ci-dessus pour rechercher les applications existantes"
+msgstr "Ingrese el número de pasaporte arriba para buscar las solicitudes existentes"
 
 #: 
 msgid "No Results"
-msgstr "Aucun résultat"
+msgstr "No hay resultados"
 
 #: 
 msgid "Sorry, we couldn't find any bookings for your passport number"
-msgstr "Désolé, nous n'avons trouvé aucune réservation pour votre numéro de passeport"
+msgstr "Lo sentimos, no pudimos encontrar ninguna reserva para su número de pasaporte"
 
 #: 
 msgid "Create Booking"
-msgstr "Créer une réservation"
+msgstr "Crear reserva"
 
 #: 
 msgid "Passport Number"
-msgstr "Numéro de passeport"
+msgstr "Número de pasaporte"
 
 #: 
 msgid "Search"
-msgstr "Recherche"
+msgstr "Búsqueda"
 
 #: 
 msgid "S/n"
@@ -53,155 +53,155 @@ msgstr "S/n"
 
 #: 
 msgid "Date"
-msgstr "Date"
+msgstr "Fecha"
 
 #: 
 msgid "Point of Entry"
-msgstr "Point d'entrée"
+msgstr "Punto de entrada"
 
 #: 
 msgid "Actions"
-msgstr "Actions"
+msgstr "Comportamiento"
 
 #: 
 msgid "View"
-msgstr "voir"
+msgstr "Vista"
 
 #: 
 msgid "Edit"
-msgstr "Modifier"
+msgstr "Editar"
 
 #: 
 msgid "My Applications"
-msgstr "mes applications"
+msgstr "mis aplicaciónes"
 
 #: 
 msgid "All applications with passport number {{searchKeyword}} has expired"
-msgstr "Toutes les demandes avec le numéro de passeport {{mot-clé de recherche}} ont expiré"
+msgstr "Todas las solicitudes con número de pasaporte {{buscar la palabra clave}} han caducado"
 
 #: 
 msgid "Click here"
-msgstr "Cliquez ici"
+msgstr "haga clic aquí"
 
 #: 
 msgid "to register new"
-msgstr "enregistrer de nouveaux"
+msgstr "Registrarse nuevo"
 
 #: 
 msgid "Traveller profile"
-msgstr "Profil du voyageur"
+msgstr "Perfil del viajero"
 
 #: 
 msgid "Name"
-msgstr "Nom"
+msgstr "Nombre"
 
 #: 
 msgid "Passport"
-msgstr "Passeport"
+msgstr "Pasaporte"
 
 #: 
 msgid "Phone number"
-msgstr "Numéro de téléphone"
+msgstr "Número de teléfono"
 
 #: 
 msgid "Email"
-msgstr "E-mail"
+msgstr "Correo electrónico"
 
 #: 
 msgid "Gender"
-msgstr "Le sexe"
+msgstr "Género"
 
 #: 
 msgid "Arrival Date"
-msgstr "Date d'arrivée"
+msgstr "Fecha de llegada"
 
 #: 
 msgid "Flight number"
-msgstr "Numéro de vol"
+msgstr "Número de vuelo"
 
 #: 
 msgid "Nationality"
-msgstr "Nationalité"
+msgstr "Nacionalidad"
 
 #: 
 msgid "Print"
-msgstr "Imprimer"
+msgstr "Imprimir"
 
 #: 
 msgid "Welcome to South Sudan"
-msgstr "Bienvenue au Soudan du Sud"
+msgstr "Bienvenido a Sudán del Sur"
 
 #: 
 msgid "Could not load data from server. Please try again later."
-msgstr "Impossible de charger les données du serveur. Veuillez réessayer plus tard."
+msgstr "No se pudieron cargar los datos del servidor. Por favor, inténtelo de nuevo más tarde."
 
 #: 
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Cancelar"
 
 #: 
 msgid "Saving..."
-msgstr "Économie..."
+msgstr "Ahorro..."
 
 #: 
 msgid "Save"
-msgstr "Sauver"
+msgstr "Guardar"
 
 #: 
 msgid "Booking successfully saved"
-msgstr "Réservation enregistrée avec succès"
+msgstr "Reserva guardada con éxito"
 
 #: 
 msgid "Error saving booking, {{errorMessage}}"
-msgstr "Erreur lors de l'enregistrement de la réservation, {{Message d'erreur}}"
+msgstr "Error al guardar la reserva, {{mensaje de error}}"
 
 #: 
 msgid "Booking successfully updated"
-msgstr "Réservation mise à jour avec succès"
+msgstr "Reserva actualizada correctamente"
 
 #: 
 msgid "Error updating booking, {{ error }}"
-msgstr "Erreur lors de la mise à jour de la réservation, {{ erreur }}"
+msgstr "Error al actualizar la reserva, {{ error }}"
 
 #: 
 msgid "Registration"
-msgstr "Inscription"
+msgstr "Registro"
 
 #: 
 msgid "Back"
-msgstr "arrière"
+msgstr "Atrás"
 
 #: 
 msgid "Error"
-msgstr "Erreur"
+msgstr "Error"
 
 #: 
 msgid "Something went wrong."
-msgstr "Quelque chose s'est mal passé."
+msgstr "Algo salió mal."
 
 #: 
 msgid "Ministry of Health"
-msgstr "ministère de la Santé"
+msgstr "Ministerio de Salud"
 
 #: 
 msgctxt "The passport is shown next to these words in bold"
 msgid "Sorry, we couldn't find any bookings for your passport number"
-msgstr "Désolé, nous n'avons trouvé aucune réservation pour votre numéro de passeport"
+msgstr "Lo sentimos, no pudimos encontrar ninguna reserva para su número de pasaporte"
 
 #: 
 msgctxt "Navigates to the registration page"
 msgid "Create Booking"
-msgstr "Créer une réservation"
+msgstr "Crear reserva"
 
 #: 
 msgctxt "Continues 'to register new'"
 msgid "Click here"
-msgstr "Cliquez ici"
+msgstr "haga clic aquí"
 
 #: 
 msgctxt "Starts with 'Click here'"
 msgid "to register new"
-msgstr "enregistrer de nouveaux"
+msgstr "Registrarse nuevo"
 
 #: 
 msgid "Please enter a valid passport number"
