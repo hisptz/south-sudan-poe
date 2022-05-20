@@ -1,0 +1,225 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: South Sudan POE\n"
+"Language: ru\n"
+
+#: 
+msgid "WELCOME TO SOUTH SUDAN"
+msgstr "ДОБРО ПОЖАЛОВАТЬ В ЮЖНЫЙ СУДАН"
+
+#: 
+msgid "We are glad that you have chosen to travel to South Sudan. For your safety and the well-being of those around you, please be informed that it is mandatory to complete the Public Health Surveillance Form online within 24 hours before arrival. You can start by searching your passport on the field above and complete the travellers form."
+msgstr "Мы рады, что вы выбрали поездку в Южный Судан. В целях вашей безопасности и благополучия окружающих доводим до вашего сведения, что необходимо заполнить онлайн-форму общественного здравоохранения в течение 24 часов до прибытия. Вы можете начать с поиска своего паспорта в поле выше и заполнения формы путешественника."
+
+#: 
+msgid "Register"
+msgstr "регистр"
+
+#: 
+msgid "My Application"
+msgstr "Мое приложение"
+
+#: 
+msgid "Enter the passport number above to search for the existing applications"
+msgstr "Введите номер паспорта выше для поиска существующих приложений"
+
+#: 
+msgid "No Results"
+msgstr "Нет результатов"
+
+#: 
+msgid "Sorry, we couldn't find any bookings for your passport number"
+msgstr "К сожалению, мы не смогли найти никаких бронирований по вашему номеру паспорта."
+
+#: 
+msgid "Create Booking"
+msgstr "Создать бронирование"
+
+#: 
+msgid "Passport Number"
+msgstr "Номер паспорта"
+
+#: 
+msgid "Search"
+msgstr "Поиск"
+
+#: 
+msgid "S/n"
+msgstr "Серийный номер"
+
+#: 
+msgid "Date"
+msgstr "Дата"
+
+#: 
+msgid "Point of Entry"
+msgstr "Вход"
+
+#: 
+msgid "Actions"
+msgstr "Действия"
+
+#: 
+msgid "View"
+msgstr "Вид"
+
+#: 
+msgid "Edit"
+msgstr "Редактировать"
+
+#: 
+msgid "My Applications"
+msgstr "Мои приложения"
+
+#: 
+msgid "All applications with passport number {{searchKeyword}} has expired"
+msgstr "Срок действия всех заявок с номером паспорта {{Поиск по ключевому слову}} истек"
+
+#: 
+msgid "Click here"
+msgstr "кликните сюда"
+
+#: 
+msgid "to register new"
+msgstr "зарегистрировать новый"
+
+#: 
+msgid "Traveller profile"
+msgstr "Профиль путешественника"
+
+#: 
+msgid "Name"
+msgstr "Имя"
+
+#: 
+msgid "Passport"
+msgstr "Заграничный пасспорт"
+
+#: 
+msgid "Phone number"
+msgstr "Телефонный номер"
+
+#: 
+msgid "Email"
+msgstr "Эл. адрес"
+
+#: 
+msgid "Gender"
+msgstr "Пол"
+
+#: 
+msgid "Arrival Date"
+msgstr "Дата прибытия"
+
+#: 
+msgid "Flight number"
+msgstr "Номер рейса"
+
+#: 
+msgid "Nationality"
+msgstr "Национальность"
+
+#: 
+msgid "Print"
+msgstr "Распечатать"
+
+#: 
+msgid "Welcome to South Sudan"
+msgstr "Добро пожаловать в Южный Судан"
+
+#: 
+msgid "Could not load data from server. Please try again later."
+msgstr "Не удалось загрузить данные с сервера. Пожалуйста, повторите попытку позже."
+
+#: 
+msgid "Cancel"
+msgstr "Отмена"
+
+#: 
+msgid "Saving..."
+msgstr "Сохранение..."
+
+#: 
+msgid "Save"
+msgstr "Сохранять"
+
+#: 
+msgid "Booking successfully saved"
+msgstr "Бронирование успешно сохранено"
+
+#: 
+msgid "Error saving booking, {{errorMessage}}"
+msgstr "Ошибка сохранения бронирования, {{сообщение об ошибке}}"
+
+#: 
+msgid "Booking successfully updated"
+msgstr "Бронирование успешно обновлено"
+
+#: 
+msgid "Error updating booking, {{ error }}"
+msgstr "Ошибка при обновлении бронирования, {{ ошибка }}"
+
+#: 
+msgid "Registration"
+msgstr "Регистрация"
+
+#: 
+msgid "Back"
+msgstr "Назад"
+
+#: 
+msgid "Error"
+msgstr "Ошибка"
+
+#: 
+msgid "Something went wrong."
+msgstr "Что-то пошло не так."
+
+#: 
+msgid "Ministry of Health"
+msgstr "Министерство здравоохранения"
+
+#: 
+msgctxt "The passport is shown next to these words in bold"
+msgid "Sorry, we couldn't find any bookings for your passport number"
+msgstr "К сожалению, мы не смогли найти никаких бронирований по вашему номеру паспорта."
+
+#: 
+msgctxt "Navigates to the registration page"
+msgid "Create Booking"
+msgstr "Создать бронирование"
+
+#: 
+msgctxt "Continues 'to register new'"
+msgid "Click here"
+msgstr "кликните сюда"
+
+#: 
+msgctxt "Starts with 'Click here'"
+msgid "to register new"
+msgstr "зарегистрировать новый"
+
+#: 
+msgid "Please enter a valid passport number"
+msgstr ""
+
+#: 
+msgid "South Sudan"
+msgstr ""
+
+#: 
+msgid "Previous"
+msgstr ""
+
+#: 
+msgid "Next"
+msgstr ""
+
+#: 
+msgid "{{ fieldName }} is required"
+msgstr ""
+
