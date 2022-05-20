@@ -23,20 +23,20 @@ export const LANGUAGES: Language[] = [
     flag: "🇫🇷",
   },
   {
-    name: "Arabic",
+    name: "عربي",
     locale: "ar",
     flag: "🇸🇦",
   },
   {
-    name: "Russian",
+    name: "Русский",
     locale: "ru",
     flag: "🇷🇺",
   },
-  {
-    name: "Chinese",
-    locale: "zh",
-    flag: "🇨🇳",
-  },
+  // { //TODO: Uncomment this when the chinese translation is ready
+  //   name: "中国人",
+  //   locale: "zh",
+  //   flag: "🇨🇳",
+  // },
   {
     name: "Swahili",
     locale: "sw",

@@ -28,10 +28,10 @@ function LanguageSelector() {
         onClick={() => setOpen((prevState) => !prevState)}
         component={
           <FlyoutMenu>
-            {LANGUAGES.map(({ locale, name }) => (
+            {LANGUAGES.map(({ locale, name, flag }) => (
               <MenuItem
                 key={`${locale}-option`}
-                label={`${name}`}
+                label={`${flag}  ${name}`}
                 onClick={onLanguageChange(locale)}
               />
             ))}
