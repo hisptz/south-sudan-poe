@@ -203,3 +203,23 @@ msgctxt "Starts with 'Click here'"
 msgid "to register new"
 msgstr "لتسجيل جديد"
 
+#: 
+msgid "Please enter a valid passport number"
+msgstr "الرجاء إدخال رقم جواز سفر صالح"
+
+#: 
+msgid "South Sudan"
+msgstr "جنوب السودان"
+
+#: 
+msgid "Previous"
+msgstr "سابق"
+
+#: 
+msgid "Next"
+msgstr "التالي"
+
+#: 
+msgid "{{ fieldName }} is required"
+msgstr "{{اسم الحقل}} مطلوب"
+

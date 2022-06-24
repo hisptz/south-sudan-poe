@@ -1,137 +1,225 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-04-28T09:44:51.106Z\n"
-"PO-Revision-Date: 2022-04-28T09:44:51.106Z\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: South Sudan POE\n"
+"Language: sw\n"
 
+#: 
 msgid "WELCOME TO SOUTH SUDAN"
 msgstr "KARIBU SUDANI YA KUSINI"
 
-msgid ""
-"We are glad that you have chosen to travel to South Sudan. For your safety "
-"and the well-being of those around you, please be informed that it is "
-"mandatory to complete the Public Health Surveillance Form online within 24 "
-"hours before arrival. You can start by searching your passport on the field "
-"above and complete the travellers form."
-msgstr ""
-"Tunafurahi umeamua kutembelea Sudani ya kusini. Kwa usalama wako na wale wanaokuzunguka, tunakutaarifu kuwa"
-"ni lazima kujaza fomu ya ufuatiliaji wa afya ya jamii (Public Health Surveillance Form) ndani ya saa 24 kabla ya kufika nchini."
-"Kwa kuanza, unaweza ukatafuta ombi lililopita kwa kutumia pasipoti namba yako au ukawasilisha ombi jipya"
+#: 
+msgid "We are glad that you have chosen to travel to South Sudan. For your safety and the well-being of those around you, please be informed that it is mandatory to complete the Public Health Surveillance Form online within 24 hours before arrival. You can start by searching your passport on the field above and complete the travellers form."
+msgstr "Tunafurahi umeamua kutembelea Sudani ya kusini. Kwa usalama wako na wale wanaokuzunguka, tunakutaarifu kuwani lazima kujaza fomu ya ufuatiliaji wa afya ya jamii (Public Health Surveillance Form) ndani ya saa 24 kabla ya kufika nchini.Kwa kuanza, unaweza ukatafuta ombi lililopita kwa kutumia pasipoti namba yako au ukawasilisha ombi jipya"
 
+#: 
 msgid "Register"
 msgstr "Jisajili"
 
+#: 
 msgid "My Application"
 msgstr "Usajili wangu"
 
+#: 
 msgid "Enter the passport number above to search for the existing applications"
 msgstr "Ingiza namba ya pasipoti kutafuta usajili uliopo"
 
+#: 
 msgid "No Results"
 msgstr "Hakuna matokeo"
 
+#: 
 msgid "Sorry, we couldn't find any bookings for your passport number"
 msgstr "Samahani, hakuna matokeo kwa ajili ya namba yako ya pasipoti"
 
+#: 
 msgid "Create Booking"
 msgstr "Fanya usajili mpya"
 
-
+#: 
 msgid "Passport Number"
 msgstr "Namba ya Pasipoti"
 
+#: 
 msgid "Search"
 msgstr "Tafuta"
 
+#: 
 msgid "S/n"
 msgstr "S/n"
 
+#: 
 msgid "Date"
 msgstr "Tarehe"
 
+#: 
 msgid "Point of Entry"
 msgstr "Kituo cha Kuingilia"
 
+#: 
 msgid "Actions"
 msgstr "Matendo"
 
+#: 
 msgid "View"
 msgstr "Angalia"
 
+#: 
 msgid "Edit"
 msgstr "Hariri"
 
+#: 
 msgid "My Applications"
 msgstr "Usajili wangu"
 
+#: 
 msgid "All applications with passport number {{searchKeyword}} has expired"
 msgstr "Maombi yote yenye pasipoti namba {{searchKeyword}} yamekwisha muda wake"
 
+#: 
 msgid "Click here"
 msgstr "Bonyeza hapa"
 
+#: 
 msgid "to register new"
 msgstr "kufanya usajili mpya"
 
+#: 
 msgid "Traveller profile"
 msgstr "Taarifa za Msafiri"
 
+#: 
 msgid "Name"
 msgstr "Jina"
 
+#: 
 msgid "Passport"
 msgstr "Pasipoti"
 
+#: 
 msgid "Phone number"
 msgstr "Namba ya simu"
 
+#: 
 msgid "Email"
 msgstr "Barua pepe"
 
+#: 
 msgid "Gender"
 msgstr "Jinsi"
 
+#: 
 msgid "Arrival Date"
 msgstr "Tarehe ya kufika"
 
+#: 
 msgid "Flight number"
 msgstr "Namba ya ndege"
 
+#: 
 msgid "Nationality"
 msgstr "Uraia"
 
+#: 
 msgid "Print"
 msgstr "Chapisha"
 
+#: 
+msgid "Welcome to South Sudan"
+msgstr "Karibu Sudani ya Kusini"
+
+#: 
+msgid "Could not load data from server. Please try again later."
+msgstr "Kuna tatizo la kiufundi. Tafadhali jaribu tena baadae."
+
+#: 
+msgid "Cancel"
+msgstr "Ghairi"
+
+#: 
+msgid "Saving..."
+msgstr "Inahifadhi..."
+
+#: 
+msgid "Save"
+msgstr "Hifadhi"
+
+#: 
 msgid "Booking successfully saved"
 msgstr "Maombi yamehifadhiwa kikamilifu"
 
+#: 
+msgid "Error saving booking, {{errorMessage}}"
+msgstr "Tumeshindwa kuhifadhi usajili wako, {{errorMessage}}"
+
+#: 
 msgid "Booking successfully updated"
 msgstr "Maombi yamebadilishwa kikamilifu"
 
+#: 
+msgid "Error updating booking, {{ error }}"
+msgstr "Tumeshindwa kusasisha usajili wako, {{ error }}"
+
+#: 
 msgid "Registration"
 msgstr "Usajili"
 
+#: 
 msgid "Back"
 msgstr "Rudi"
 
+#: 
 msgid "Error"
 msgstr "Hitilafu"
 
+#: 
 msgid "Something went wrong."
 msgstr "Kuna kitu hakijaenda sawa"
 
+#: 
 msgid "Ministry of Health"
 msgstr "Wizara ya Afya"
 
+#: 
+msgctxt "The passport is shown next to these words in bold"
+msgid "Sorry, we couldn't find any bookings for your passport number"
+msgstr "Samahani, hakuna usajili wenye pasipoti namba"
+
+#: 
+msgctxt "Navigates to the registration page"
+msgid "Create Booking"
+msgstr "Fanya usajili"
+
+#: 
 msgctxt "Continues 'to register new'"
 msgid "Click here"
 msgstr "Bonyeza hapa"
 
+#: 
 msgctxt "Starts with 'Click here'"
 msgid "to register new"
 msgstr "kufanya usajili mpya"
+
+#: 
+msgid "Please enter a valid passport number"
+msgstr "Tafadhali ingiza namba za pasipoti zilizo sahihi"
+
+#: 
+msgid "South Sudan"
+msgstr "Sudani ya Kusini"
+
+#: 
+msgid "Previous"
+msgstr "Nyuma"
+
+#: 
+msgid "Next"
+msgstr "Mbele"
+
+#: 
+msgid "{{ fieldName }} is required"
+msgstr "{{ fieldName }} inahitajika"
+

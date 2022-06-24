@@ -5,221 +5,222 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: South Sudan POE\n"
-"Language: es\n"
+"Language: zh-CN\n"
 
 #: 
 msgid "WELCOME TO SOUTH SUDAN"
-msgstr "BIENVENIDA A SUDÁN DEL SUR"
+msgstr "歡迎來到南蘇丹"
 
 #: 
 msgid "We are glad that you have chosen to travel to South Sudan. For your safety and the well-being of those around you, please be informed that it is mandatory to complete the Public Health Surveillance Form online within 24 hours before arrival. You can start by searching your passport on the field above and complete the travellers form."
-msgstr "Nos alegramos de que haya elegido viajar a Sudán del Sur. Para su seguridad y el bienestar de quienes lo rodean, tenga en cuenta que es obligatorio completar el Formulario de Vigilancia de Salud Pública en línea dentro de las 24 horas antes de la llegada. Puede comenzar buscando su pasaporte en el campo de arriba y completando el formulario del viajero."
+msgstr "我們很高興您選擇前往南蘇丹。 為了您的安全和您周圍人的福祉，請注意，必須在抵達前 24 小時內在線填寫公共衛生監測表。 您可以先在上面的字段中搜索您的護照並填寫旅行者表格"
 
 #: 
 msgid "Register"
-msgstr "Registro"
+msgstr "登記"
 
 #: 
 msgid "My Application"
-msgstr "Mi aplicación"
+msgstr "我的應用程序"
 
 #: 
 msgid "Enter the passport number above to search for the existing applications"
-msgstr "Ingrese el número de pasaporte arriba para buscar las solicitudes existentes"
+msgstr "輸入上面的護照號碼搜索現有的申請"
 
 #: 
 msgid "No Results"
-msgstr "No hay resultados"
+msgstr "沒有結果"
 
 #: 
 msgid "Sorry, we couldn't find any bookings for your passport number"
-msgstr "Lo sentimos, no pudimos encontrar ninguna reserva para su número de pasaporte"
+msgstr "抱歉，我們找不到您的護照號碼的任何預訂"
 
 #: 
 msgid "Create Booking"
-msgstr "Crear reserva"
+msgstr "創建預訂"
 
 #: 
 msgid "Passport Number"
-msgstr "Número de pasaporte"
+msgstr "護照號"
 
 #: 
 msgid "Search"
-msgstr "Búsqueda"
+msgstr "搜索"
 
 #: 
 msgid "S/n"
-msgstr "S/n"
+msgstr "信噪比"
 
 #: 
 msgid "Date"
-msgstr "Fecha"
+msgstr "日期"
 
 #: 
 msgid "Point of Entry"
-msgstr "Punto de entrada"
+msgstr "入境點"
 
 #: 
 msgid "Actions"
-msgstr "Comportamiento"
+msgstr "行動"
 
 #: 
 msgid "View"
-msgstr "Vista"
+msgstr "看法"
 
 #: 
 msgid "Edit"
-msgstr "Editar"
+msgstr "編輯"
 
 #: 
 msgid "My Applications"
-msgstr "mis aplicaciónes"
+msgstr "我的應用程序"
 
 #: 
 msgid "All applications with passport number {{searchKeyword}} has expired"
-msgstr "Todas las solicitudes con número de pasaporte {{buscar la palabra clave}} han caducado"
+msgstr "護照號為 {{搜索關鍵字}} 的所有申請均已過期"
 
 #: 
 msgid "Click here"
-msgstr "haga clic aquí"
+msgstr "點擊這裡"
 
 #: 
 msgid "to register new"
-msgstr "Registrarse nuevo"
+msgstr "註冊新的"
 
 #: 
 msgid "Traveller profile"
-msgstr "Perfil del viajero"
+msgstr "旅客資料"
 
 #: 
 msgid "Name"
-msgstr "Nombre"
+msgstr "姓名"
 
 #: 
 msgid "Passport"
-msgstr "Pasaporte"
+msgstr "護照"
 
 #: 
 msgid "Phone number"
-msgstr "Número de teléfono"
+msgstr "電話號碼"
 
 #: 
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "電子郵件"
 
 #: 
 msgid "Gender"
-msgstr "Género"
+msgstr "性別"
 
 #: 
 msgid "Arrival Date"
-msgstr "Fecha de llegada"
+msgstr "到達日期"
 
 #: 
 msgid "Flight number"
-msgstr "Número de vuelo"
+msgstr "航班號"
 
 #: 
 msgid "Nationality"
-msgstr "Nacionalidad"
+msgstr "國籍"
 
 #: 
 msgid "Print"
-msgstr "Imprimir"
+msgstr "打印"
 
 #: 
 msgid "Welcome to South Sudan"
-msgstr "Bienvenido a Sudán del Sur"
+msgstr "歡迎來到南蘇丹"
 
 #: 
 msgid "Could not load data from server. Please try again later."
-msgstr "No se pudieron cargar los datos del servidor. Por favor, inténtelo de nuevo más tarde."
+msgstr "無法從服務器加載數據。 請稍後再試"
 
 #: 
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "取消\n"
+""
 
 #: 
 msgid "Saving..."
-msgstr "Ahorro..."
+msgstr "保存..."
 
 #: 
 msgid "Save"
-msgstr "Guardar"
+msgstr "節省"
 
 #: 
 msgid "Booking successfully saved"
-msgstr "Reserva guardada con éxito"
+msgstr "預訂成功保存"
 
 #: 
 msgid "Error saving booking, {{errorMessage}}"
-msgstr "Error al guardar la reserva, {{mensaje de error}}"
+msgstr "保存預訂時出錯，{{錯誤信息}}"
 
 #: 
 msgid "Booking successfully updated"
-msgstr "Reserva actualizada correctamente"
+msgstr "預訂成功更新"
 
 #: 
 msgid "Error updating booking, {{ error }}"
-msgstr "Error al actualizar la reserva, {{ error }}"
+msgstr "更新預訂時出錯，{{ 錯誤}}"
 
 #: 
 msgid "Registration"
-msgstr "Registro"
+msgstr "登記"
 
 #: 
 msgid "Back"
-msgstr "Atrás"
+msgstr "錯誤"
 
 #: 
 msgid "Error"
-msgstr "Error"
+msgstr "錯誤"
 
 #: 
 msgid "Something went wrong."
-msgstr "Algo salió mal."
+msgstr "出問題了"
 
 #: 
 msgid "Ministry of Health"
-msgstr "Ministerio de Salud"
+msgstr "衛生部"
 
 #: 
 msgctxt "The passport is shown next to these words in bold"
 msgid "Sorry, we couldn't find any bookings for your passport number"
-msgstr "Lo sentimos, no pudimos encontrar ninguna reserva para su número de pasaporte"
+msgstr "抱歉，我們找不到您的護照號碼的任何預訂"
 
 #: 
 msgctxt "Navigates to the registration page"
 msgid "Create Booking"
-msgstr "Crear reserva"
+msgstr "創建預訂"
 
 #: 
 msgctxt "Continues 'to register new'"
 msgid "Click here"
-msgstr "haga clic aquí"
+msgstr "點擊這裡"
 
 #: 
 msgctxt "Starts with 'Click here'"
 msgid "to register new"
-msgstr "Registrarse nuevo"
+msgstr "註冊新的"
 
 #: 
 msgid "Please enter a valid passport number"
-msgstr "Por favor ingrese un número de pasaporte válido"
+msgstr "請輸入有效的護照號碼"
 
 #: 
 msgid "South Sudan"
-msgstr "Sudán del Sur"
+msgstr "南蘇丹"
 
 #: 
 msgid "Previous"
-msgstr "Previo"
+msgstr "以前的"
 
 #: 
 msgid "Next"
-msgstr "Próximo"
+msgstr "下一個"
 
 #: 
 msgid "{{ fieldName }} is required"
-msgstr "{{ Nombre del campo }} es obligatorio"
+msgstr "{{ 字段名稱 }} 是必需的"
 
