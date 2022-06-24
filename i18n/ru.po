@@ -205,21 +205,21 @@ msgstr "зарегистрировать новый"
 
 #: 
 msgid "Please enter a valid passport number"
-msgstr ""
+msgstr "Пожалуйста, введите действительный номер паспорта"
 
 #: 
 msgid "South Sudan"
-msgstr ""
+msgstr "южный Судан"
 
 #: 
 msgid "Previous"
-msgstr ""
+msgstr "Предыдущий"
 
 #: 
 msgid "Next"
-msgstr ""
+msgstr "Следующий"
 
 #: 
 msgid "{{ fieldName }} is required"
-msgstr ""
+msgstr "{{ Имя поля }} обязательно"
 

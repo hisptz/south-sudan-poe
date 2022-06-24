@@ -32,11 +32,11 @@ export const LANGUAGES: Language[] = [
     locale: "ru",
     flag: "🇷🇺",
   },
-  // { //TODO: Uncomment this when the chinese translation is ready
-  //   name: "中国人",
-  //   locale: "zh",
-  //   flag: "🇨🇳",
-  // },
+  {
+    name: "中国人",
+    locale: "zh",
+    flag: "🇨🇳",
+  },
   {
     name: "Swahili",
     locale: "sw",
